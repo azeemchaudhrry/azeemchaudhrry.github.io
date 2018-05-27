@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <title>Login Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login Form</h1>
+      <div id="loginAlert"></div>
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter username" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" />
+        </div>
+        <input type="button" class="btn btn-primary" onclick="login()" value="Login" />
+		<input type="button" class="btn btn-primary" onclick="share()" value="Share" />
+      </form>
+    </div>
+    <script src="jquery-3.2.1.slim.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script>
+        function displayLoginAlert(status) {
+            var alert = status == 'True' ? 
+                '<div class="alert alert-success">You have been successfully logged in.</div>' :
+                '<div class="alert alert-danger">Username or password is incorrect.</div>';
+
+            $("#loginAlert").html(alert);
+        }
+
+        function login() {
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            Native("login", {
+                username: username, 
+                password: password
+            });
+
+            $("#username").val('');
+            $("#password").val('');
+        }
+		
+		function share(){
+		
+			Native("login", {
+				title: 'This is share title',
+				details: 'This is share details',
+				link: 'https://www.google.com'
+			});
+		}
+    </script>
+  </body>
+</html>
