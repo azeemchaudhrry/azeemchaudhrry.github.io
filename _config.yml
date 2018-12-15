@@ -4,7 +4,7 @@ email:       chaudhrryazeem@gmail.com
 author:      John Otander
 description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
 baseurl:     ""
-url:         "azeemchaudhrry.github.io"
+url:         "azeemchaudhrry.tk"
 date_format: "%b %-d, %Y"
 header_pages:
  - projects.md
