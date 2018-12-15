@@ -1,0 +1,62 @@
+[
+	{
+		"name": "Abu Dhabi Chamber of Commerce Mobile Apps",
+		"description":"Abu Dhabi chamber of Commerce Mobile Apps that will fecilitate the users to create/update COO and get updated with Commercial directory",
+		"image": "placeholder.jpg",
+		"websiteurl": "https://abudhabichamber.ae",
+		"appstoreurl":"abu-dhabi-chamber-of-commerce/id1441906230",
+		"playstoreurl":"ae.gov.adcci",
+		"date": "March 2017",
+		"tags": ["C#","Java","Xamarin","iOS","Android","ASP.NET","SharePoint"]
+	},
+	{
+		"name": "Sharjah Events (Web Portal and Mobile Apps)",
+		"description":"Sharjah Events is the official website for events held in Sharjah, UAE, throughout the year.",
+		"image": "placeholder.jpg",
+		"websiteurl": "https://www.sharjahevents.ae/home",
+		"appstoreurl":"sharjah-events/id1084408487?mt=8",
+		"playstoreurl":null,
+		"date": "January 2018",
+		"tags": ["C#","Java","XamarinForms","iOS","Android","Angular","ASP.NET", ".NET Core"]
+	},
+	{
+		"name": "Sharjah24 (Web Portal and Mobile Apps)",
+		"description":"Sharjah 24 is an online news portal based in the emirate of Sharjah. The site aims to become a reliable news reference covering all events in the emirate of Sharjah, in particular and the UAE in general.",
+		"image": "placeholder.jpg",
+		"websiteurl": "https://www.google.com",
+		"appstoreurl":"sharjah24-alsharqt24/id969096673?mt=8",
+		"playstoreurl":"com.sharjah24.mobile",
+		"date": "January 2018",
+		"tags": ["iOS","Swift","Android","Java","Angular","ASP.NET", "SharePoint"]
+	},
+	{
+		"name": "NYC Consumer App",
+		"description":"The VA Consumer app, powered by CORE, is a mobile experience for retail shoppers. It is one app in an ecosystem of apps that constitute the touch points of a retail customer and enable a connected shopping experience for them. ",
+		"image": "placeholder.jpg",
+		"websiteurl": null,
+		"appstoreurl":"nyc-consumer/id1166572674?mt=8",
+        "playstoreurl":null,
+		"date": "Oct 2016",        
+		"tags": ["Xamarin", "iOS", "ASP.NET"]
+	},
+	{
+		"name": "Core Framework",
+		"description":"CORE is a platform which produces a unified user experience across all devices with accelerated provisioning for new, innovative business applications.",
+		"image": "placeholder.jpg",
+		"date": "Oct 2016",
+		"websiteurl": "http://www.confiz.com/core",
+		"appstoreurl":null,
+		"playstoreurl":null,
+		"tags": ["C#","Java","Xamarin","iOS","Android","ASP.NET","SharePoint"]
+	},
+	{
+		"name": "Radiant Site Manager (RSM)",
+		"description":"NCR’s Radiant Site Manager (RSM) is an application that includes more than 60 real-time reports and reconciliation applets such as the Price Override Report, Fuel Price Change Report, Void Report, Drive Off Report and others that show common fraudulent activities. This software increases store system availability and streamlines the support process.",
+		"image": "placeholder.jpg",
+		"date": "Oct 2016",
+		"websiteurl": "https://www.ncr.com/retail/petroleum-convenience/touch-points-sales-channels/radiant-point-of-sale/configuration-tools/radiant-site-manager",
+		"appstoreurl":null,
+		"playstoreurl":null,
+		"tags": ["C++","C#", "Python","ASP.NET", "SQL", "XML", ]
+	}
+]

@@ -1,0 +1,41 @@
+<div class="share-page">
+  {{ site.text.share_buttons.text }}
+
+  <div class="share-links">
+    {% if site.share_facebook %}
+      <a href="https://facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.facebook }}"><i class="fab fa-facebook"></i></a>
+    {% endif %}
+
+    {% if site.share_twitter %}
+      <a href="https://twitter.com/intent/tweet?text={{ page.title | cgi_escape }}&amp;url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.twitter }}"><i class="fab fa-twitter"></i></a>
+    {% endif %}
+
+    {% if site.share_googleplus %}
+      <a href="https://plus.google.com/share?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.googleplus }}"><i class="fab fa-google-plus"></i></a>
+    {% endif %}
+
+    {% if site.share_linkedin %}
+      <a href="http://www.linkedin.com/shareArticle?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;title={{ page.title | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.linkedin }}"><i class="fab fa-linkedin"></i></a>
+    {% endif %}
+
+    {% if site.share_digg %}
+      <a href="http://digg.com/submit?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;title={{ page.title | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.digg }}"><i class="fab fa-digg"></i></a>
+    {% endif %}
+
+    {% if site.share_tumblr %}
+      <a href="http://www.tumblr.com/share/link?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;name={{ page.title | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.tumblr }}"><i class="fab fa-tumblr"></i></a>
+    {% endif %}
+
+    {% if site.share_reddit %}
+      <a href="http://reddit.com/submit?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;title={{ page.title | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.reddit }}"><i class="fab fa-reddit"></i></a>
+    {% endif %}
+
+    {% if site.share_stumbleupon %}
+      <a href="http://www.stumbleupon.com/submit?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;title={{ page.title | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.stumbleupon }}"><i class="fab fa-stumbleupon"></i></a>
+    {% endif %}
+
+    {% if site.share_hackernews %}
+      <a onclick="parent.postMessage('submit','*')" href="https://news.ycombinator.com/submitlink?u={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;t={{ page.title | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.hackernews }}"><i class="fab fa-hacker-news"></i></a>
+    {% endif %}
+  </div>
+</div>
