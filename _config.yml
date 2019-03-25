@@ -2,9 +2,9 @@
 title:       HAFIZ M. AZEEM
 email:       chaudhrryazeem@gmail.com
 author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+description: "Azeem is an experienced Software Engineer working with Microsoft, NCR, Macy’s, Abu Dhabi and Sharjah Govts. Having 5 years of experience in developing desktop, web and mobile apps."
 baseurl:     ""
-url:         "azeemchaudhrry.tk"
+url:         "https://azeem.dev"
 date_format: "%b %-d, %Y"
 header_pages:
  - projects.md
