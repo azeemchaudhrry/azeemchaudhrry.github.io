@@ -23,11 +23,11 @@
 		"name": "Sharjah24 (Web Portal and Mobile Apps)",
 		"description":"Sharjah 24 is an online news portal based in the emirate of Sharjah. The site aims to become a reliable news reference covering all events in the emirate of Sharjah, in particular and the UAE in general.",
 		"image": "placeholder.jpg",
-		"websiteurl": "https://www.google.com",
+		"websiteurl": "https://www.sharjah24.ae",
 		"appstoreurl":"sharjah24-alsharqt24/id969096673?mt=8",
-		"playstoreurl":"com.sharjah24.mobile",
+		"playstoreurl":"ae.sharjah24.mobile",
 		"date": "January 2018",
-		"tags": ["iOS","Swift","Android","Java","Angular","ASP.NET", "SharePoint"]
+		"tags": ["iOS","Swift","Android","Java","Rertofit","AFNetworking"]
 	},
 	{
 		"name": "NYC Consumer App",
