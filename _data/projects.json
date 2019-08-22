@@ -15,7 +15,7 @@
 		"image": "placeholder.jpg",
 		"websiteurl": "https://www.sharjahevents.ae/home",
 		"appstoreurl":"sharjah-events/id1084408487?mt=8",
-		"playstoreurl":null,
+		"playstoreurl":"ae.sharjahevents.app",
 		"date": "January 2018",
 		"tags": ["C#","Java","XamarinForms","iOS","Android","Angular","ASP.NET", ".NET Core"]
 	},
