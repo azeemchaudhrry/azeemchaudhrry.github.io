@@ -1,0 +1,85 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  outline: none !important;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  background: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0px;
+  padding: 0px;
+}
+
+ol,
+ul,
+li {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+  li {
+    list-style-type: none;
+
+    a {
+      @include transition(all 0.5s);
+    }
+  }
+}
+a {
+  text-decoration: none !important;
+  outline: none !important;
+  @include transition(all 0.5s);
+  color: #3ab3e5;
+}
+
+button {
+  outline: none !important;
+  cursor: pointer;
+  background: none;
+  @include transition(all 0.5s);
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+a img {
+  border: 0;
+  padding: 0;
+  @include transition(all 0.5s);
+}
+img {
+  border: 0;
+  padding: 0;
+  @include transition(all 0.5s);
+}
+
+label {
+  font-weight: normal;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-animation: autofill 0s forwards;
+  animation: autofill 0s forwards;
+}
+
+@-webkit-keyframes autofill {
+  100% {
+    background: transparent;
+    color: inherit;
+  }
+}

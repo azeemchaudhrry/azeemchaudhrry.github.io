@@ -1,0 +1,194 @@
+%action-btn {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  background: $brand-second-color;
+  @include border-radius(10px);
+  overflow: hidden;
+  z-index: 0;
+  @include padding(15px, 30px, 15px, 30px);
+  font-size: 16px;
+  color: $dark-grey-color-shade;
+  text-transform: capitalize;
+  box-shadow: 0 2px 10px 0 rgba($brand-second-color, 0.8);
+
+  &:hover {
+    color: $white-color;
+    @include card-hover-shadow;
+    background: $brand-color;
+    @include transform(translateY(-2px));
+    box-shadow: 0 2px 10px 0 rgba($brand-color, 0.8);
+  }
+}
+
+.action-btn-yellow {
+  @extend %action-btn;
+}
+
+
+// custom select list dropdown
+.nice-select {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  display: block;
+  float: left;
+  font-size: 16px;
+  font-weight: 700;
+  height: 45px;
+  line-height: 45px;
+  outline: none;
+  position: relative;
+  text-align: left !important;
+  @include transition(all 0.5s ease);
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  color: $dark-grey-color;
+  border-bottom: 1px solid #d1d6dc;
+
+
+  // Arrow
+  &:after {
+    border-bottom: 2px solid $dark-grey-color;
+    border-right: 2px solid $dark-grey-color;
+    content: "";
+    display: block;
+    height: 10px;
+    width: 10px;
+    margin-top: -4px;
+    pointer-events: none;
+    position: absolute;
+    right: 5px;
+    top: 23px;
+    transform-origin: 66% 66%;
+    transform: rotate(45deg);
+    @include transition(all 0.5s ease);
+  }
+
+  &.open {
+    @extend :active;
+    &:after {
+      transform: rotate(-135deg);
+    }
+    .list {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+    }
+  }
+  // Modifiers
+  &.wide {
+    width: 100%;
+    .list {
+      left: 0 !important;
+      right: 0 !important;
+    }
+  }
+
+  // List and options
+  .list {
+    background-color: $white-color;
+    box-shadow: 0 8px 5px 0 rgba($black-color, 0.1);
+    @include border-radius(5px);
+    margin-top: -6px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    font-size: 14px;
+    left: 0;
+    width: 100%;
+    transform-origin: 50% 0;
+    -webkit-overflow-scrolling: touch;
+    transform: scale(0.75) translateY(-$input_height / 2);
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    z-index: 9;
+    font-weight: normal;
+    @include padding(20px, 0, 10px, 0);
+    &:hover .option:not(:hover) {
+      background-color: transparent !important;
+    }
+  }
+  .option {
+    cursor: pointer;
+    line-height: 35px;
+    list-style: none;
+    min-height: 35px;
+    outline: none;
+    @include padding(0, 20px, 0, 20px);
+    @include transition(all 0.5s ease);
+    color: $dark-grey-color-shade;
+    text-align: left;
+    &:hover,
+    &.focus,
+    &.selected.focus {
+      color: $brand-color;
+    }
+    &.selected {
+      font-weight: bold;
+    }
+  }
+}
+
+// Use display instead of opacity for IE <= 10
+.no-csspointerevents .nice-select {
+  .list {
+    display: none;
+  }
+  &.open {
+    .list {
+      display: block;
+    }
+  }
+}
+
+%nav-pills {
+  width: 90%;
+  @include breakpoint(sm) {
+    width: 100%;
+  }
+  @include breakpoint(md) {
+    width: 100%;
+  }
+
+  .nav-link {
+    background: none;
+    color: $dark-grey-color;
+    font-size: 16px;
+    text-transform: uppercase;
+    @include margin(0, 0, 40px, 0);
+    @include padding(0, 0, 0, 0);
+    letter-spacing: 2px;
+    font-family: $font-secondary-en;
+    position: relative;
+
+    &:before {
+      font-family: FontAwesome;
+      content: "\f105";
+      position: absolute;
+      right: 5px;
+      font-size: 25px;
+      top: -7px;
+      color: $dark-grey-color-shade;
+      @include transition(all 0.5s ease);
+    }
+
+    &:hover {
+      color: $brand-color;
+      &:before {
+        color: $brand-color;
+        right: 0;
+      }
+    }
+
+    &.active {
+      color: $brand-color;
+      background: none;
+      &:before {
+        color: $brand-color;
+      }
+    }
+  }
+}

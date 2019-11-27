@@ -1,0 +1,1136 @@
+@import "vendor/bootstrap-4.0/bootstrap", "vendor/slick-carousel/slick", "vendor/slick-carousel/slick-theme",
+  "vendor/OwlCarousel2-2.2.1/owl.carousel", "vendor/OwlCarousel2-2.2.1/owl.theme.default",
+  "vendor/font-awesome-4.7.0/font-awesome";
+
+@import "base/reset", "base/typography";
+
+@import "partials/variables", "partials/mixins", "partials/layout";
+
+@import "layout/footer", "layout/header";
+
+@import "pages/ongoing", "pages/leaderboard", "pages/profile";
+
+@import "components/ui-elements";
+body {
+  font-family: $font-primary-en;
+  background: #f5f5f3;
+}
+h1,
+h2,
+h3 {
+  font-family: $font-primary-en;
+}
+
+.wow {
+  visibility: hidden;
+}
+
+a[href^="tel"] {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+section {
+  @include margin(0, 0, 80px, 0);
+
+  @include breakpoint(md) {
+    @include margin(0, 0, 50px, 0);
+  }
+
+  @include breakpoint(sm) {
+    @include margin(0, 0, 50px, 0);
+  }
+
+  h2 {
+    font-size: 40px;
+    color: $brand-color;
+    @include breakpoint(sm) {
+      font-size: 30px;
+    }
+    @include breakpoint(md) {
+      font-size: 30px;
+    }
+  }
+}
+
+@include breakpoint(sm) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+.blue-wrap {
+  background: $light-blue-color;
+}
+.blue-wrap-padding {
+  @include padding(80px, 0, 80px, 0);
+
+  @include breakpoint(sm) {
+    @include padding(30px, 0, 30px, 0);
+  }
+}
+
+.grey-wrap {
+  background: #f5f5f5;
+}
+.grey-wrap-padding {
+  @include padding(80px, 0, 80px, 0);
+
+  @include breakpoint(sm) {
+    @include padding(30px, 0, 30px, 0);
+  }
+}
+.nomargin {
+  @include margin(0, 0, 0, 0);
+}
+.nopadding {
+  @include padding(0, 0, 0, 0);
+}
+.card {
+  @include border-radius(0);
+  border: 0;
+}
+
+.title-head {
+  display: flex;
+  @include margin(0, 0, 30px, 0);
+  align-items: center;
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #7e90a6;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  a {
+    font-size: 14px;
+    color: $brand-color;
+    text-transform: uppercase;
+    margin-left: auto;
+    font-weight: 700;
+
+    &:hover {
+      color: $dark-grey-color;
+    }
+  }
+}
+.top-popular-matches {
+  background: $brand-color;
+  @include padding(15px, 0, 15px, 0);
+  @include my-shadow;
+
+  .item {
+    background: $white-color;
+    position: relative;
+    display: flex;
+    align-items: center;
+    @include padding(10px, 10px, 10px, 20px);
+    @include border-radius(7px);
+    @include margin(0, 10px, 0, 10px);
+
+    &:before {
+      height: 2px;
+      width: 14px;
+      background: #d74d4d;
+      right: 14px;
+      top: 50%;
+      content: "";
+      position: absolute;
+    }
+    p {
+      font-size: 15px;
+      flex: 1 70%;
+      span {
+        color: $light-grey-color;
+        @include margin(0, 10px, 0, 0);
+      }
+    }
+    .number {
+      display: inline-block;
+      height: 30px;
+      width: 30px;
+      text-align: center;
+      line-height: 30px;
+      color: $white-color;
+      @include border-radius(50%);
+      background: $brand-color;
+      margin-left: auto;
+      margin-right: 30px;
+    }
+  }
+}
+
+.match-card {
+  @include border-radius(10px);
+  background: $white-color;
+  @include transition(all 0.5s ease);
+  @include margin(0, 10px, 0, 10px);
+
+  header {
+    @include padding(20px, 20px, 20px, 20px);
+    .country-thumb {
+      display: flex;
+      align-items: center;
+      height: 28px;
+      img {
+        width: 28px;
+        height: 28px;
+        @include border-radius(50%);
+        @include margin(0, 10px, 0, 0);
+      }
+    }
+    .day-time {
+      text-align: center;
+      color: $brand-color;
+    }
+    p {
+      color: $light-grey-color;
+      font-size: 14px;
+    }
+  }
+  .scoring-card {
+    @include border-radius(10px);
+    background: #63e4a8;
+    background: -moz-linear-gradient(top, #63e4a8 0%, #12b367 100%);
+    background: -webkit-linear-gradient(top, #63e4a8 0%, #12b367 100%);
+    background: linear-gradient(to bottom, #63e4a8 0%, #12b367 100%);
+    @include padding(20px, 20px, 20px, 20px);
+
+    .team-logo-holder {
+      overflow: hidden;
+      height: 60px;
+      width: 60px;
+      @include padding(10px, 10px, 10px, 10px);
+      margin: auto;
+    }
+    .team-name {
+      text-align: center;
+      font-size: 12px;
+      display: block;
+      color: $white-color;
+      @include margin(0, 0, 20px, 0);
+    }
+
+    .result_match {
+      color: $white-color;
+      text-align: center;
+      font-size: 35px;
+    }
+
+    .win-draw-ratio {
+      span {
+        text-align: center;
+        display: block;
+        color: $white-color;
+        text-transform: uppercase;
+        font-size: 11px;
+      }
+      .draw {
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          bottom: -20px;
+          left: 50%;
+          width: 1px;
+          height: 10px;
+          background: $white-color;
+        }
+      }
+      .win {
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          bottom: -20px;
+          left: 50%;
+          width: 1px;
+          height: 10px;
+          background: $white-color;
+        }
+      }
+    }
+  }
+  .scoring-card-footer {
+    @include padding(10px, 20px, 10px, 20px);
+
+    .number {
+      @include margin(10px, 0, 0, 0);
+      span {
+        i {
+          color: $brand-color;
+
+          &:hover {
+            color: $dark-grey-color;
+          }
+        }
+      }
+
+      .minus,
+      .plus {
+        cursor: pointer;
+      }
+      input {
+        width: 50px;
+        text-align: center;
+        font-size: 18px;
+      }
+      .no-of-token {
+        display: block;
+        font-size: 10px;
+        color: $light-grey-color;
+      }
+    }
+
+    .flash-icon {
+      text-align: right;
+      display: block;
+      i {
+        color: $brand-second-color;
+      }
+    }
+  }
+}
+
+.recommended-for-you {
+  .recommended-for-you-carousel {
+    position: relative;
+    &:before {
+      position: absolute;
+      left: 0;
+      content: "";
+      width: 240px;
+      height: 100%;
+      z-index: 9;
+      background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+      background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+      background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+    &:after {
+      position: absolute;
+      right: 0;
+      content: "";
+      width: 240px;
+      height: 100%;
+
+      top: 0;
+      background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+      background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    }
+  }
+  h2 {
+    @include margin(0, 0, 50px, 55px);
+    text-transform: uppercase;
+    color: #7e90a6;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .slick-prev {
+    left: 50px;
+    z-index: 99;
+    &:hover {
+      left: 40px;
+    }
+  }
+  .slick-next {
+    right: 70px;
+    z-index: 99;
+    &:hover {
+      right: 60px;
+    }
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 45px;
+    color: $brand-color;
+  }
+}
+
+.starting-soon {
+  background: $white-color;
+  @include padding(20px, 20px, 20px, 20px);
+  @include margin(0, 0, 20px, 0);
+  @include border-radius(10px);
+
+  .match-card {
+    border: 1px solid $light-grey-color;
+    @include margin(0, 0, 20px, 0);
+
+    .team-logo-holder {
+      height: 50px;
+      width: 50px;
+    }
+
+    &:last-child {
+      @include margin(0, 0, 0, 0);
+    }
+  }
+}
+
+.groups {
+  background: $white-color;
+  @include padding(20px, 20px, 20px, 20px);
+  @include border-radius(10px);
+
+  .card {
+    @include padding(10px, 10px, 10px, 10px);
+    @include border-radius(10px);
+    border: 1px solid #d7ddde;
+    @include margin(0, 0, 15px, 0);
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    .group-icon {
+      background: #e9ecec;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      @include border-radius(50%);
+      @include margin(0, 10px, 0, 0);
+    }
+    .detail {
+      @include padding(0, 65px, 0, 0);
+      flex: 1 60%;
+      p {
+        font-size: 14px;
+        @include margin(0, 0, 15px, 0);
+      }
+      .thumbs {
+        position: relative;
+        .thumb {
+          width: 17px;
+          height: 17px;
+          top: -13px;
+          border: 1px solid $white-color;
+          @include border-radius(50%);
+          position: absolute;
+        }
+        .thumb-01 {
+          left: 0;
+          z-index: 10;
+        }
+        .thumb-02 {
+          left: 12px;
+          z-index: 9;
+        }
+        .thumb-03 {
+          left: 25px;
+          z-index: 8;
+        }
+        .name {
+          display: block;
+          position: absolute;
+          color: $black-color;
+          font-size: 12px;
+          left: 50px;
+          top: -13px;
+
+          small {
+            color: $light-grey-color;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .card-badge {
+      background: $white-color;
+      border: 1px solid #d7ddde;
+      @include border-radius(3px);
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      @include transform(translateY(-50%));
+      @include padding(5px, 5px, 5px, 5px);
+      display: flex;
+      .text {
+        font-size: 11px;
+        color: $light-grey-color;
+        @include margin(0, 5px, 0, 5px);
+      }
+      .icon-01 {
+        color: $brand-second-color;
+      }
+      .icon-02 {
+        color: $brand-color;
+      }
+    }
+
+    &:last-child {
+      @include margin(0, 0, 0, 0);
+    }
+  }
+}
+
+.stories {
+  .title-head {
+    .custom-dropdown-list {
+      width: 30%;
+      margin-left: auto;
+      .nice-select {
+      }
+    }
+  }
+
+  .card {
+    @include border-radius(10px);
+    background: $white-color;
+    @include padding(20px, 20px, 20px, 20px);
+    @include margin(0, 0, 20px, 0);
+    @include transition(all 0.5s ease);
+
+    .user-thumb-holder {
+      display: flex;
+      @include margin(0, 0, 30px, 0);
+      align-items: center;
+      height: 28px;
+      img {
+        width: 28px;
+        height: 28px;
+        @include border-radius(50%);
+        @include margin(0, 10px, 0, 0);
+      }
+      span {
+        color: $brand-color;
+        font-size: 17px;
+      }
+    }
+
+    figure {
+      @include border-radius(10px);
+      @include margin(0, 0, 20px, 0);
+      overflow: hidden;
+      img {
+        @include border-radius(10px);
+        @include transform(scale(1));
+      }
+    }
+    figcaption {
+      .title {
+        @include margin(0, 0, 20px, 0);
+        color: $black-color;
+        font-size: 40px;
+        font-weight: 700;
+        display: inline-block;
+
+        &:hover {
+          color: $brand-color;
+        }
+      }
+      .share-btn {
+        @include border-radius(5px);
+        @include padding(10px, 15px, 10px, 15px);
+        text-align: center;
+        background: $brand-second-color;
+        color: $dark-grey-color;
+        display: inline-block;
+        font-size: 16px;
+        i {
+          @include margin(0, 10px, 0, 0);
+        }
+        &:hover {
+          background: $dark-grey-color;
+          color: $white-color;
+        }
+      }
+      .send-btn {
+        @include border-radius(5px);
+        @include padding(10px, 15px, 10px, 15px);
+        text-align: center;
+        background: $brand-color;
+        display: inline-block;
+        margin-left: auto;
+        i {
+          color: $white-color;
+        }
+        &:hover {
+          background: $dark-grey-color;
+          color: $white-color;
+        }
+      }
+    }
+
+    &:hover {
+      figure {
+        img {
+          @include transform(scale(1.1));
+        }
+      }
+      .title {
+        color: $brand-color;
+      }
+    }
+
+    &:hover {
+      @include card-hover-shadow;
+    }
+  }
+}
+
+.ongoing {
+  @include border-radius(10px);
+  background: $white-color;
+  @include padding(20px, 20px, 20px, 20px);
+  @include margin(0, 0, 20px, 0);
+
+  .ongoing-match-card {
+    @include padding(10px, 20px, 5px, 20px);
+    @include border-radius(10px);
+    @include margin(0, 0, 10px, 0);
+    border: 2px solid #d7ddde;
+    position: relative;
+    .flash-icon {
+      position: absolute;
+      left: -8px;
+      i {
+        color: $brand-second-color;
+      }
+    }
+
+    header {
+      @include margin(0, 0, 20px, 0);
+      .max-text {
+        font-size: 16px;
+        color: $black-color;
+        small {
+          font-size: 11px;
+          color: $light-grey-color;
+        }
+      }
+      .total-time {
+        color: #b21111;
+        text-transform: uppercase;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .live {
+        color: #b21111;
+        text-transform: uppercase;
+        font-size: 15px;
+        position: relative;
+        @include padding(0, 0, 0, 16px);
+
+        &:before {
+          @include border-radius(50%);
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          background: #b21111;
+          left: 3px;
+          content: "";
+          top: 8px;
+        }
+      }
+
+      .finished {
+        color: #b21111;
+        text-transform: uppercase;
+        font-size: 13px;
+      }
+    }
+
+    .match-row {
+      @include margin(0, 0, 15px, 0);
+
+      .team-thumb {
+        display: flex;
+        align-items: center;
+        height: 24px;
+        figure {
+          overflow: hidden;
+          width: 24px;
+          height: 24px;
+          @include margin(0, 10px, 0, 0);
+          display: flex;
+          align-items: center;
+        }
+        span {
+          font-size: 15px;
+          color: $black-color;
+        }
+      }
+      .match-score {
+        display: flex;
+        span {
+          color: $light-grey-color;
+          font-size: 16px;
+          @include margin(0, 10px, 0, 10px);
+          &.red {
+            color: #b21111;
+          }
+          &.grey {
+            color: $light-grey-color;
+          }
+          &.black {
+            color: $black-color;
+          }
+        }
+      }
+    }
+    &:last-child {
+      @include margin(0, 0, 0, 0);
+    }
+  }
+  .gold {
+    border: 2px solid $brand-second-color;
+    box-shadow: 0 2px 10px 0 rgba($brand-second-color, 0.5);
+  }
+  /* .border{
+    position: relative;
+    &:before{
+      position: absolute;
+      width: 2px;
+      height: 200px;
+      right: 0;
+      background: #b21111;
+      content: '';
+    }
+  } */
+}
+
+.top-players {
+  @include border-radius(10px);
+  background: $white-color;
+  @include padding(20px, 20px, 20px, 20px);
+
+  .nav-tabs {
+    border: 0;
+    @include margin(0, 0, 30px, 0);
+    .nav-item {
+      @include margin(0, 40px, 0, 0);
+    }
+
+    .nav-link {
+      text-transform: uppercase;
+      border: 0;
+      color: $light-grey-color;
+      font-size: 14px;
+      @include padding(0, 0, 10px, 0);
+
+      &.active {
+        border-bottom: 2px solid $brand-color;
+        color: $dark-grey-color;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .player-thumb {
+    position: relative;
+    .thumb-holder {
+      width: 68px;
+      height: 68px;
+      @include border-radius(50%);
+      @include margin(auto, auto, 20px, auto);
+      position: relative;
+      img {
+        width: 68px;
+        height: 68px;
+        @include border-radius(50%);
+      }
+    }
+    .name {
+      color: $dark-grey-color;
+      font-weight: 700;
+      font-size: 15px;
+      display: block;
+      text-align: center;
+    }
+    .rank {
+      width: 20px;
+      height: 20px;
+      @include border-radius(50%);
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-weight: 700;
+      font-size: 13px;
+      text-align: center;
+      line-height: 20px;
+    }
+    .gold {
+      border: 3px solid $brand-second-color;
+      .gold-rank {
+        background: $brand-second-color;
+        color: $dark-grey-color;
+      }
+    }
+    .silver {
+      border: 3px solid #525252;
+      .silver-rank {
+        background: #525252;
+        color: $white-color;
+      }
+    }
+    .platinum {
+      border: 3px solid #c25b00;
+      .platinum-rank {
+        background: #c25b00;
+        color: $white-color;
+      }
+    }
+
+    .total-coins {
+      background: $white-color;
+      border: 1px solid #d7ddde;
+      @include border-radius(3px);
+      position: absolute;
+      top: 55px;
+      left: 50%;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+      vertical-align: baseline;
+      font-size: 75%;
+      @include transform(translateX(-50%));
+      @include padding(5px, 5px, 5px, 25px);
+
+      &:before {
+        @include border-radius(50%);
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background: $brand-second-color;
+        left: 5px;
+        color: $dark-grey-color;
+        content: "";
+        top: 4px;
+      }
+    }
+    
+  }
+}
+
+.team-large-thumb {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  @include margin(40px, 40px, 40px, 40px);
+  .thumb-holder {
+    @include padding(10px, 10px, 10px, 10px);
+    @include margin(0, 20px, 0, 0);
+    height: 90px;
+    width: 90px;
+    @include border-radius(50%);
+    border: 3px solid $brand-color;
+    overflow: hidden;
+  }
+  .team-name {
+    h2 {
+      font-weight: 700;
+      font-size: 22px;
+      color: $black-color;
+    }
+    span {
+      color: $light-grey-color;
+      font-size: 15px;
+    }
+  }
+}
+
+.team-info-tabs {
+  .nav-tabs {
+    border: 0;
+    @include margin(0, 0, 30px, 0);
+    box-shadow: 0 6px 7px 0 rgba($black-color, 0.1);
+    .nav-link {
+      text-transform: uppercase;
+      border: 0;
+      color: $light-grey-color;
+      font-size: 14px;
+      @include padding(0, 0, 20px, 0);
+
+      &.active {
+        border-bottom: 3px solid $brand-color;
+        color: $dark-grey-color;
+        font-weight: 700;
+      }
+    }
+  }
+  .tab-content {
+    @include padding(20px, 20px, 20px, 20px);
+
+    .score-card {
+      @include border-radius(10px);
+      border: 2px solid #d7ddde;
+      @include margin(0, 0, 20px, 0);
+
+      .date-row {
+        @include padding(6px, 20px, 6px, 20px);
+        display: flex;
+        .date {
+          color: $light-grey-color;
+          font-size: 14px;
+        }
+        .text {
+          color: $brand-color;
+          font-size: 14px;
+          margin-left: auto;
+        }
+      }
+
+      .team-detail {
+        @include padding(20px, 20px, 20px, 20px);
+        @include border-radius(7px);
+        display: flex;
+        align-items: center;
+
+        .result {
+          @include border-radius(5px);
+          background: $white-color;
+          @include padding(5px, 10px, 5px, 10px);
+          @include margin(0, 50px, 0, 0);
+          display: block;
+          text-transform: uppercase;
+          font-size: 14px;
+
+          &.lose {
+            color: rgb(178, 16, 16);
+          }
+          &.draw {
+            color: rgb(173, 179, 182);
+          }
+          &.win {
+            color: rgb(16, 178, 102);
+          }
+        }
+
+        .team-thumb {
+          display: flex;
+          align-items: center;
+          height: 20px;
+          figure {
+            overflow: hidden;
+            width: 20px;
+            height: 20px;
+            @include margin(0, 15px, 0, 0);
+            display: flex;
+            align-items: center;
+          }
+          span {
+            font-size: 13px;
+            color: $white-color;
+          }
+        }
+
+        .score {
+          @include margin(0, 20px, 0, 20px);
+          span {
+            font-size: 17px;
+            &.black {
+              color: $white-color;
+            }
+            &.separator {
+              color: $white-color;
+              font-weight: 700;
+              @include margin(0, 3px, 0, 3px);
+            }
+          }
+        }
+      }
+      .lose {
+        background: rgb(178, 16, 16);
+        background: -moz-linear-gradient(top, rgba(178, 16, 16, 1) 0%, rgba(227, 102, 102, 1) 100%);
+        background: -webkit-linear-gradient(top, rgba(178, 16, 16, 1) 0%, rgba(227, 102, 102, 1) 100%);
+        background: linear-gradient(to bottom, rgba(178, 16, 16, 1) 0%, rgba(227, 102, 102, 1) 100%);
+      }
+      .draw {
+        background: rgb(173, 179, 182);
+        background: -moz-linear-gradient(top, rgba(173, 179, 182, 1) 0%, rgba(223, 223, 224, 1) 100%);
+        background: -webkit-linear-gradient(top, rgba(173, 179, 182, 1) 0%, rgba(223, 223, 224, 1) 100%);
+        background: linear-gradient(to bottom, rgba(173, 179, 182, 1) 0%, rgba(223, 223, 224, 1) 100%);
+      }
+      .win {
+        background: rgb(16, 178, 102);
+        background: -moz-linear-gradient(top, rgba(16, 178, 102, 1) 0%, rgba(98, 227, 167, 1) 100%);
+        background: -webkit-linear-gradient(top, rgba(16, 178, 102, 1) 0%, rgba(98, 227, 167, 1) 100%);
+        background: linear-gradient(to bottom, rgba(16, 178, 102, 1) 0%, rgba(98, 227, 167, 1) 100%);
+      }
+    }
+  }
+}
+
+.modal {
+  .modal-content {
+    @include border-radius(10px);
+  }
+  .modal-header {
+    border: 0;
+    @include padding(50px, 40px, 0, 40px);
+    flex-direction: column;
+
+    h5 {
+      font-weight: 700;
+      color: $black-color;
+      font-size: 40px;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: $brand-color;
+      font-size: 22px;
+      border: 2px solid $brand-color;
+      @include transition(all 0.5s ease-in-out);
+      @include border-radius(5px);
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      opacity: 10;
+      padding: 0;
+
+      &:hover {
+        background: $brand-color;
+        color: $white-color;
+      }
+    }
+  }
+  .modal-body {
+    @include padding(40px, 40px, 40px, 40px);
+    .link {
+      color: $brand-color;
+      @include margin(0, 0, 20px, 0);
+      display: block;
+      position: relative;
+
+      &:before {
+        font-family: FontAwesome;
+        content: "\f105";
+        position: absolute;
+        right: 10px;
+        top: -7px;
+        font-size: 25px;
+        color: $brand-color;
+        @include transition(all 0.5s ease);
+      }
+
+      &:hover {
+        color: $dark-grey-color;
+        &:before {
+          right: 0;
+        }
+      }
+    }
+
+    .form-group {
+      position: relative;
+      @include border-radius(10px);
+      border: 1px solid #d6dcdd;
+      @include padding(12px, 0, 12px, 0);
+
+      .form-control {
+        background: none;
+        border: 0;
+        box-shadow: none;
+        @include padding(5px, 0, 5px, 15px);
+      }
+
+      .field-icon {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+      }
+    }
+    .form-control-placeholder {
+      position: absolute;
+      top: 0;
+      margin: 0;
+      @include padding(18px, 0, 0, 15px);
+      @include transition(all 0.3s ease);
+      opacity: 0.5;
+    }
+    .form-control:focus + .form-control-placeholder,
+    .form-control:valid + .form-control-placeholder {
+      font-size: 75%;
+      transform: translate3d(0, -35%, 0);
+      opacity: 0.5;
+    }
+  }
+  .signup-btm-text {
+    color: $white-color;
+    text-align: center;
+    @include padding(0, 40px, 0, 40px);
+    @include margin(20px, 0, 0, 0);
+    a {
+      font-weight: 700;
+      color: $white-color;
+      text-decoration: underline !important;
+    }
+  }
+}
+
+.how-it-work {
+  @include margin(60px, 0, 0, 0);
+  h2 {
+    @include margin(0, 0, 20px, 0);
+    
+  }
+}
+
+#accordion {
+  .card {
+    border: 0 !important;
+    @include margin(0, 0, 20px, 0);
+    background: $white-color;
+    @include border-radius(10px);
+    @include padding(25px, 25px, 25px, 25px);
+
+    @include breakpoint(sm) {
+      @include padding(25px, 25px, 25px, 25px);
+    }
+    @include breakpoint(md) {
+      @include padding(25px, 25px, 25px, 25px);
+    }
+  }
+  .card-header {
+    background: none !important;
+    border-bottom: 0;
+    @include padding(0, 0, 0, 0);
+
+    h5 {
+      font-size: 18px;
+      color: $dark-grey-color-shade;
+      @include padding(0, 45px, 0, 0);
+      position: relative;
+      cursor: pointer;
+
+      &:before {
+        font-family: FontAwesome;
+        content: "\f106";
+        position: absolute;
+        right: 0;
+        font-size: 30px;
+        top: -8px;
+        color: $brand-color;
+        @include transition(all 0.5s ease);
+      }
+
+      &.collapsed {
+        &:before {
+          content: "\f107";
+        }
+      }
+      &:hover {
+        text-decoration: none;
+        color: $brand-color;
+      }
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+  .card-body {
+    @include padding(0, 0, 0, 0);
+    @include margin(30px, 0, 0, 0);
+
+    p {
+      @include margin(0, 0, 0, 0);
+      color: $dark-grey-color-shade;
+      font-size: 18px;
+    }
+  }
+}

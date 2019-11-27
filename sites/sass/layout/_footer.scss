@@ -1,0 +1,221 @@
+footer {
+  .footer-top {
+    background: #f5f5f5;
+    @include padding(70px, 0, 0, 0);
+
+    @include breakpoint(sm) {
+      @include padding(30px, 0, 0, 0);
+    }
+
+    .contact-info {
+      @include margin(0, 0, 20px, 0);
+
+      &__footer-logo {
+        background: url(../images/cata-color-logo@3x.png) no-repeat;
+        width: 178px;
+        height: 55px;
+        display: block;
+        background-size: 178px 55px;
+        @include margin(0, 0, 50px, 0);
+        @include breakpoint(sm) {
+          @include margin(0, 0, 30px, 0);
+        }
+      }
+      span {
+        display: block;
+        color: $text-grey-color;
+        font-size: 16px;
+      }
+    }
+    .footer-links {
+      @include breakpoint(sm) {
+        @include margin(0, 0, 30px, 0);
+      }
+      &__title {
+        color: $dark-grey-color;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-family: $font-secondary-en;
+        letter-spacing: 1px;
+        @include margin(0, 0, 20px, 0);
+
+        @include breakpoint(sm) {
+          @include margin(0, 0, 10px, 0);
+        }
+      }
+      &__list-item {
+        @include margin(0, 0, 15px, 0);
+
+        @include breakpoint(sm) {
+          @include margin(0, 0, 5px, 0);
+        }
+        a {
+          color: $text-grey-color;
+          font-size: 16px;
+          position: relative;
+          &:hover {
+            color: $brand-color;
+            @include padding(0, 0, 0, 20px);
+            &:before {
+              width: 10px;
+            }
+          }
+          &:before {
+            position: absolute;
+            content: "";
+            height: 1px;
+            width: 0;
+            background: $brand-color;
+            top: 10px;
+            left: 0;
+            @include transition(all 0.3s ease-out);
+          }
+        }
+      }
+    }
+
+    .footer-center {
+      border-top: solid 1px #ddd;
+      @include padding(20px, 0, 20px, 0);
+
+      ul {
+        &.social-icons {
+          @include breakpoint(sm) {
+            @include margin(0, 0, 30px, 0);
+          }
+
+          display: flex;
+          li {
+            @include margin(0, 15px, 0, 0);
+            a {
+              display: block;
+              height: 28px;
+              width: 28px;
+              line-height: 28px;
+              border-radius: 50%;
+              background: $brand-color;
+              color: $white-color;
+              text-align: center;
+              &:hover {
+                background: $dark-grey-color;
+              }
+            }
+          }
+        }
+      }
+
+      ul {
+        &.copyright-links {
+          display: flex;
+          justify-content: flex-end;
+
+          @include breakpoint(sm) {
+            justify-content: flex-start;
+            flex-wrap: wrap;
+          }
+
+          li {
+            @include margin(0, 40px, 0, 0);
+
+            @include breakpoint(sm) {
+              @include margin(0, 0, 10px, 0);
+              width: 100%;
+            }
+
+            a {
+              display: block;
+              font-size: 13px;
+              color: $black-color;
+              &:hover {
+                color: $brand-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-copyright {
+    @include padding(20px, 0, 20px, 0);
+    color: $text-grey-color;
+    font-size: 12px;
+
+    .copyright-text {
+      font-size: 15px;
+
+      @include breakpoint(sm) {
+        @include margin(10px, 0, 0, 0);
+        display: block;
+      }
+    }
+  }
+}
+
+.scrollup {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  z-index: 99;
+  border-radius: 5px;
+  bottom: 40px;
+  right: 40px;
+  background: $brand-color;
+  color: $white-color;
+  display: none;
+  text-align: center;
+  line-height: 50px;
+  opacity: 0;
+  animation: fadeInRight 0.8s ease forwards;
+  animation-delay: 0.8s;
+
+  @include breakpoint(sm) {
+    right: 20px;
+  }
+
+  span {
+    &.top-arrow {
+      display: block;
+      position: relative;
+      top: 0px;
+      margin: 5px auto 0;
+    }
+  }
+
+  &:hover {
+    background: $brand-second-color;
+    span {
+      &.top-arrow {
+        -webkit-animation: arrowMove 0.8s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes arrowMove {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: -10px;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.chat-icon {
+  background: url(../images/question-icon@3x.png) no-repeat;
+  width: 52px;
+  height: 52px;
+  display: block;
+  background-size: 52px 52px;
+  position: fixed;
+  right: 40px;
+  bottom: 120px;
+  z-index: 99;
+  @include breakpoint(sm) {
+    bottom: 120px;
+    right: 20px;
+  }
+}

@@ -1,0 +1,348 @@
+.country-choice {
+  @include margin(50px, 0, 0, 50px);
+  .nav-tabs {
+    border: 0;
+    @include margin(0, 0, 30px, 0);
+
+    .nav-item {
+      @include margin(0, 10px, 10px, 0);
+    }
+
+    .nav-link {
+      text-transform: capitalize;
+      border: 1px solid #d6dcdd;
+      @include border-radius(7px) color: $dark-grey-color;
+      font-size: 15px;
+      position: relative;
+      @include padding(15px, 40px, 15px, 15px);
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 24px;
+        height: 24px;
+        @include border-radius(50%);
+        @include margin(0, 10px, 0, 0);
+      }
+
+      &:before {
+        border: 1px solid #d6dcdd;
+        @include border-radius(50%);
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        right: 10px;
+        top: 21px;
+        content: "";
+      }
+
+      &.active {
+        border: 2px solid $brand-color;
+        color: $dark-grey-color;
+        @include card-shadow;
+
+        &:before {
+          border: 1px solid $white-color;
+          background: $brand-color;
+          box-shadow: 0px 0px 0px 1px $brand-color;
+        }
+      }
+    }
+  }
+
+  .custom-dropdown-list {
+    @include margin(0, 30px, 0, 0);
+  }
+
+  .tab-content {
+    ul {
+      li {
+        @include padding(15px, 20px, 15px, 20px);
+
+        &.white-row {
+          background: $white-color;
+        }
+        &.equal-score {
+          border: 2px solid $brand-second-color;
+        }
+        &.active {
+          background: $brand-color;
+          .live {
+            color: $white-color;
+            &:before {
+              background: $white-color;
+            }
+          }
+          .total-time {
+            color: $white-color;
+          }
+          .max-text {
+            color: $white-color;
+            small {
+              color: $white-color;
+            }
+          }
+          .team-thumb {
+            span {
+              color: $white-color;
+            }
+          }
+          .score {
+            span {
+              color: $white-color !important;
+            }
+          }
+        }
+        .live {
+          color: #b21111;
+          text-transform: uppercase;
+          font-size: 15px;
+          position: relative;
+          @include padding(0, 0, 0, 16px);
+          @include margin(0, 50px, 0, 0);
+
+          &:before {
+            @include border-radius(50%);
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #b21111;
+            left: 3px;
+            content: "";
+            top: 8px;
+          }
+        }
+
+        .total-time {
+          color: #b21111;
+          text-transform: uppercase;
+          font-size: 16px;
+          text-align: center;
+        }
+
+        .team-thumb {
+          display: flex;
+          align-items: center;
+          height: 24px;
+          figure {
+            overflow: hidden;
+            width: 24px;
+            height: 24px;
+            @include margin(0, 15px, 0, 0);
+            display: flex;
+            align-items: center;
+          }
+          span {
+            font-size: 15px;
+            color: $black-color;
+            font-weight: 700;
+          }
+        }
+
+        .score-outer {
+          @include margin(0, 50px, 0, 50px);
+          display: flex;
+          .score {
+            span {
+              font-size: 17px;
+              &.black {
+                color: $black-color;
+                display: block;
+              }
+              &.grey {
+                color: $light-grey-color;
+              }
+            }
+          }
+          .separator {
+            color: $black-color;
+            display: inline-block;
+            font-weight: 700;
+            @include margin(0, 5px, 0, 5px);
+          }
+        }
+
+        .max-text {
+          font-size: 16px;
+          color: $black-color;
+          text-align: right;
+          small {
+            font-size: 11px;
+            color: $light-grey-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.right-cols {
+  background: $white-color;
+  height: 100%;
+  box-shadow: 0 1px 10px 0 rgba($black-color, 0.2);
+  display: flex;
+  flex-direction: column;
+
+  .live-match-card {
+    background: $white-color;
+    @include padding(20px, 20px, 0, 20px);
+    box-shadow: 0 1px 10px 0 rgba($black-color, 0.1);
+
+    header {
+      @include margin(0, 0, 20px, 0);
+      .max-text {
+        font-size: 16px;
+        color: $black-color;
+        text-align: center;
+        small {
+          font-size: 11px;
+          color: $light-grey-color;
+        }
+      }
+      .total-time {
+        color: #b21111;
+        text-transform: uppercase;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .live {
+        color: #b21111;
+        text-transform: uppercase;
+        font-size: 15px;
+        position: relative;
+        @include padding(0, 0, 0, 16px);
+
+        &:before {
+          @include border-radius(50%);
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          background: #b21111;
+          left: 3px;
+          content: "";
+          top: 8px;
+        }
+      }
+
+      .finished {
+        color: #b21111;
+        text-transform: uppercase;
+        font-size: 13px;
+      }
+    }
+
+    .scoring-card {
+      @include padding(20px, 20px, 20px, 20px);
+
+      .team-logo-holder {
+        overflow: hidden;
+        height: 60px;
+        width: 60px;
+        @include padding(10px, 10px, 10px, 10px);
+        margin: auto;
+      }
+      .team-name {
+        text-align: center;
+        font-size: 12px;
+        display: block;
+        color: $black-color;
+      }
+
+      .result_match {
+        color: $black-color;
+        text-align: center;
+        font-size: 65px;
+        display: flex;
+        justify-content: center;
+        @include margin(0, 0, 40px, 0);
+
+        .divisor {
+          @include margin(0, 20px, 0, 20px);
+        }
+
+        span {
+          display: inline-block;
+          small {
+            color: $light-grey-color;
+            font-size: 22px;
+            display: block;
+          }
+        }
+      }
+
+      .win-draw-ratio {
+        span {
+          text-align: center;
+          display: block;
+          color: $light-grey-color;
+          text-transform: uppercase;
+          font-size: 11px;
+        }
+        .draw {
+          position: relative;
+          &::before {
+            position: absolute;
+            content: "";
+            bottom: -20px;
+            left: 50%;
+            width: 1px;
+            height: 10px;
+            background: $light-grey-color;
+          }
+        }
+        .win {
+          position: relative;
+          &::before {
+            position: absolute;
+            content: "";
+            bottom: -20px;
+            left: 50%;
+            width: 1px;
+            height: 10px;
+            background: $light-grey-color;
+          }
+        }
+      }
+    }
+    .scoring-card-footer {
+      @include padding(10px, 20px, 10px, 20px);
+
+      .number {
+        @include margin(10px, 0, 0, 0);
+        span {
+          i {
+            color: $brand-color;
+
+            &:hover {
+              color: $dark-grey-color;
+            }
+          }
+        }
+
+        .minus,
+        .plus {
+          cursor: pointer;
+        }
+        input {
+          width: 50px;
+          text-align: center;
+          font-size: 18px;
+        }
+        .no-of-token {
+          display: block;
+          font-size: 10px;
+          color: $light-grey-color;
+        }
+      }
+
+      .flash-icon {
+        text-align: right;
+        display: block;
+        i {
+          color: $brand-second-color;
+        }
+      }
+    }
+  }
+}

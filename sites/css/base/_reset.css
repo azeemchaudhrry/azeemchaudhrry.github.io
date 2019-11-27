@@ -1,0 +1,59 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  outline: none !important; }
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'layarbahteraddw01-regularRg'; }
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0px;
+  padding: 0px; }
+
+ol, ul, li {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  display: block; }
+  ol li, ul li, li li {
+    list-style-type: none; }
+    ol li a, ul li a, li li a {
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s; }
+
+a {
+  text-decoration: none;
+  outline: none !important;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+
+button {
+  outline: none !important;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+
+a:hover, a:focus {
+  text-decoration: none; }
+
+a img {
+  border: 0;
+  padding: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+
+a img:hover {
+  opacity: 0.7; }
+
+label {
+  font-weight: normal; }
