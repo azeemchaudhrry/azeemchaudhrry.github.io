@@ -184,6 +184,11 @@ $(function SieveOfEratosthenesCached(n, cache) {
 
 
 
+$(window).on('load', function () {
+
+  $('#popup-modal').modal('show');
+
+});
 
 
 
