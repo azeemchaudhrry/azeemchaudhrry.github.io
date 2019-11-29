@@ -8,7 +8,8 @@
 
 @import "layout/footer", "layout/header";
 
-@import "pages/ongoing", "pages/leaderboard", "pages/profile";
+@import "pages/ongoing", "pages/leaderboard", "pages/profile", "pages/group";
+
 
 @import "components/ui-elements";
 body {
@@ -305,6 +306,10 @@ section {
       background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
       background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
       background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+
+      @include breakpoint(sm){
+        width: 100px;
+      }
     }
     &:after {
       position: absolute;
@@ -312,11 +317,15 @@ section {
       content: "";
       width: 240px;
       height: 100%;
-
       top: 0;
       background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
       background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
       background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+
+      @include breakpoint(sm){
+        width: 100px;
+      }
+
     }
   }
   h2 {
@@ -930,6 +939,7 @@ section {
             }
           }
         }
+        
       }
       .lose {
         background: rgb(178, 16, 16);
@@ -1061,6 +1071,49 @@ section {
       text-decoration: underline !important;
     }
   }
+  .connect-gmail-btn {
+    display: inline-block;
+    background:none;
+    border: 2px solid #ddd;
+    @include border-radius(10px);
+    @include padding(15px, 30px, 15px, 30px);
+    @include margin(0, 0, 15px, 0);
+    font-size: 16px;
+    color: $black-color;
+    text-transform: capitalize;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+
+
+    &:hover {
+      background: #ddd;
+      @include transform(translateY(-2px));
+      box-shadow: 0 2px 10px 0 rgba(#ddd, 0.8);
+    }
+  }
+
+  .connect-fb-btn {
+    display: inline-block;
+    background: #475993;
+    @include border-radius(10px);
+    @include padding(15px, 30px, 15px, 30px);
+    @include margin(0, 0, 15px, 0);
+    font-size: 16px;
+    color: $white-color;
+    text-transform: capitalize;
+    box-shadow: 0 2px 10px 0 rgba(#475993, 0.8);
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+  
+    &:hover {
+      background: #5d72b3;
+      @include transform(translateY(-2px));
+      box-shadow: 0 2px 10px 0 rgba(#5d72b3, 0.8);
+    }
+  }
+
 }
 
 .how-it-work {

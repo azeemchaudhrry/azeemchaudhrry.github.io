@@ -1,0 +1,568 @@
+.groups {
+  padding: 0 0 0 0 !important;
+  @include border-radius(0 !important);
+  .item {
+    @include padding(15px, 10px, 15px, 10px);
+    border-bottom: 1px solid #d7ddde;
+    @include margin(0, 0, 0, 0);
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    .group-icon {
+      background: #e9ecec;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      @include border-radius(50%);
+      @include margin(0, 10px, 0, 0);
+    }
+    .detail {
+      @include padding(0, 65px, 0, 0);
+      flex: 1 60%;
+      p {
+        font-size: 14px;
+        @include margin(0, 0, 15px, 0);
+      }
+      .thumbs {
+        position: relative;
+        .thumb {
+          width: 17px;
+          height: 17px;
+          top: -13px;
+          border: 1px solid $white-color;
+          @include border-radius(50%);
+          position: absolute;
+        }
+        .thumb-01 {
+          left: 0;
+          z-index: 10;
+        }
+        .thumb-02 {
+          left: 12px;
+          z-index: 9;
+        }
+        .thumb-03 {
+          left: 25px;
+          z-index: 8;
+        }
+        .name {
+          display: block;
+          position: absolute;
+          color: $black-color;
+          font-size: 12px;
+          left: 50px;
+          top: -13px;
+          small {
+            color: $light-grey-color;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .time {
+      font-size: 12px;
+      color: $light-grey-color;
+    }
+
+    .time {
+      position: relative;
+      color: $black-color;
+      display: block;
+      @include padding(0, 0, 0, 12px);
+      &:before {
+        width: 7px;
+        height: 7px;
+        @include border-radius(50%);
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        background: $brand-color;
+      }
+    }
+
+    &:last-child {
+      @include margin(0, 0, 0, 0);
+      border-bottom: 0;
+    }
+    &.active {
+      background: $brand-color;
+
+      .group-icon {
+        background: $white-color !important;
+        color: $brand-color;
+      }
+
+      .detail {
+        p {
+          color: $white-color !important;
+        }
+      }
+      .name {
+        color: $white-color !important;
+        small {
+          color: $white-color !important;
+        }
+      }
+      .time {
+        color: $white-color !important;
+      }
+    }
+  }
+}
+
+.group-leaderboard {
+  background: $white-color;
+  box-shadow: 0 1px 10px 0 rgba($black-color, 0.1);
+
+  .new-request-header {
+    background: #e9ecec;
+    box-shadow: 0 1px 10px 0 rgba($black-color, 0.2);
+    @include padding(10px, 20px, 10px, 20px);
+    @include margin(0, 0, 10px, 0);
+    display: flex;
+    align-items: center;
+    h2 {
+      font-size: 16px;
+      color: $black-color;
+    }
+    span {
+      display: block;
+      margin-left: auto;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      @include border-radius(50%);
+      background: $brand-color;
+      color: $white-color;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+  .tabs {
+    @include padding(20px, 20px, 20px, 20px);
+    .nav-tabs {
+      border: 0;
+      @include margin(0, 0, 30px, 0);
+      .nav-item {
+        @include margin(0, 40px, 0, 0);
+      }
+
+      .nav-link {
+        text-transform: uppercase;
+        border: 0;
+        color: $light-grey-color;
+        font-size: 14px;
+        @include padding(0, 0, 10px, 0);
+
+        &.active {
+          border-bottom: 2px solid $brand-color;
+          color: $dark-grey-color;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .player-thumb {
+      position: relative;
+      text-align: center;
+      .thumb-holder {
+        width: 68px;
+        height: 68px;
+        @include border-radius(50%);
+        @include margin(auto, auto, 20px, auto);
+        position: relative;
+
+        img {
+          width: 68px;
+          height: 68px;
+          @include border-radius(50%);
+        }
+      }
+      .name {
+        color: $dark-grey-color;
+        font-weight: 700;
+        font-size: 15px;
+        display: block;
+
+        @include margin(0, 0, 20px, 0);
+      }
+      .rank {
+        width: 20px;
+        height: 20px;
+        @include border-radius(50%);
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-weight: 700;
+        font-size: 13px;
+        text-align: center;
+        line-height: 20px;
+      }
+      .gold {
+        border: 3px solid $brand-second-color;
+        .gold-rank {
+          background: $brand-second-color;
+          color: $dark-grey-color;
+        }
+      }
+      .silver {
+        border: 3px solid #525252;
+        .silver-rank {
+          background: #525252;
+          color: $white-color;
+        }
+      }
+      .platinum {
+        border: 3px solid #c25b00;
+        .platinum-rank {
+          background: #c25b00;
+          color: $white-color;
+        }
+      }
+
+      .total-coins {
+        background: $white-color;
+        border: 1px solid #d7ddde;
+        @include border-radius(3px);
+        position: absolute;
+        top: 55px;
+        left: 50%;
+        line-height: 1;
+        display: inline-block;
+        white-space: nowrap;
+        vertical-align: baseline;
+        font-size: 75%;
+        @include transform(translateX(-50%));
+        @include padding(5px, 5px, 5px, 25px);
+
+        &:before {
+          @include border-radius(50%);
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          background: $brand-second-color;
+          left: 5px;
+          color: $dark-grey-color;
+          content: "";
+          top: 4px;
+        }
+      }
+      .remove {
+        @include border-radius(5px);
+        color: $white-color;
+        display: inline-block;
+        text-align: center;
+        @include padding(2px, 5px, 2px, 5px);
+        background: rgb(184, 26, 26);
+        background: -moz-linear-gradient(top, rgba(184, 26, 26, 1) 1%, rgba(219, 85, 85, 1) 100%);
+        background: -webkit-linear-gradient(top, rgba(184, 26, 26, 1) 1%, rgba(219, 85, 85, 1) 100%);
+        background: linear-gradient(to bottom, rgba(184, 26, 26, 1) 1%, rgba(219, 85, 85, 1) 100%);
+      }
+    }
+  }
+}
+
+.leaderboard-bottom-section {
+  background: $white-color;
+  box-shadow: 0 1px 10px 0 rgba($black-color, 0.1);
+  @include padding(150px, 20px, 20px, 20px);
+
+  .win-game-badge {
+    @include margin(0, 0, 10px, 0);
+    @include padding(0, 50px, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+
+    .thumb-holder {
+      position: absolute;
+      right: 0;
+      top: 17px;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      @include border-radius(50%);
+      img {
+        width: 40px;
+        height: 40px;
+        @include border-radius(50%);
+      }
+    }
+
+    .username {
+      color: $light-grey-color;
+      font-size: 11px;
+      display: block;
+      @include margin(0, 0, 5px, 20px);
+    }
+    .won-text {
+      color: $white-color;
+      font-size: 13px;
+      background: $brand-color;
+      @include border-radius(50px);
+      @include padding(10px, 10px, 10px, 10px);
+    }
+
+    .team-thumb-holder {
+      display: flex;
+      align-items: center;
+      @include margin(-8px, 0, 0, 0);
+      @include border-radius(50px);
+      @include padding(5px, 10px, 5px, 10px);
+      border: 1px solid #dce1e2;
+      background: $white-color;
+
+      .team-thumb {
+        display: flex;
+        align-items: center;
+        height: 20px;
+        figure {
+          overflow: hidden;
+          width: 20px;
+          height: 20px;
+          @include margin(0, 0, 0, 0);
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .score {
+        @include margin(0, 10px, 0, 10px);
+        span {
+          font-size: 17px;
+          &.black {
+            color: $black-color;
+          }
+          &.separator {
+            color: $black-color;
+            font-weight: 700;
+            @include margin(0, 2px, 0, 2px);
+          }
+        }
+      }
+    }
+
+    .hexagon-holder {
+      display: flex;
+      align-items: center;
+      @include margin(-8px, 0, 0, 0);
+      @include border-radius(50px);
+      @include padding(5px, 10px, 5px, 10px);
+      border: 1px solid #dce1e2;
+      background: $white-color;
+
+      p {
+        font-size: 12px;
+        color: $dark-grey-color;
+        @include margin(0, 0, 0, 10px);
+      }
+
+      .hexagon {
+        position: relative;
+        width: 24px;
+        height: 17px;
+        color: $white-color;
+        font-size: 12px;
+        text-align: center;
+        @include margin(6px, 0, 6px, 0);
+
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+        }
+
+        &:before {
+          bottom: 100%;
+          left: 0;
+          border-bottom: 8px solid $brand-second-color;
+        }
+        &:after {
+          top: 100%;
+          width: 0;
+          left: 0;
+          border-top: 8px solid $brand-second-color;
+        }
+      }
+    }
+
+    .gold {
+      background-color: $brand-second-color;
+      &:before {
+        border-bottom: 8px solid $brand-second-color;
+      }
+      &:after {
+        border-top: 8px solid $brand-second-color;
+      }
+    }
+    .bronze {
+      background-color: #c25b00;
+      &:before {
+        border-bottom: 8px solid #c25b00 !important;
+      }
+      &:after {
+        border-top: 8px solid #c25b00 !important;
+      }
+    }
+  }
+
+  .item {
+    @include margin(0, 0, 10px, 0);
+    @include padding(0, 0, 0, 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+
+    .thumb-holder {
+      position: absolute;
+      left: 0;
+      top: 17px;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      @include border-radius(50%);
+      img {
+        width: 40px;
+        height: 40px;
+        @include border-radius(50%);
+      }
+    }
+
+    .username {
+      color: $light-grey-color;
+      font-size: 11px;
+      display: block;
+      @include margin(0, 0, 5px, 20px);
+    }
+    .won-text {
+      color: $black-color;
+      font-size: 13px;
+      background: #e9ecec;
+      @include border-radius(50px);
+      @include padding(10px, 10px, 10px, 10px);
+    }
+
+    .hexagon-holder {
+      display: flex;
+      align-items: center;
+      @include margin(-8px, 0, 0, 0);
+      @include border-radius(50px);
+      @include padding(5px, 10px, 5px, 10px);
+      border: 1px solid #dce1e2;
+      background: $white-color;
+
+      p {
+        font-size: 12px;
+        color: $dark-grey-color;
+        @include margin(0, 0, 0, 10px);
+      }
+
+      .hexagon {
+        position: relative;
+        width: 24px;
+        height: 17px;
+        color: $white-color;
+        font-size: 12px;
+        text-align: center;
+        @include margin(6px, 0, 6px, 0);
+
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+        }
+
+        &:before {
+          bottom: 100%;
+          left: 0;
+          border-bottom: 8px solid $brand-second-color;
+        }
+        &:after {
+          top: 100%;
+          width: 0;
+          left: 0;
+          border-top: 8px solid $brand-second-color;
+        }
+      }
+    }
+
+    .gold {
+      background-color: $brand-second-color;
+      &:before {
+        border-bottom: 8px solid $brand-second-color;
+      }
+      &:after {
+        border-top: 8px solid $brand-second-color;
+      }
+    }
+    .bronze {
+      background-color: #c25b00;
+      &:before {
+        border-bottom: 8px solid #c25b00 !important;
+      }
+      &:after {
+        border-top: 8px solid #c25b00 !important;
+      }
+    }
+  }
+}
+
+.group-form-section {
+  background: $white-color;
+  height: 100%;
+  box-shadow: 0 1px 10px 0 rgba($black-color, 0.2);
+  @include padding(25px, 25px, 25px, 25px);
+  display: flex;
+  flex-direction: column;
+
+  .form-row {
+    @include margin(0, 0, 30px, 0);
+    flex-direction: column;
+  }
+
+  .form-group {
+    position: relative;
+    @include border-radius(10px);
+    border: 1px solid #d6dcdd;
+    @include padding(12px, 0, 12px, 0);
+
+    .form-control {
+      background: none;
+      border: 0;
+      box-shadow: none;
+      @include padding(5px, 0, 5px, 15px);
+    }
+
+    .field-icon {
+      position: absolute;
+      right: 15px;
+      top: 20px;
+    }
+  }
+  .form-control-placeholder {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    @include padding(18px, 0, 0, 15px);
+    @include transition(all 0.3s ease);
+    opacity: 0.5;
+  }
+  .form-control:focus + .form-control-placeholder,
+  .form-control:valid + .form-control-placeholder {
+    font-size: 75%;
+    transform: translate3d(0, -35%, 0);
+    opacity: 0.5;
+  }
+}

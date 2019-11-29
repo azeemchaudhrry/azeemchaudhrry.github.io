@@ -472,6 +472,10 @@
               font-size: 30px;
               text-align: center;
 
+              @include breakpoint(sm){
+                width: 165px;
+              }
+
               &:before,
               &:after {
                 content: "";

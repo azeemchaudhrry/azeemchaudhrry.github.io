@@ -1,11 +1,7 @@
 %action-btn {
   display: inline-block;
-  position: relative;
-  cursor: pointer;
   background: $brand-second-color;
   @include border-radius(10px);
-  overflow: hidden;
-  z-index: 0;
   @include padding(15px, 30px, 15px, 30px);
   font-size: 16px;
   color: $dark-grey-color-shade;
@@ -14,7 +10,6 @@
 
   &:hover {
     color: $white-color;
-    @include card-hover-shadow;
     background: $brand-color;
     @include transform(translateY(-2px));
     box-shadow: 0 2px 10px 0 rgba($brand-color, 0.8);
@@ -25,6 +20,28 @@
   @extend %action-btn;
 }
 
+%outline-btn {
+  display: inline-block;
+  border: 2px solid $brand-second-color;
+  background: none;
+  @include border-radius(10px);
+
+  @include padding(13px, 30px, 13px, 30px);
+  font-size: 16px;
+  color: $brand-second-color;
+  text-transform: capitalize;
+  box-shadow: 0 2px 10px 0 rgba($brand-second-color, 0.8);
+
+  &:hover {
+    color: $white-color;
+    background: $brand-second-color;
+    @include transform(translateY(-2px));
+    box-shadow: 0 2px 10px 0 rgba($brand-second-color, 0.8);
+  }
+}
+.outline-btn-yellow {
+  @extend %outline-btn;
+}
 
 // custom select list dropdown
 .nice-select {
@@ -45,7 +62,6 @@
   width: 100%;
   color: $dark-grey-color;
   border-bottom: 1px solid #d1d6dc;
-
 
   // Arrow
   &:after {

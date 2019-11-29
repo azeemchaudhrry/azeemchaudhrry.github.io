@@ -1,8 +1,18 @@
 .country-choice {
   @include margin(50px, 0, 0, 50px);
+
+  @include breakpoint(sm){
+    @include margin(50px, 0, 0, 0);
+  }
+
   .nav-tabs {
     border: 0;
     @include margin(0, 0, 30px, 0);
+
+    @include breakpoint(sm){
+      @include margin(0, 0, 0, 30px);
+    }
+
 
     .nav-item {
       @include margin(0, 10px, 10px, 0);
@@ -52,6 +62,11 @@
 
   .custom-dropdown-list {
     @include margin(0, 30px, 0, 0);
+
+    @include breakpoint(sm){
+      @include margin(0, 30px, 40px, 30px);
+    }
+
   }
 
   .tab-content {

@@ -74,11 +74,19 @@ header {
           color: $brand-second-color;
           font-size: 16px;
           @include margin(0, 0, 0, 30px);
+
+          @include breakpoint(sm) {
+            display: none;
+          }
         }
         .days-left {
           color: $light-grey-color;
           font-size: 16px;
           @include margin(0, 0, 0, 30px);
+
+          @include breakpoint(sm) {
+            display: none;
+          }
         }
 
         a {
@@ -112,8 +120,20 @@ header {
               @include breakpoint(md) {
                 bottom: -5px;
               }
+
+              @include breakpoint(sm) {
+                background-color: none !important;
+                height: 0;
+              }
             }
             &:hover {
+              color: $brand-color !important;
+              &:after {
+                transform-origin: bottom center;
+                transform: scaleX(1);
+              }
+            }
+            &.active {
               color: $brand-color !important;
               &:after {
                 transform-origin: bottom center;
@@ -131,9 +151,6 @@ header {
             }
             @include breakpoint(md) {
               margin-left: auto !important;
-            }
-            @include breakpoint(ipadLandscape) {
-              margin-left: 35% !important;
             }
           }
         }
@@ -161,10 +178,14 @@ header {
         border: 1px solid #d7ddde;
         @include border-radius(3px);
         @include padding(5px, 5px, 5px, 5px);
-        @include margin(0, 25px, 0, 0);
+        @include margin(0, 0, 0, 0);
         height: 33px;
         display: flex;
         align-items: center;
+        @include breakpoint(sm) {
+          @include margin(0, 0, 0, 0);
+        }
+
         .text {
           font-size: 15px;
           color: $black-color;
@@ -184,7 +205,7 @@ header {
         border: 1px solid #d7ddde;
         @include border-radius(3px);
         line-height: 1;
-        @include margin(0, 10px, 0, 0);
+        @include margin(0, 10px, 0, 10px);
         @include padding(8px, 8px, 8px, 35px);
         font-size: 15px;
         color: $black-color;
@@ -205,6 +226,10 @@ header {
       }
 
       .user-dropdown {
+
+        @include breakpoint(sm) {
+          @include margin(30px, 0, 0, 0);
+        }
         .user-thumb {
           color: $white-color;
           background: $brand-color;
