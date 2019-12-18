@@ -1,22 +1,36 @@
 .country-choice {
   @include margin(50px, 0, 0, 50px);
 
-  @include breakpoint(sm){
+  @include breakpoint(sm) {
     @include margin(50px, 0, 0, 0);
+  }
+  .form-control{
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #d1d6dc;
+    @include border-radius(0);
+    height: 45px;
+    box-shadow: none;
+    @include padding(0, 0, 0, 0);
+    font-weight: bold;
+    &:focus{
+      border-bottom: 1px solid $brand-color;
+    }
   }
 
   .nav-tabs {
     border: 0;
     @include margin(0, 0, 30px, 0);
 
-    @include breakpoint(sm){
+    @include breakpoint(sm) {
       @include margin(0, 0, 0, 30px);
     }
-
 
     .nav-item {
       @include margin(0, 10px, 10px, 0);
     }
+
+    
 
     .nav-link {
       text-transform: capitalize;
@@ -63,10 +77,9 @@
   .custom-dropdown-list {
     @include margin(0, 30px, 0, 0);
 
-    @include breakpoint(sm){
+    @include breakpoint(sm) {
       @include margin(0, 30px, 40px, 30px);
     }
-
   }
 
   .tab-content {
@@ -77,9 +90,49 @@
         &.white-row {
           background: $white-color;
         }
-        &.equal-score {
+
+        &.live-exact-score {
           border: 2px solid $brand-second-color;
         }
+        &.live-win {
+          border: 2px solid $brand-color;
+        }
+        &.live-lose {
+          border: 2px solid #b21111;
+        }
+
+        &.finished-exact-score {
+          border: 2px solid $brand-second-color;
+
+          .score {
+            span {
+              &.grey {
+                color: $brand-second-color !important;
+              }
+            }
+          }
+        }
+        &.finished-win {
+          border: 2px solid $brand-color;
+          .score {
+            span {
+              &.grey {
+                color: $brand-color !important;
+              }
+            }
+          }
+        }
+        &.finished-lose {
+          border: 2px solid #b21111;
+          .score {
+            span {
+              &.grey {
+                color: #b21111 !important;
+              }
+            }
+          }
+        }
+
         &.active {
           background: $brand-color;
           .live {
@@ -127,6 +180,13 @@
             top: 8px;
           }
         }
+        .finished {
+          color: #b21111;
+          text-transform: uppercase;
+          font-size: 15px;
+          @include padding(0, 0, 0, 0);
+          @include margin(0, 50px, 0, 0);
+        }
 
         .total-time {
           color: #b21111;
@@ -163,6 +223,7 @@
               &.black {
                 color: $black-color;
                 display: block;
+                font-weight: bold;
               }
               &.grey {
                 color: $light-grey-color;
@@ -199,7 +260,7 @@
   flex-direction: column;
 
   .live-match-card {
-    background: $white-color;
+    background: #f2f2f2;
     @include padding(20px, 20px, 0, 20px);
     box-shadow: 0 1px 10px 0 rgba($black-color, 0.1);
 
@@ -208,7 +269,15 @@
       .max-text {
         font-size: 16px;
         color: $black-color;
-        text-align: center;
+        align-items: center;
+        display: flex;
+
+        img {
+          width: 20px;
+          height: 20px;
+          @include border-radius(50%);
+          @include margin(0, 5px, 0, 0);
+        }
         small {
           font-size: 11px;
           color: $light-grey-color;
@@ -357,6 +426,91 @@
         i {
           color: $brand-second-color;
         }
+      }
+    }
+  }
+
+  .scoring-update {
+    @include margin(50px, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .goal {
+      border: 2px solid $light-grey-color;
+      @include border-radius(5px);
+      @include padding(5px, 15px, 5px, 35px);
+      @include margin(0, 0, 15px, 0);
+      display: inline;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        height: 19px;
+        width: 13px;
+        content: "\f1e3";
+        font-family: FontAwesome;
+        left: 10px;
+        top: 5px;
+      }
+
+
+      .player-name {
+        color: $light-grey-color;
+      }
+      .score-time {
+        color: $black-color;
+      }
+    }
+    .red-card {
+      border: 2px solid $light-grey-color;
+      @include border-radius(5px);
+      @include padding(5px, 15px, 5px, 30px);
+      display: inline;
+      position: relative;
+      @include margin(0, 0, 15px, 0);
+
+      &:before {
+        position: absolute;
+        background: #b21010;
+        height: 19px;
+        width: 13px;
+        content: "";
+        left: 10px;
+        top: 6px;
+      }
+
+      .player-name {
+        color: $light-grey-color;
+      }
+      .score-time {
+        color: $black-color;
+      }
+    }
+    .yellow-card {
+      border: 2px solid $light-grey-color;
+      @include border-radius(5px);
+      @include padding(5px, 15px, 5px, 30px);
+      display: inline;
+      position: relative;
+      @include margin(0, 0, 15px, 0);
+
+      &:before {
+        position: absolute;
+        background: $brand-second-color;
+        height: 19px;
+        width: 13px;
+        content: "";
+        left: 10px;
+        top: 6px;
+      }
+
+      .player-name {
+        color: $light-grey-color;
+      }
+      .score-time {
+        color: $black-color;
       }
     }
   }

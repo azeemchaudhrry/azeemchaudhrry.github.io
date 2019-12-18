@@ -54,12 +54,12 @@ $(function SieveOfEratosthenesCached(n, cache) {
     infinite: true,
     autoplay: true,
     speed: 300,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: true,
     vertical: false,
     centerMode: true,
-    centerPadding: '200px',
+    centerPadding: '40px',
     verticalSwiping: false,
     responsive: [
       {
@@ -89,46 +89,7 @@ $(function SieveOfEratosthenesCached(n, cache) {
     ]
   });
 
-  /*gropu leaderboard carousel*/
-  $('.group-leaderboard-carousel').slick({
-    dots: false,
-    infinite: true,
-    autoplay: false,
-    speed: 300,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    arrows: true,
-    vertical: false,
-    centerMode: false,
-    centerPadding: '30px',
-    verticalSwiping: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          centerPadding: '30px'
-        }
-      }
-    ]
-  });
+
   
 
 
@@ -184,11 +145,6 @@ $(function SieveOfEratosthenesCached(n, cache) {
 
 
 
-$(window).on('load', function () {
-
-  $('#popup-modal').modal('show');
-
-});
 
 
 

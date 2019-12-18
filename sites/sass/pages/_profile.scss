@@ -115,6 +115,11 @@
     .silver {
       background: #d7ddde;
     }
+    .progress{
+      flex: 1;
+      height: auto;
+      @include border-radius(5px);
+    }
   }
 
   .user-rewards {

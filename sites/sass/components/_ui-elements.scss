@@ -2,7 +2,7 @@
   display: inline-block;
   background: $brand-second-color;
   @include border-radius(10px);
-  @include padding(15px, 30px, 15px, 30px);
+  @include padding(15px, 0, 15px, 0);
   font-size: 16px;
   color: $dark-grey-color-shade;
   text-transform: capitalize;

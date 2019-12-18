@@ -9,13 +9,21 @@
   <meta name="format-detection" content="telephone=no">
   <title>Profescore </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+
   <link rel="stylesheet" href="css/style-en.css">
 </head>
 
 <body>
 
-  <header>
+  <header class="fixed-top">
     <div class="header-primary">
+      <a href="how-it-work.html" class="how-it-works-icon">
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </a>
       <nav class="navbar navbar-expand-lg navbar-light">
         <a href="index.html" class="logo">ProfeSCORE</a>
 
@@ -62,8 +70,8 @@
             Momcilo Milijesvic
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="profile.html">Profile</a>
-            <a class="dropdown-item" href="profile.html">Account information</a>
+            <a class="dropdown-item" href="#">Profile</a>
+            <a class="dropdown-item" href="#">Account information</a>
             <a class="dropdown-item" href="#">logout</a>
           </div>
         </div>
@@ -157,7 +165,7 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-6">
               <ul class="nav nav-tabs">
                 <li class="nav-item">
                   <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all">All countries</a>
@@ -194,20 +202,31 @@
                 </li>
               </ul>
             </div>
+
+            <div class="col-lg-3">
+
+              <div class="form-group">
+                <input type='text' class="form-control" id='datetimepicker' value="16-02-2019" />
+              </div>
+            </div>
+
             <div class="col-lg-3">
               <div class="custom-dropdown-list clearfix">
                 <select>
-                  <option>Date range</option>
-                  <option> Date range 1</option>
-                  <option> Date range 2</option>
+                  <option>My mathches</option>
+                  <option> All mathches</option>
                 </select>
               </div>
             </div>
+
+
+
           </div>
           <div class="tab-content">
             <div class="tab-pane fade show active" id="all">
               <ul>
-                <li class="white-row equal-score">
+
+                <li class="white-row live-exact-score">
                   <div class="row d-flex align-items-center">
                     <div class="col-lg-3">
                       <span class="live">
@@ -254,6 +273,246 @@
                     </div>
                   </div>
                 </li>
+
+                <li class="white-row live-win">
+                  <div class="row d-flex align-items-center">
+                    <div class="col-lg-3">
+                      <span class="live">
+                        live
+                      </span>
+                      <span class="total-time">
+                        15'
+                      </span>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="d-flex justify-content-center align-items-center">
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/real-madrid-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span>Real M.</span>
+                        </div>
+
+                        <div class="score-outer">
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                          <span class="separator">:</span>
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                        </div>
+
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/barcelona-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span> Atletico M.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="max-text">
+                        15
+                        <small>Max prise</small>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="white-row live-lose">
+                  <div class="row d-flex align-items-center">
+                    <div class="col-lg-3">
+                      <span class="live">
+                        live
+                      </span>
+                      <span class="total-time">
+                        15'
+                      </span>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="d-flex justify-content-center align-items-center">
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/real-madrid-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span>Real M.</span>
+                        </div>
+
+                        <div class="score-outer">
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                          <span class="separator">:</span>
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                        </div>
+
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/barcelona-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span> Atletico M.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="max-text">
+                        15
+                        <small>Max prise</small>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li class="white-row finished-exact-score">
+                  <div class="row d-flex align-items-center">
+                    <div class="col-lg-3">
+                      <span class="finished">
+                        Finished
+                      </span>
+                      <span class="total-time">
+                        15'
+                      </span>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="d-flex justify-content-center align-items-center">
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/real-madrid-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span>Real M.</span>
+                        </div>
+
+                        <div class="score-outer">
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                          <span class="separator">:</span>
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                        </div>
+
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/barcelona-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span> Atletico M.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="max-text">
+                        15
+                        <small>Max prise</small>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="white-row finished-win">
+                  <div class="row d-flex align-items-center">
+                    <div class="col-lg-3">
+                      <span class="finished">
+                        Finished
+                      </span>
+                      <span class="total-time">
+                        15'
+                      </span>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="d-flex justify-content-center align-items-center">
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/real-madrid-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span>Real M.</span>
+                        </div>
+
+                        <div class="score-outer">
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                          <span class="separator">:</span>
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                        </div>
+
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/barcelona-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span> Atletico M.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="max-text">
+                        15
+                        <small>Max prise</small>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="white-row finished-lose">
+                  <div class="row d-flex align-items-center">
+                    <div class="col-lg-3">
+                      <span class="finished">
+                        Finished
+                      </span>
+                      <span class="total-time">
+                        15'
+                      </span>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="d-flex justify-content-center align-items-center">
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/real-madrid-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span>Real M.</span>
+                        </div>
+
+                        <div class="score-outer">
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                          <span class="separator">:</span>
+                          <div class="score">
+                            <span class="black">2</span>
+                            <span class="grey">2</span>
+                          </div>
+                        </div>
+
+                        <div class="team-thumb">
+                          <figure>
+                            <img src="images/barcelona-logo.png" alt="" class="img-fluid">
+                          </figure>
+                          <span> Atletico M.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="max-text">
+                        15
+                        <small>Max prise</small>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
                 <li>
                   <div class="row d-flex align-items-center">
                     <div class="col-lg-3">
@@ -2681,6 +2940,7 @@
               <div class="row">
                 <div class="col-lg-4 col-4">
                   <div class="max-text">
+                    <img src="images/spain-flag.png" alt="">
                     15
                     <small>Max prise</small>
                   </div>
@@ -2747,6 +3007,25 @@
             </div>
           </div>
 
+          <div class="scoring-update">
+            <div class="goal">
+              <span class="player-name">Semedo</span>
+              <span class="score-time">13'</span>
+            </div>
+            <div class="yellow-card">
+              <span class="player-name">Semedo</span>
+              <span class="score-time">13'</span>
+            </div>
+            <div class="yellow-card">
+              <span class="player-name">Semedo</span>
+              <span class="score-time">13'</span>
+            </div>
+            <div class="red-card">
+              <span class="player-name">Semedo</span>
+              <span class="score-time">13'</span>
+            </div>
+          </div>
+
         </div>
 
 
@@ -2769,6 +3048,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
+  <script src="js/bootstrap-datetimepicker.js"></script>
+
+
+
+
   <!-- animate -->
   <script src="js/animate.js"></script>
 
@@ -2780,7 +3065,13 @@
 
   <!-- nice select -->
   <script src="js/jquery.nice-select.min.js"></script>
-
+  <script type="text/javascript">
+    $(function () {
+      $('#datetimepicker').datetimepicker({
+        format: 'DD/MM/YYYY'
+      });
+    });
+  </script>
 
 
 

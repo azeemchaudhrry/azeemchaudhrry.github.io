@@ -18,11 +18,11 @@
 
   <header class="fixed-top">
     <div class="header-primary">
-        <a href="how-it-work.html" class="how-it-works-icon">
-            <span class="icon-bar top-bar"></span>
-            <span class="icon-bar middle-bar"></span>
-            <span class="icon-bar bottom-bar"></span>
-          </a>
+      <a href="how-it-work.html" class="how-it-works-icon">
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </a>
       <nav class="navbar navbar-expand-lg navbar-light">
         <a href="index.html" class="logo">ProfeSCORE</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarprimary">
@@ -34,6 +34,7 @@
           <span class="tokens">34 Tokens</span>
           <span class="days-left">0d 18:34:22h left</span>
           <ul class="navbar-nav ">
+            <li class="nav-item">
             <li class="nav-item">
               <a class="nav-link" href="index.html">home</a>
             </li>
@@ -1174,31 +1175,31 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="">Can you predict better than anyone else?</h5>
+          <h5 class="modal-title" id="">Profile</h5>
           <button type="button" class="close" data-dismiss="modal">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <form>
-
-            <button type="submit" class="connect-gmail-btn w-100 text-center">
-              <i class="fa fa-lg fa-google"></i>
-              Continue with Google</button>
-            <button type="submit" class="connect-fb-btn w-100 text-center">
-              <i class="fa fa-lg fa-facebook-square"></i>
-              Continue with Facebook
-            </button>
-            <div class="row">
-              <div class="col-lg-6">
-                <a href="login.html" class="outline-btn-yellow w-100 text-center">Login</a>
-              </div>
-              <div class="col-lg-6">
-                <a href="signup.html" class="action-btn-yellow w-100 text-center">Sign Up</a>
-              </div>
+            <div class="form-group">
+              <input type="text" id="name" class="form-control" required>
+              <label class="form-control-placeholder" for="name">Nickame</label>
             </div>
+            <div class="form-group">
+              <input type="text" id="first" class="form-control" required>
+              <label class="form-control-placeholder" for="first">First Name</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="last" class="form-control" required>
+              <label class="form-control-placeholder" for="last">Last Name</label>
+            </div>
+            <div class="form-group">
+              <input type="date" id="dateofbirth" class="form-control" required>
+            </div>
+            <button type="submit" class="action-btn-yellow w-100 text-center">update</button>
+          </form>
         </div>
-        </form>
       </div>
     </div>
   </div>
