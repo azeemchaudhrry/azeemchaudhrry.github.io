@@ -115,15 +115,17 @@ main {
     @include border-radius(7px);
     @include margin(0, 10px, 0, 10px);
 
-    &:before {
-      height: 2px;
-      width: 14px;
-      background: #d74d4d;
+    a {
       right: 14px;
-      top: 50%;
+      top: 52%;
       content: "";
       position: absolute;
+      transform: translateY(-50%);
+      i {
+        color: #d74d4d;
+      }
     }
+
     p {
       font-size: 15px;
       flex: 1 70%;
@@ -285,13 +287,79 @@ main {
 .recommended-for-you {
   @include margin(50px, 0, 60px, 0);
 
-  /* .slick-center{
-    @include transform(scale(1.1));
-    
-  } */
+  .slick-center {
+    @include margin(-45px, 0, 0, 0);
+    .match-card {
+      header {
+        @include padding(30px, 20px, 30px, 20px);
+
+        .country-thumb {
+          height: 35px;
+          img {
+            width: 35px;
+            height: 35px;
+          }
+          span {
+            font-size: 18px;
+          }
+        }
+        .day-time {
+          font-size: 18px;
+        }
+        p {
+          font-size: 18px;
+        }
+      }
+
+      .scoring-card {
+        @include padding(30px, 20px, 30px, 20px);
+
+        .team-name {
+          font-size: 15px;
+        }
+
+        .result_match {
+          font-size: 45px;
+          font-weight: bold;
+        }
+
+        .win-draw-ratio {
+          span {
+            font-size: 13px;
+          }
+          .draw {
+            &::before {
+              bottom: -30px;
+            }
+          }
+          .win {
+            &::before {
+              bottom: -30px;
+            }
+          }
+        }
+      }
+
+      .scoring-card-footer {
+        @include padding(30px, 20px, 30px, 20px);
+        input {
+          font-size: 22px;
+        }
+
+        .no-of-token {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 
   .recommended-for-you-carousel {
     position: relative;
+
+    .match-card {
+      @include margin(45px, 10px, 0, 10px);
+    }
+
     &:before {
       position: absolute;
       left: 0;
@@ -299,6 +367,7 @@ main {
       width: 140px;
       height: 100%;
       z-index: 9;
+      top: 45px;
       background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
       background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
       background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
@@ -313,7 +382,8 @@ main {
       content: "";
       width: 140px;
       height: 100%;
-      top: 0;
+      top: 45px;
+
       background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
       background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
       background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
@@ -333,6 +403,7 @@ main {
   .slick-prev {
     left: 50px;
     z-index: 99;
+    top: 40%;
     &:hover {
       left: 40px;
     }
@@ -340,6 +411,7 @@ main {
   .slick-next {
     right: 70px;
     z-index: 99;
+    top: 40%;
     &:hover {
       right: 60px;
     }
@@ -484,7 +556,7 @@ main {
       width: 30%;
       margin-left: auto;
 
-      .form-control{
+      .form-control {
         background: none;
         border: 0;
         border-bottom: 1px solid #d1d6dc;
@@ -493,11 +565,10 @@ main {
         box-shadow: none;
         @include padding(0, 0, 0, 0);
         font-weight: bold;
-        &:focus{
+        &:focus {
           border-bottom: 1px solid $brand-color;
         }
       }
-
     }
   }
 
@@ -1199,5 +1270,22 @@ main {
       color: $dark-grey-color-shade;
       font-size: 18px;
     }
+  }
+}
+
+.loading {
+  height: 0;
+  width: 0;
+  @include padding(15px, 15px, 15px, 15px);
+  border: 6px solid #ccc;
+  border-right-color: $brand-color;
+  @include border-radius(50%);
+  @include margin(50px, auto, 50px, auto);
+  -webkit-animation: rotate 1s infinite linear;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
   }
 }

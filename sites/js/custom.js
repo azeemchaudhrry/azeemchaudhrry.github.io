@@ -11,14 +11,14 @@ $(function SieveOfEratosthenesCached(n, cache) {
   /*recommended carousel*/
   $('.top-popular-matches').slick({
     dots: false,
-    infinite: true,
+    infinite: false,
     autoplay: true,
     speed: 300,
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
     vertical: false,
-    centerMode: true,
+    centerMode: false,
     centerPadding: '80px',
     verticalSwiping: false,
     responsive: [
@@ -63,7 +63,16 @@ $(function SieveOfEratosthenesCached(n, cache) {
     verticalSwiping: false,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1920,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 1600,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -89,12 +98,7 @@ $(function SieveOfEratosthenesCached(n, cache) {
     ]
   });
 
-
-  
-
-
   $(document).ready(function () {
-
     $('.minus').click(function () {
       var $input = $(this).parent().find('input');
       var count = parseInt($input.val()) - 1;
@@ -130,6 +134,10 @@ $(function SieveOfEratosthenesCached(n, cache) {
     /*nice select initializer*/
     $(function () {
       $('select').niceSelect();
+    });
+
+     $(".top-popular-matches .item a").click(function () {
+      $(this).parent().remove();
     });
 
 

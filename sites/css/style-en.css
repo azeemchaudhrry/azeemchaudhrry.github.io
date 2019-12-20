@@ -10860,12 +10860,82 @@ header {
 
 .top-players-row {
   background: #fff;
-  padding-top: 80px;
+  padding-top: 50px;
   padding-right: 0;
   padding-bottom: 80px;
   padding-left: 0;
   -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1); }
+  .top-players-row .filters {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+    margin-left: 0; }
+    .top-players-row .filters .nav-tabs {
+      border: 0;
+      margin-top: 0;
+      margin-right: 0;
+      margin-bottom: 30px;
+      margin-left: 0;
+      /* Landscape phones and down */ }
+      @media (max-width: 767px) {
+        .top-players-row .filters .nav-tabs {
+          margin-top: 0;
+          margin-right: 0;
+          margin-bottom: 0;
+          margin-left: 30px; } }
+      .top-players-row .filters .nav-tabs .nav-item {
+        margin-top: 0;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        margin-left: 0; }
+      .top-players-row .filters .nav-tabs .nav-link {
+        text-transform: capitalize;
+        border: 1px solid #d6dcdd;
+        -webkit-border-radius: 7px;
+        -khtml-border-radius: 7px;
+        -moz-border-radius: 7px;
+        -ms-border-radius: 7px;
+        -o-border-radius: 7px;
+        border-radius: 7px;
+        color: #2d323e;
+        font-size: 15px;
+        position: relative;
+        padding-top: 15px;
+        padding-right: 40px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center; }
+        .top-players-row .filters .nav-tabs .nav-link:before {
+          border: 1px solid #d6dcdd;
+          -webkit-border-radius: 50%;
+          -khtml-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%;
+          width: 12px;
+          height: 12px;
+          position: absolute;
+          right: 10px;
+          top: 21px;
+          content: ""; }
+        .top-players-row .filters .nav-tabs .nav-link.active {
+          border: 2px solid #10b266;
+          color: #2d323e;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+          .top-players-row .filters .nav-tabs .nav-link.active:before {
+            border: 1px solid #fff;
+            background: #10b266;
+            -webkit-box-shadow: 0px 0px 0px 1px #10b266;
+            box-shadow: 0px 0px 0px 1px #10b266; }
   .top-players-row .player-thumb {
     /* Landscape phones and down */ }
     @media (max-width: 767px) {
@@ -11015,7 +11085,7 @@ header {
           content: "";
           position: absolute;
           width: 0;
-          border-left: 11px  solid transparent;
+          border-left: 11px solid transparent;
           border-right: 12px solid transparent; }
         .top-players-row .player-thumb .user-rewards .hexagon:before {
           bottom: 100%;
@@ -12570,6 +12640,11 @@ header {
     padding-right: 0;
     padding-bottom: 12px;
     padding-left: 0; }
+    .group-form-section .form-group :disabled {
+      font-size: 75%;
+      -webkit-transform: translate3d(0, -35%, 0);
+      transform: translate3d(0, -35%, 0);
+      opacity: 0.5; }
     .group-form-section .form-group .form-control {
       background: none;
       border: 0;
@@ -12578,8 +12653,7 @@ header {
       padding-top: 5px;
       padding-right: 0;
       padding-bottom: 5px;
-      padding-left: 15px;
-      position: relative; }
+      padding-left: 15px; }
     .group-form-section .form-group .add-icon {
       -webkit-border-radius: 5px;
       -khtml-border-radius: 5px;
@@ -12963,14 +13037,16 @@ main {
     margin-right: 10px;
     margin-bottom: 0;
     margin-left: 10px; }
-    .top-popular-matches .item:before {
-      height: 2px;
-      width: 14px;
-      background: #d74d4d;
+    .top-popular-matches .item a {
       right: 14px;
-      top: 50%;
+      top: 52%;
       content: "";
-      position: absolute; }
+      position: absolute;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+      .top-popular-matches .item a i {
+        color: #d74d4d; }
     .top-popular-matches .item p {
       font-size: 15px;
       -webkit-box-flex: 1;
@@ -13151,13 +13227,60 @@ main {
   margin-top: 50px;
   margin-right: 0;
   margin-bottom: 60px;
-  margin-left: 0;
-  /* .slick-center{
-    @include transform(scale(1.1));
-    
-  } */ }
+  margin-left: 0; }
+  .recommended-for-you .slick-center {
+    margin-top: -45px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0; }
+    .recommended-for-you .slick-center .match-card header {
+      padding-top: 30px;
+      padding-right: 20px;
+      padding-bottom: 30px;
+      padding-left: 20px; }
+      .recommended-for-you .slick-center .match-card header .country-thumb {
+        height: 35px; }
+        .recommended-for-you .slick-center .match-card header .country-thumb img {
+          width: 35px;
+          height: 35px; }
+        .recommended-for-you .slick-center .match-card header .country-thumb span {
+          font-size: 18px; }
+      .recommended-for-you .slick-center .match-card header .day-time {
+        font-size: 18px; }
+      .recommended-for-you .slick-center .match-card header p {
+        font-size: 18px; }
+    .recommended-for-you .slick-center .match-card .scoring-card {
+      padding-top: 30px;
+      padding-right: 20px;
+      padding-bottom: 30px;
+      padding-left: 20px; }
+      .recommended-for-you .slick-center .match-card .scoring-card .team-name {
+        font-size: 15px; }
+      .recommended-for-you .slick-center .match-card .scoring-card .result_match {
+        font-size: 45px;
+        font-weight: bold; }
+      .recommended-for-you .slick-center .match-card .scoring-card .win-draw-ratio span {
+        font-size: 13px; }
+      .recommended-for-you .slick-center .match-card .scoring-card .win-draw-ratio .draw::before {
+        bottom: -30px; }
+      .recommended-for-you .slick-center .match-card .scoring-card .win-draw-ratio .win::before {
+        bottom: -30px; }
+    .recommended-for-you .slick-center .match-card .scoring-card-footer {
+      padding-top: 30px;
+      padding-right: 20px;
+      padding-bottom: 30px;
+      padding-left: 20px; }
+      .recommended-for-you .slick-center .match-card .scoring-card-footer input {
+        font-size: 22px; }
+      .recommended-for-you .slick-center .match-card .scoring-card-footer .no-of-token {
+        font-size: 14px; }
   .recommended-for-you .recommended-for-you-carousel {
     position: relative; }
+    .recommended-for-you .recommended-for-you-carousel .match-card {
+      margin-top: 45px;
+      margin-right: 10px;
+      margin-bottom: 0;
+      margin-left: 10px; }
     .recommended-for-you .recommended-for-you-carousel:before {
       position: absolute;
       left: 0;
@@ -13165,6 +13288,7 @@ main {
       width: 140px;
       height: 100%;
       z-index: 9;
+      top: 45px;
       background: -moz-linear-gradient(left, white 0%, rgba(255, 255, 255, 0) 100%);
       background: -webkit-linear-gradient(left, white 0%, rgba(255, 255, 255, 0) 100%);
       background: -webkit-gradient(linear, left top, right top, from(white), to(rgba(255, 255, 255, 0)));
@@ -13180,7 +13304,7 @@ main {
       content: "";
       width: 140px;
       height: 100%;
-      top: 0;
+      top: 45px;
       background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 100%);
       background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 100%);
       background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white));
@@ -13201,12 +13325,14 @@ main {
     font-weight: 700; }
   .recommended-for-you .slick-prev {
     left: 50px;
-    z-index: 99; }
+    z-index: 99;
+    top: 40%; }
     .recommended-for-you .slick-prev:hover {
       left: 40px; }
   .recommended-for-you .slick-next {
     right: 70px;
-    z-index: 99; }
+    z-index: 99;
+    top: 40%; }
     .recommended-for-you .slick-next:hover {
       right: 60px; }
   .recommended-for-you .slick-prev:before,
@@ -14378,3 +14504,28 @@ main {
     margin-left: 0;
     color: #666;
     font-size: 18px; }
+
+.loading {
+  height: 0;
+  width: 0;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  border: 6px solid #ccc;
+  border-right-color: #10b266;
+  -webkit-border-radius: 50%;
+  -khtml-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-bottom: 50px;
+  margin-left: auto;
+  -webkit-animation: rotate 1s infinite linear; }
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg); } }

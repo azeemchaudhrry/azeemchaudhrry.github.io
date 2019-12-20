@@ -9,9 +9,7 @@
   <meta name="format-detection" content="telephone=no">
   <title>Profescore </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
-
-  <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
   <link rel="stylesheet" href="css/style-en.css">
 </head>
 
@@ -86,14 +84,17 @@
   <!-- main -->
   <main class="main-wrap">
 
-    <div class="top-popular-matches">
+    <section class="top-popular-matches">
       <div class="item">
         <p>
-          Real M.
+          Real
           <span>3:1</span>
           Atletico M.
         </p>
         <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
       </div>
       <div class="item">
         <p>
@@ -102,6 +103,9 @@
           Atletico M.
         </p>
         <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
       </div>
       <div class="item">
         <p>
@@ -110,6 +114,9 @@
           Atletico M.
         </p>
         <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
       </div>
       <div class="item">
         <p>
@@ -118,23 +125,9 @@
           Atletico M.
         </p>
         <span class="number">5</span>
-      </div>
-
-      <div class="item">
-        <p>
-          Real M.
-          <span>3:1</span>
-          Atletico M.
-        </p>
-        <span class="number">5</span>
-      </div>
-      <div class="item">
-        <p>
-          Real M.
-          <span>3:1</span>
-          Atletico M.
-        </p>
-        <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
       </div>
 
       <div class="item">
@@ -144,6 +137,9 @@
           Atletico M.
         </p>
         <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
       </div>
       <div class="item">
         <p>
@@ -152,8 +148,56 @@
           Atletico M.
         </p>
         <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
       </div>
-    </div>
+
+      <div class="item">
+        <p>
+          Real M.
+          <span>3:1</span>
+          Atletico M.
+        </p>
+        <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
+      </div>
+      <div class="item">
+        <p>
+          Real M.
+          <span>3:1</span>
+          Atletico M.
+        </p>
+        <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
+      </div>
+      <div class="item">
+        <p>
+          Real M.
+          <span>3:1</span>
+          Atletico M.
+        </p>
+        <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
+      </div>
+      <div class="item">
+        <p>
+          Real M.
+          <span>3:1</span>
+          Atletico M.
+        </p>
+        <span class="number">5</span>
+        <a href="#">
+          <i class="fa fa-minus"></i>
+        </a>
+      </div>
+    </section>
 
 
     <div class="row no-gutters">
@@ -204,9 +248,8 @@
             </div>
 
             <div class="col-lg-3">
-
               <div class="form-group">
-                <input type='text' class="form-control" id='datetimepicker' value="16-02-2019" />
+                <input type='text' class="form-control daterange" />
               </div>
             </div>
 
@@ -300,8 +343,8 @@
                           </div>
                           <span class="separator">:</span>
                           <div class="score">
-                            <span class="black">2</span>
-                            <span class="grey">2</span>
+                            <span class="black">4</span>
+                            <span class="grey">3</span>
                           </div>
                         </div>
 
@@ -347,8 +390,8 @@
                           </div>
                           <span class="separator">:</span>
                           <div class="score">
-                            <span class="black">2</span>
-                            <span class="grey">2</span>
+                            <span class="black">0</span>
+                            <span class="grey">1</span>
                           </div>
                         </div>
 
@@ -443,8 +486,8 @@
                           </div>
                           <span class="separator">:</span>
                           <div class="score">
-                            <span class="black">2</span>
-                            <span class="grey">2</span>
+                            <span class="black">3</span>
+                            <span class="grey">4</span>
                           </div>
                         </div>
 
@@ -490,8 +533,8 @@
                           </div>
                           <span class="separator">:</span>
                           <div class="score">
-                            <span class="black">2</span>
-                            <span class="grey">2</span>
+                            <span class="black">0</span>
+                            <span class="grey">1</span>
                           </div>
                         </div>
 
@@ -3049,7 +3092,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
-  <script src="js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
 
 
 
@@ -3066,13 +3110,8 @@
   <!-- nice select -->
   <script src="js/jquery.nice-select.min.js"></script>
   <script type="text/javascript">
-    $(function () {
-      $('#datetimepicker').datetimepicker({
-        format: 'DD/MM/YYYY'
-      });
-    });
+    $('.daterange').daterangepicker();
   </script>
-
 
 
 </body>
