@@ -1,5 +1,21 @@
 [
 	{
+		"name": "Smart Media Mobile Apps",
+		"description":"mart Media Platform is an interactive media solution, aimed to enhance media and information usability. The Smart Media Center puts your company’s precious multimedia collection in the palm of viewers hand seamlessly; with its light feather weight foot print it puts an end to sorry days of endless buffering, complex settings, and jumbled user interfaces.",
+		"image": "placeholder.jpg",
+		"websiteurl": "https://spica.ae/Products/Smart-Media-Center",
+		"playstoreurl":"ae.spica.smartmedia",
+		"date": "June 2019-Continue",
+		"tags": ["C#","Java","Xamarin","iOS","Android","OData"]
+	},
+	{
+		"name": "Clipping Station",
+		"description":"Utilize the cutting edge technology to provide publications for press clippings for Middle East and North Africa (MENA)",
+		"image": "placeholder.jpg",
+		"date": "November 2019-January 2020",
+		"tags": ["C++","Qt","Ubuntu","mySql","OCR","Automation",""]
+	},
+	{
 		"name": "Abu Dhabi Chamber of Commerce Mobile Apps",
 		"description":"Abu Dhabi chamber of Commerce Mobile Apps that will fecilitate the users to create/update COO and get updated with Commercial directory",
 		"image": "placeholder.jpg",
