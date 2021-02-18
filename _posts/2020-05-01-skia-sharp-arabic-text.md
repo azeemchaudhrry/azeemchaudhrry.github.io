@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      Arabic Text in SkiaSharp & Harfbuzz
-date:       2020-05-01
+date:       2020-06-01
 summary:    How to render arabic text in SkiaSharp Canvas using Harfbuzz.
 categories: SkiaSharp, Harfbuzz, Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Xamarin, C#
-published: false
+published: true
 ---
 
 SkiaSharp is a 2D graphics system for .NET and C# powered by the open-source Skia graphics engine that is used extensively in Google products.
