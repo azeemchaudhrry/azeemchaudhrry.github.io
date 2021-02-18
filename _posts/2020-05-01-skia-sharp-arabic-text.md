@@ -16,7 +16,7 @@ using (var eventTextShaper = new SKShaper(GetTypeface("GESSTwoLight.ttf")))
 using (SKPaint eventTextPaint = new SKPaint())
 {
     eventTextPaint.TextAlign = SKTextAlign.Center;
-    eventTextPaint.TextSize = 0.30f * radius; // radius of circle
+    eventTextPaint.TextSize = 13f;
     eventTextPaint.Color = SKColor.Parse("#dc0234");
     eventTextPaint.Typeface = GetTypeface("GESSTwoLight.ttf");
     eventTextPaint.IsAntialias = true;
