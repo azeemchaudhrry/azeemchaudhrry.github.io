@@ -1,0 +1,1479 @@
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en-US">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>Building Smart Form Validation in Jetpack Compose: A UX-First Approach &middot; Hafiz M. Azeem</title>
+    <meta name="title" content="Building Smart Form Validation in Jetpack Compose: A UX-First Approach &middot; Hafiz M. Azeem">
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  
+  
+    <meta name="keywords" content="android,kotlin,jetpack-compose,form-validation,material-design,compose,android-development,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/">
+  
+  
+
+  
+  
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/">
+	<meta property="og:site_name" content="Hafiz M. Azeem">
+	<meta property="og:title" content="Building Smart Form Validation in Jetpack Compose: A UX-First Approach">
+	<meta property="og:description" content="Form validation is one of those features that seems simple until you start thinking about user experience. Show errors too early, and you frustrate users before they’ve even started typing. Show them too late, and users submit invalid forms repeatedly. Today, I’ll walk you through building a smart form validation system in Jetpack Compose that strikes the perfect balance.
+The Problem with Traditional Form Validation # Most form implementations I’ve seen (and built, if I’m honest) fall into one of these traps:">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-10-07T10:00:00+05:00">
+		<meta property="article:modified_time" content="2025-10-07T10:00:00+05:00">
+		<meta property="article:tag" content="Android">
+		<meta property="article:tag" content="Kotlin">
+		<meta property="article:tag" content="Jetpack-Compose">
+		<meta property="article:tag" content="Form-Validation">
+		<meta property="article:tag" content="Material-Design">
+		<meta property="article:tag" content="Compose">
+
+  
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Building Smart Form Validation in Jetpack Compose: A UX-First Approach">
+	<meta name="twitter:description" content="Form validation is one of those features that seems simple until you start thinking about user experience. Show errors too early, and you frustrate users before they’ve even started typing. Show them too late, and users submit invalid forms repeatedly. Today, I’ll walk you through building a smart form validation system in Jetpack Compose that strikes the perfect balance.
+The Problem with Traditional Form Validation # Most form implementations I’ve seen (and built, if I’m honest) fall into one of these traps:">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.049e76956e66e76b3961e116de1ff1dd04835b80cdfea2672f7c3f86daa486942635db72e3e46cf12a95c82c024105ae63c45c62c2e0e7f5099f9943bbf4e1ea.css"
+    integrity="sha512-BJ52lW5m52s5YeEW3h/x3QSDW4DN/qJnL3w/htqkhpQmNdty4&#43;Rs8SqVyCwCQQWuY8RcYsLg5/UJn5lDu/Th6g==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.764f412f07ea715415e9123a5eb5f355429502d0b760146b9bcab854bc50829dee14488594acd935dfcdc6a0fe7e6d14d7bee914ebb9272b251aa238cb52c4dd.js"
+    integrity="sha512-dk9BLwfqcVQV6RI6XrXzVUKVAtC3YBRrm8q4VLxQgp3uFEiFlKzZNd/NxqD&#43;fm0U177pFOu5JyslGqI4y1LE3Q=="></script>
+  
+
+
+  
+  
+  
+  
+  
+  
+    
+    <script defer src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+    
+    <script defer src="/js/medium-zoom.67b71ecf7eecce38673a92244d1ffd93edb5f1aeedd12e725d0f67fe901828fa3562f6a6d64ad290b36b7d7034b8ea16e63486d75d957bcf6a2732923e5d46e6.js" integrity="sha512-Z7cez37szjhnOpIkTR/9k&#43;218a7t0S5yXQ9n/pAYKPo1Yvam1krSkLNrfXA0uOoW5jSG112Ve89qJzKSPl1G5g=="></script>
+  
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.221b84d3b2e59e5c6a90e4478bf70f9b4fe7739e6f4ac7e3428a46067c88dc7cf4a338690c89753c16aa0600fbc156125f6f2ce34a9aa300dcc7a367f3e90e9e.js"
+      integrity="sha512-IhuE07LlnlxqkORHi/cPm0/nc55vSsfjQopGBnyI3Hz0ozhpDIl1PBaqBgD7wVYSX28s40qaowDcx6Nn8&#43;kOng=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Building Smart Form Validation in Jetpack Compose: A UX-First Approach",
+    "headline": "Building Smart Form Validation in Jetpack Compose: A UX-First Approach",
+    
+    "inLanguage": "en-US",
+    "url" : "http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/",
+    "author" : {
+      "@type": "Person",
+      "name": ""
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-10-07T10:00:00\u002b05:00",
+    "datePublished": "2025-10-07T10:00:00\u002b05:00",
+    
+    "dateModified": "2025-10-07T10:00:00\u002b05:00",
+    
+    "keywords": ["android","kotlin","jetpack-compose","form-validation","material-design","compose","android-development"],
+    
+    "mainEntityOfPage": "http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/",
+    "wordCount":  1472 
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    <header>
+      
+      
+        <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      Hafiz M. Azeem
+    </a>
+  
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      <nav aria-label="Main menu" class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/posts/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Blog"
+      title="">
+      
+      
+        <span class="text-sm font-medium break-normal">
+          Blog
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/projects/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Projects"
+      title="">
+      
+      
+        <span class="text-sm font-medium break-normal">
+          Projects
+        </span>
+      
+    </a>
+  
+
+    
+  
+
+  
+
+  
+
+  
+    <div class="flex items-center">
+      <button
+        id="appearance-switcher"
+        aria-label="Switch to dark appearance"
+        type="button"
+        class="text-sm bf-icon-color-hover"
+        title="Switch to dark appearance">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    </div>
+  
+
+  
+    <button
+      id="search-button"
+      aria-label="Search (/ or ⌘K)"
+      class="flex items-center gap-2 rounded-lg border bf-border-color bf-border-color-hover bg-neutral-100/50 px-2 py-1 text-sm text-neutral-500 transition-colors hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral-400 dark:hover:text-primary-400"
+      title="Search (/ or ⌘K)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      <kbd
+        id="search-shortcut-hint"
+        class="pointer-events-none font-sans text-xs text-neutral-500 dark:text-neutral-400"
+        aria-hidden="true">
+        ⌘K
+      </kbd>
+    </button>
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      
+<div class="mobile-header-row relative flex items-center h-14 gap-4">
+  
+
+  
+    <button
+      id="appearance-switcher-mobile"
+      type="button"
+      aria-label="Switch to dark appearance"
+      title="Switch to dark appearance"
+      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
+      <div class="dark:hidden">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+      </div>
+      <div class="hidden dark:block">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+      </div>
+    </button>
+  
+
+  
+    <button
+      id="search-button-mobile"
+      aria-label="Search (/ or ⌘K)"
+      class="flex items-center justify-center bf-icon-color-hover"
+      title="Search (/ or ⌘K)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label
+      for="mobile-menu-toggle"
+      tabindex="0"
+      role="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu-dialog"
+      aria-label="Main menu"
+      class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      id="mobile-menu-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Main menu"
+      style="scrollbar-gutter: stable;"
+      class="z-50 invisible overflow-y-auto opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100
+      
+        fixed inset-0 px-6 py-20 bg-neutral-50/97 dark:bg-neutral-900/99
+      
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        tabindex="0"
+        role="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu-dialog"
+        class="fixed end-8 top-5 z-50 h-12 w-12 rounded-full flex items-center justify-center cursor-pointer select-none bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="sr-only">Close menu</span>
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav
+        aria-label="Mobile menu"
+        class="mx-auto max-w-md space-y-6">
+        
+  
+    
+    <div class="px-2">
+      <div class="flex items-center gap-4">
+        <a
+          href="/posts/"
+          aria-label="Blog"
+          
+          class="flex grow items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+          
+          <span title="" class="text-2xl font-bold tracking-tight">
+            Blog
+          </span>
+        </a>
+        
+      </div>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <div class="flex items-center gap-4">
+        <a
+          href="/projects/"
+          aria-label="Projects"
+          
+          class="flex grow items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+          
+          <span title="" class="text-2xl font-bold tracking-tight">
+            Projects
+          </span>
+        </a>
+        
+      </div>
+
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+      
+    </header>
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  
+  
+  
+  <article>
+    
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Building Smart Form Validation in Jetpack Compose: A UX-First Approach
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2025-10-07T10:00:00&#43;05:00">7 October 2025</time><span class="px-2 text-primary-500">&middot;</span><span>1472 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+      
+      
+<div class="flex author">
+  
+  <div class="place-self-center">
+    
+    
+    <div class="text-2xl sm:text-lg">
+</div>
+  </div>
+</div>
+
+    
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain bf-scrollbar rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents" aria-label="Table of Contents">
+  <ul>
+    <li><a href="#the-problem-with-traditional-form-validation">The Problem with Traditional Form Validation</a></li>
+    <li><a href="#a-better-approach-context-aware-validation">A Better Approach: Context-Aware Validation</a></li>
+    <li><a href="#building-the-reusable-component">Building the Reusable Component</a>
+      <ul>
+        <li><a href="#step-1-enhanced-field-state">Step 1: Enhanced Field State</a></li>
+        <li><a href="#step-2-the-validatedtextfield-component">Step 2: The ValidatedTextField Component</a></li>
+        <li><a href="#step-3-smart-state-management">Step 3: Smart State Management</a></li>
+      </ul>
+    </li>
+    <li><a href="#complete-form-example">Complete Form Example</a></li>
+    <li><a href="#the-user-experience">The User Experience</a></li>
+    <li><a href="#performance-considerations">Performance Considerations</a>
+      <ul>
+        <li><a href="#1-derivation-instead-of-state">1. Derivation Instead of State</a></li>
+        <li><a href="#2-stable-keys-for-lists">2. Stable Keys for Lists</a></li>
+        <li><a href="#3-remember-validation-functions">3. Remember Validation Functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing-the-component">Testing the Component</a></li>
+    <li><a href="#real-world-extensions">Real-World Extensions</a>
+      <ul>
+        <li><a href="#adding-async-validation">Adding Async Validation</a></li>
+        <li><a href="#pattern-based-validation">Pattern-Based Validation</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContentsMobile" aria-label="Table of Contents">
+  <ul>
+    <li><a href="#the-problem-with-traditional-form-validation">The Problem with Traditional Form Validation</a></li>
+    <li><a href="#a-better-approach-context-aware-validation">A Better Approach: Context-Aware Validation</a></li>
+    <li><a href="#building-the-reusable-component">Building the Reusable Component</a>
+      <ul>
+        <li><a href="#step-1-enhanced-field-state">Step 1: Enhanced Field State</a></li>
+        <li><a href="#step-2-the-validatedtextfield-component">Step 2: The ValidatedTextField Component</a></li>
+        <li><a href="#step-3-smart-state-management">Step 3: Smart State Management</a></li>
+      </ul>
+    </li>
+    <li><a href="#complete-form-example">Complete Form Example</a></li>
+    <li><a href="#the-user-experience">The User Experience</a></li>
+    <li><a href="#performance-considerations">Performance Considerations</a>
+      <ul>
+        <li><a href="#1-derivation-instead-of-state">1. Derivation Instead of State</a></li>
+        <li><a href="#2-stable-keys-for-lists">2. Stable Keys for Lists</a></li>
+        <li><a href="#3-remember-validation-functions">3. Remember Validation Functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing-the-component">Testing the Component</a></li>
+    <li><a href="#real-world-extensions">Real-World Extensions</a>
+      <ul>
+        <li><a href="#adding-async-validation">Adding Async Validation</a></li>
+        <li><a href="#pattern-based-validation">Pattern-Based Validation</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <p>Form validation is one of those features that seems simple until you start thinking about user experience. Show errors too early, and you frustrate users before they&rsquo;ve even started typing. Show them too late, and users submit invalid forms repeatedly. Today, I&rsquo;ll walk you through building a smart form validation system in Jetpack Compose that strikes the perfect balance.</p>
+
+<h2 class="relative group">The Problem with Traditional Form Validation
+    <div id="the-problem-with-traditional-form-validation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-problem-with-traditional-form-validation" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Most form implementations I&rsquo;ve seen (and built, if I&rsquo;m honest) fall into one of these traps:</p>
+<p><strong>Trap #1: Aggressive Validation</strong></p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// Don&#39;t do this!
+</span></span></span><span style="display:flex;"><span>TextField(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">value</span> = name,
+</span></span><span style="display:flex;"><span>    onValueChange = { 
+</span></span><span style="display:flex;"><span>        name = <span style="color:#66d9ef">it</span>
+</span></span><span style="display:flex;"><span>        error = <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">it</span>.isEmpty()) <span style="color:#e6db74">&#34;Name is required&#34;</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>)</span></span></code></pre></div></div>
+<p>This shows errors immediately when the page loads or as soon as users clear a field. It&rsquo;s technically correct but feels hostile.</p>
+<p><strong>Trap #2: Passive Validation</strong></p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// Also not ideal
+</span></span></span><span style="display:flex;"><span>Button(onClick = { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (name.isEmpty()) showError = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>})</span></span></code></pre></div></div>
+<p>This only validates on submit, which means users might fill out an entire form only to discover multiple errors at the end.</p>
+
+<h2 class="relative group">A Better Approach: Context-Aware Validation
+    <div id="a-better-approach-context-aware-validation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#a-better-approach-context-aware-validation" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>The solution is to validate <strong>contextually</strong> based on user interaction:</p>
+<ol>
+<li>✅ Don&rsquo;t show errors on initial page load</li>
+<li>✅ Show errors if users enter text then clear it</li>
+<li>✅ Show errors when users attempt to submit</li>
+<li>✅ Clear errors as soon as the field becomes valid</li>
+</ol>
+<p>Let&rsquo;s build this.</p>
+
+<h2 class="relative group">Building the Reusable Component
+    <div id="building-the-reusable-component" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#building-the-reusable-component" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">Step 1: Enhanced Field State
+    <div id="step-1-enhanced-field-state" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#step-1-enhanced-field-state" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>First, we need to track more than just the value and error. We need to know <em>how</em> the user has interacted with the field:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FieldState</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> value: String = <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> error: String? = <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> isTouched: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> hasBeenModified: Boolean = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">shouldShowError</span>(forceValidation: Boolean = <span style="color:#66d9ef">false</span>): Boolean {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (hasBeenModified <span style="color:#f92672">||</span> forceValidation) <span style="color:#f92672">&amp;&amp;</span> error <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li><code>isTouched</code>: Has the field been focused at least once?</li>
+<li><code>hasBeenModified</code>: Has the user entered text and then cleared/changed it?</li>
+<li><code>shouldShowError()</code>: Smart logic that decides when to display errors</li>
+</ul>
+
+<h3 class="relative group">Step 2: The ValidatedTextField Component
+    <div id="step-2-the-validatedtextfield-component" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#step-2-the-validatedtextfield-component" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Now we create a reusable composable that encapsulates this behavior:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">ValidatedTextField</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">value</span>: String,
+</span></span><span style="display:flex;"><span>    onValueChange: (String) <span style="color:#f92672">-&gt;</span> Unit,
+</span></span><span style="display:flex;"><span>    label: String,
+</span></span><span style="display:flex;"><span>    errorMessage: String? = <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    showError: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    onFocusChanged: ((Boolean) <span style="color:#f92672">-&gt;</span> Unit)? = <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    modifier: Modifier = Modifier,
+</span></span><span style="display:flex;"><span>    keyboardOptions: KeyboardOptions = <span style="color:#a6e22e">KeyboardOptions</span>.Default,
+</span></span><span style="display:flex;"><span>    keyboardActions: KeyboardActions = <span style="color:#a6e22e">KeyboardActions</span>.Default
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> shouldShowError = showError <span style="color:#f92672">&amp;&amp;</span> errorMessage <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    Column(modifier = modifier) {
+</span></span><span style="display:flex;"><span>        OutlinedTextField(
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">value</span> = <span style="color:#66d9ef">value</span>,
+</span></span><span style="display:flex;"><span>            onValueChange = onValueChange,
+</span></span><span style="display:flex;"><span>            modifier = Modifier
+</span></span><span style="display:flex;"><span>                .fillMaxWidth()
+</span></span><span style="display:flex;"><span>                .onFocusChanged { focusState <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>                    onFocusChanged<span style="color:#f92672">?.</span>invoke(focusState.isFocused)
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>            placeholder = { Text(label, color = <span style="color:#a6e22e">Color</span>.Gray) },
+</span></span><span style="display:flex;"><span>            isError = shouldShowError,
+</span></span><span style="display:flex;"><span>            colors = <span style="color:#a6e22e">OutlinedTextFieldDefaults</span>.colors(
+</span></span><span style="display:flex;"><span>                focusedBorderColor = <span style="color:#66d9ef">if</span> (shouldShowError) 
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">MaterialTheme</span>.colorScheme.error 
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">MaterialTheme</span>.colorScheme.primary,
+</span></span><span style="display:flex;"><span>                unfocusedBorderColor = <span style="color:#66d9ef">if</span> (shouldShowError) 
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">MaterialTheme</span>.colorScheme.error 
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">Color</span>.Gray
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>            keyboardOptions = keyboardOptions,
+</span></span><span style="display:flex;"><span>            keyboardActions = keyboardActions,
+</span></span><span style="display:flex;"><span>            shape = RoundedCornerShape(<span style="color:#ae81ff">8</span>.dp)
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (shouldShowError) {
+</span></span><span style="display:flex;"><span>            Text(
+</span></span><span style="display:flex;"><span>                text = errorMessage<span style="color:#f92672">!!</span>,
+</span></span><span style="display:flex;"><span>                color = <span style="color:#a6e22e">MaterialTheme</span>.colorScheme.error,
+</span></span><span style="display:flex;"><span>                fontSize = <span style="color:#ae81ff">12</span>.sp,
+</span></span><span style="display:flex;"><span>                modifier = <span style="color:#a6e22e">Modifier</span>.padding(start = <span style="color:#ae81ff">16</span>.dp, top = <span style="color:#ae81ff">4</span>.dp)
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+
+<h3 class="relative group">Step 3: Smart State Management
+    <div id="step-3-smart-state-management" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#step-3-smart-state-management" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Here&rsquo;s where the magic happens. When users interact with the field, we update the state intelligently:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>ValidatedTextField(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">value</span> = firstName.<span style="color:#66d9ef">value</span>,
+</span></span><span style="display:flex;"><span>    onValueChange = { newValue <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">val</span> hadValue = firstName.<span style="color:#66d9ef">value</span>.isNotEmpty()
+</span></span><span style="display:flex;"><span>        firstName = FieldState(
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">value</span> = newValue,
+</span></span><span style="display:flex;"><span>            error = validateFirstName(newValue),
+</span></span><span style="display:flex;"><span>            isTouched = <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Mark as modified if user had text and cleared it
+</span></span></span><span style="display:flex;"><span>            hasBeenModified = firstName.hasBeenModified <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>                             (hadValue <span style="color:#f92672">&amp;&amp;</span> newValue.isEmpty())
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    label = <span style="color:#e6db74">&#34;First Name&#34;</span>,
+</span></span><span style="display:flex;"><span>    errorMessage = firstName.error,
+</span></span><span style="display:flex;"><span>    showError = firstName.shouldShowError(submitAttempted),
+</span></span><span style="display:flex;"><span>    onFocusChanged = { isFocused <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isFocused) {
+</span></span><span style="display:flex;"><span>            firstName = firstName.copy(isTouched = <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>)</span></span></code></pre></div></div>
+<p><strong>What&rsquo;s happening here?</strong></p>
+<ol>
+<li>We track if the field previously had a value (<code>hadValue</code>)</li>
+<li>If it did and now it&rsquo;s empty, we set <code>hasBeenModified = true</code></li>
+<li>Only then do we show the error message</li>
+<li>On focus, we mark the field as touched</li>
+</ol>
+
+<h2 class="relative group">Complete Form Example
+    <div id="complete-form-example" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#complete-form-example" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Here&rsquo;s a complete recipient details form using this pattern:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@OptIn</span>(ExperimentalMaterial3Api<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">RecipientDetailsScreen</span>(
+</span></span><span style="display:flex;"><span>    onBackClick: () <span style="color:#f92672">-&gt;</span> Unit = {},
+</span></span><span style="display:flex;"><span>    onContinueClick: (Map&lt;String, String&gt;) <span style="color:#f92672">-&gt;</span> Unit = {}
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> firstName <span style="color:#66d9ef">by</span> remember { mutableStateOf(FieldState()) }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> lastName <span style="color:#66d9ef">by</span> remember { mutableStateOf(FieldState()) }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> submitAttempted <span style="color:#66d9ef">by</span> remember { mutableStateOf(<span style="color:#66d9ef">false</span>) }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> isFormValid = firstName.error <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>                     firstName.<span style="color:#66d9ef">value</span>.isNotBlank() <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>                     lastName.error <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>                     lastName.<span style="color:#66d9ef">value</span>.isNotBlank()
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    Scaffold(
+</span></span><span style="display:flex;"><span>        topBar = {
+</span></span><span style="display:flex;"><span>            TopAppBar(
+</span></span><span style="display:flex;"><span>                title = { Text(<span style="color:#e6db74">&#34;Enter Recipient Details&#34;</span>) },
+</span></span><span style="display:flex;"><span>                navigationIcon = {
+</span></span><span style="display:flex;"><span>                    IconButton(onClick = onBackClick) {
+</span></span><span style="display:flex;"><span>                        Icon(<span style="color:#a6e22e">Icons</span>.<span style="color:#a6e22e">Default</span>.ArrowBack, <span style="color:#e6db74">&#34;Back&#34;</span>)
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ) { padding <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        Column(
+</span></span><span style="display:flex;"><span>            modifier = Modifier
+</span></span><span style="display:flex;"><span>                .fillMaxSize()
+</span></span><span style="display:flex;"><span>                .padding(padding)
+</span></span><span style="display:flex;"><span>                .padding(<span style="color:#ae81ff">16</span>.dp),
+</span></span><span style="display:flex;"><span>            verticalArrangement = <span style="color:#a6e22e">Arrangement</span>.spacedBy(<span style="color:#ae81ff">16</span>.dp)
+</span></span><span style="display:flex;"><span>        ) {
+</span></span><span style="display:flex;"><span>            ValidatedTextField(
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">value</span> = firstName.<span style="color:#66d9ef">value</span>,
+</span></span><span style="display:flex;"><span>                onValueChange = { newValue <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">val</span> hadValue = firstName.<span style="color:#66d9ef">value</span>.isNotEmpty()
+</span></span><span style="display:flex;"><span>                    firstName = FieldState(
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">value</span> = newValue,
+</span></span><span style="display:flex;"><span>                        error = <span style="color:#66d9ef">if</span> (newValue.isBlank()) 
+</span></span><span style="display:flex;"><span>                            <span style="color:#e6db74">&#34;Please enter first name&#34;</span> 
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                        isTouched = <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                        hasBeenModified = firstName.hasBeenModified <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>                                        (hadValue <span style="color:#f92672">&amp;&amp;</span> newValue.isEmpty())
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                label = <span style="color:#e6db74">&#34;First Name&#34;</span>,
+</span></span><span style="display:flex;"><span>                errorMessage = firstName.error,
+</span></span><span style="display:flex;"><span>                showError = firstName.shouldShowError(submitAttempted)
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>            ValidatedTextField(
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">value</span> = lastName.<span style="color:#66d9ef">value</span>,
+</span></span><span style="display:flex;"><span>                onValueChange = { newValue <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">val</span> hadValue = lastName.<span style="color:#66d9ef">value</span>.isNotEmpty()
+</span></span><span style="display:flex;"><span>                    lastName = FieldState(
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">value</span> = newValue,
+</span></span><span style="display:flex;"><span>                        error = <span style="color:#66d9ef">if</span> (newValue.isBlank()) 
+</span></span><span style="display:flex;"><span>                            <span style="color:#e6db74">&#34;Please enter last name&#34;</span> 
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                        isTouched = <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                        hasBeenModified = lastName.hasBeenModified <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>                                        (hadValue <span style="color:#f92672">&amp;&amp;</span> newValue.isEmpty())
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                label = <span style="color:#e6db74">&#34;Last Name&#34;</span>,
+</span></span><span style="display:flex;"><span>                errorMessage = lastName.error,
+</span></span><span style="display:flex;"><span>                showError = lastName.shouldShowError(submitAttempted)
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>            Spacer(modifier = <span style="color:#a6e22e">Modifier</span>.weight(<span style="color:#ae81ff">1f</span>))
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>            Button(
+</span></span><span style="display:flex;"><span>                onClick = {
+</span></span><span style="display:flex;"><span>                    submitAttempted = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>                    firstName = firstName.copy(
+</span></span><span style="display:flex;"><span>                        hasBeenModified = <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                        error = <span style="color:#66d9ef">if</span> (firstName.<span style="color:#66d9ef">value</span>.isBlank()) 
+</span></span><span style="display:flex;"><span>                            <span style="color:#e6db74">&#34;Please enter first name&#34;</span> 
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                    lastName = lastName.copy(
+</span></span><span style="display:flex;"><span>                        hasBeenModified = <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                        error = <span style="color:#66d9ef">if</span> (lastName.<span style="color:#66d9ef">value</span>.isBlank()) 
+</span></span><span style="display:flex;"><span>                            <span style="color:#e6db74">&#34;Please enter last name&#34;</span> 
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                  
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (isFormValid) {
+</span></span><span style="display:flex;"><span>                        onContinueClick(
+</span></span><span style="display:flex;"><span>                            mapOf(
+</span></span><span style="display:flex;"><span>                                <span style="color:#e6db74">&#34;firstName&#34;</span> to firstName.<span style="color:#66d9ef">value</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#e6db74">&#34;lastName&#34;</span> to lastName.<span style="color:#66d9ef">value</span>
+</span></span><span style="display:flex;"><span>                            )
+</span></span><span style="display:flex;"><span>                        )
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                modifier = Modifier
+</span></span><span style="display:flex;"><span>                    .fillMaxWidth()
+</span></span><span style="display:flex;"><span>                    .height(<span style="color:#ae81ff">56</span>.dp)
+</span></span><span style="display:flex;"><span>            ) {
+</span></span><span style="display:flex;"><span>                Text(<span style="color:#e6db74">&#34;Continue&#34;</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+
+<h2 class="relative group">The User Experience
+    <div id="the-user-experience" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-user-experience" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Let&rsquo;s see how this plays out in real usage:</p>
+<table>
+	<thead>
+			<tr>
+					<th>User Action</th>
+					<th>Behavior</th>
+					<th>Why?</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Page loads with empty fields</td>
+					<td>No errors shown</td>
+					<td>User hasn&rsquo;t interacted yet</td>
+			</tr>
+			<tr>
+					<td>User types &ldquo;Jo&rdquo; then deletes it</td>
+					<td>Error appears</td>
+					<td>User modified then cleared</td>
+			</tr>
+			<tr>
+					<td>User focuses field but doesn&rsquo;t type</td>
+					<td>No error</td>
+					<td>No modification occurred</td>
+			</tr>
+			<tr>
+					<td>User clicks Continue with empty fields</td>
+					<td>All errors appear</td>
+					<td>Form submission attempted</td>
+			</tr>
+			<tr>
+					<td>User types &ldquo;John&rdquo;</td>
+					<td>Error clears immediately</td>
+					<td>Field is now valid</td>
+			</tr>
+	</tbody>
+</table>
+
+<h2 class="relative group">Performance Considerations
+    <div id="performance-considerations" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#performance-considerations" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>One concern with this approach is the frequency of recomposition. Here are some optimizations:</p>
+
+<h3 class="relative group">1. Derivation Instead of State
+    <div id="1-derivation-instead-of-state" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#1-derivation-instead-of-state" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>For computed values like <code>isFormValid</code>, use derived state:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> isFormValid <span style="color:#66d9ef">by</span> remember {
+</span></span><span style="display:flex;"><span>    derivedStateOf {
+</span></span><span style="display:flex;"><span>        firstName.error <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> firstName.<span style="color:#66d9ef">value</span>.isNotBlank() <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>        lastName.error <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> lastName.<span style="color:#66d9ef">value</span>.isNotBlank()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+
+<h3 class="relative group">2. Stable Keys for Lists
+    <div id="2-stable-keys-for-lists" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2-stable-keys-for-lists" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>If you have multiple fields in a list, use stable keys:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>fields.forEach { <span style="color:#66d9ef">field</span> <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>    key(<span style="color:#66d9ef">field</span>.id) {
+</span></span><span style="display:flex;"><span>        ValidatedTextField(<span style="color:#75715e">/* ... */</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+
+<h3 class="relative group">3. Remember Validation Functions
+    <div id="3-remember-validation-functions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#3-remember-validation-functions" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Cache expensive validation logic:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> emailValidator = remember {
+</span></span><span style="display:flex;"><span>    { email: String <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (!email.matches(Regex(<span style="color:#e6db74">&#34;^[A-Za-z0-9+_.-]+@(.+)$&#34;</span>))) {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Invalid email format&#34;</span>
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+
+<h2 class="relative group">Testing the Component
+    <div id="testing-the-component" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#testing-the-component" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Here&rsquo;s how you can test this behavior:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">validatedTextField</span>_showsError_whenModifiedAndCleared() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> state <span style="color:#66d9ef">by</span> mutableStateOf(FieldState())
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    composeTestRule.setContent {
+</span></span><span style="display:flex;"><span>        ValidatedTextField(
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">value</span> = state.<span style="color:#66d9ef">value</span>,
+</span></span><span style="display:flex;"><span>            onValueChange = { newValue <span style="color:#f92672">-&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">val</span> hadValue = state.<span style="color:#66d9ef">value</span>.isNotEmpty()
+</span></span><span style="display:flex;"><span>                state = FieldState(
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">value</span> = newValue,
+</span></span><span style="display:flex;"><span>                    error = <span style="color:#66d9ef">if</span> (newValue.isBlank()) <span style="color:#e6db74">&#34;Required&#34;</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                    hasBeenModified = hadValue <span style="color:#f92672">&amp;&amp;</span> newValue.isEmpty()
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            label = <span style="color:#e6db74">&#34;Test Field&#34;</span>,
+</span></span><span style="display:flex;"><span>            errorMessage = state.error,
+</span></span><span style="display:flex;"><span>            showError = state.shouldShowError()
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Type and clear
+</span></span></span><span style="display:flex;"><span>    composeTestRule.onNodeWithText(<span style="color:#e6db74">&#34;Test Field&#34;</span>).performTextInput(<span style="color:#e6db74">&#34;text&#34;</span>)
+</span></span><span style="display:flex;"><span>    composeTestRule.onNodeWithText(<span style="color:#e6db74">&#34;Test Field&#34;</span>).performTextClearance()
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Error should appear
+</span></span></span><span style="display:flex;"><span>    composeTestRule.onNodeWithText(<span style="color:#e6db74">&#34;Required&#34;</span>).assertIsDisplayed()
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+
+<h2 class="relative group">Real-World Extensions
+    <div id="real-world-extensions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#real-world-extensions" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">Adding Async Validation
+    <div id="adding-async-validation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#adding-async-validation" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>For backend validation (like checking username availability):</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FieldState</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> value: String = <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> error: String? = <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> isValidating: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> isTouched: Boolean = <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> hasBeenModified: Boolean = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">AsyncValidatedTextField</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* ... */</span>,
+</span></span><span style="display:flex;"><span>    onAsyncValidate: <span style="color:#66d9ef">suspend</span> (String) <span style="color:#f92672">-&gt;</span> String?
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    LaunchedEffect(<span style="color:#66d9ef">value</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">value</span>.isNotEmpty()) {
+</span></span><span style="display:flex;"><span>            delay(<span style="color:#ae81ff">500</span>) <span style="color:#75715e">// Debounce
+</span></span></span><span style="display:flex;"><span>            isValidating = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            error = onAsyncValidate(<span style="color:#66d9ef">value</span>)
+</span></span><span style="display:flex;"><span>            isValidating = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Show loading indicator when validating
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (isValidating) {
+</span></span><span style="display:flex;"><span>        CircularProgressIndicator(modifier = <span style="color:#a6e22e">Modifier</span>.size(<span style="color:#ae81ff">20</span>.dp))
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+
+<h3 class="relative group">Pattern-Based Validation
+    <div id="pattern-based-validation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#pattern-based-validation" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Create reusable validators:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">object</span> <span style="color:#a6e22e">Validators</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">required</span>(message: String = <span style="color:#e6db74">&#34;This field is required&#34;</span>): (String) <span style="color:#f92672">-&gt;</span> String? {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">it</span>.isBlank()) message <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span> }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">email</span>(message: String = <span style="color:#e6db74">&#34;Invalid email&#34;</span>): (String) <span style="color:#f92672">-&gt;</span> String? {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (!<span style="color:#66d9ef">it</span>.matches(Regex(<span style="color:#e6db74">&#34;^[A-Za-z0-9+_.-]+@(.+)$&#34;</span>))) 
+</span></span><span style="display:flex;"><span>                message 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> 
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">null</span> 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">minLength</span>(
+</span></span><span style="display:flex;"><span>        length: Int, 
+</span></span><span style="display:flex;"><span>        message: String = <span style="color:#e6db74">&#34;Minimum </span><span style="color:#e6db74">$length</span><span style="color:#e6db74"> characters&#34;</span>
+</span></span><span style="display:flex;"><span>    ): (String) <span style="color:#f92672">-&gt;</span> String? {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">it</span>.length &lt; length) message <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">null</span> }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Usage
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> validators = listOf(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Validators</span>.required(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Validators</span>.email(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Validators</span>.minLength(<span style="color:#ae81ff">6</span>)
+</span></span><span style="display:flex;"><span>)</span></span></code></pre></div></div>
+
+<h2 class="relative group">Conclusion
+    <div id="conclusion" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conclusion" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Smart form validation is about respecting your users&rsquo; time and attention. By tracking interaction state and showing errors contextually, we create forms that feel helpful rather than hostile.</p>
+<p>The key principles:</p>
+<ol>
+<li><strong>Track interaction state</strong> - Know when users have engaged with fields</li>
+<li><strong>Validate contextually</strong> - Show errors only when meaningful</li>
+<li><strong>Provide immediate feedback</strong> - Clear errors as soon as fields become valid</li>
+<li><strong>Make it reusable</strong> - Build components that work consistently across your app</li>
+</ol>
+<p>This approach has significantly improved our form completion rates and reduced user frustration. Give it a try in your next Compose project!</p>
+
+<h2 class="relative group">Resources
+    <div id="resources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#resources" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<ul>
+<li><a href="https://github.com/azeemchaudhrry/ComposeForms"  target="_blank" rel="noreferrer">Full source code on GitHub</a></li>
+<li><a href="https://developer.android.com/jetpack/compose"  target="_blank" rel="noreferrer">Jetpack Compose Documentation</a></li>
+<li><a href="https://m3.material.io/"  target="_blank" rel="noreferrer">Material Design Form Guidelines</a></li>
+</ul>
+<hr>
+<p><em>Have questions or improvements? Feel free to reach out or open an issue on GitHub!</em></p>
+<p><strong>Tags:</strong> #Android #Kotlin #JetpackCompose #FormValidation #MaterialDesign #AndroidDevelopment #UX #UI</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/2020-05-01-skia-sharp-arabic-text/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;Arabic Text in SkiaSharp & Harfbuzz
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2020-06-01T00:00:00&#43;00:00">1 June 2020</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          aria-label="Search"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+    
+    
+  </body>
+  
+</html>

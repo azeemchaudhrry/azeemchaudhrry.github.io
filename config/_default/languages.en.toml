@@ -1,0 +1,25 @@
+locale = "en-US"
+languageName = "English"
+weight = 1
+title = "Hafiz M. Azeem"
+
+[author]
+  name = "Hafiz M. Azeem"
+  image = "profile.jpg"
+  headline = "Mobile & LLM Developer"
+  bio = "Building mobile applications and open-source AI tools."
+  links = [
+    { github = "https://github.com/azeemchaudhrry" },
+    { linkedin = "https://linkedin.com/in/hafizmuhammadazeem" },
+    { email = "mailto:hmazeemuk@gmail.com" }
+  ]
+
+[[menu.main]]
+  name = "Blog"
+  url = "/posts/"
+  weight = 10
+
+[[menu.main]]
+  name = "Projects"
+  url = "/projects/"
+  weight = 20

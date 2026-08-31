@@ -1,0 +1,10 @@
+baseURL = "https://azeem.dev/"
+locale = "en-US"
+title = "Hafiz M. Azeem"
+theme = "blowfish"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

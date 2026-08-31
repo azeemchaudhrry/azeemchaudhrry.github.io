@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Hafiz M. Azeem</title>
+    <link>https://azeem.dev/categories/</link>
+    <description>Recent content in Categories on Hafiz M. Azeem</description>
+    <generator>Hugo 0.125.0</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 07 Oct 2025 10:00:00 +0500</lastBuildDate>
+    <atom:link href="https://azeem.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android</title>
+      <link>https://azeem.dev/categories/android/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jetpack Compose</title>
+      <link>https://azeem.dev/categories/jetpack-compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/jetpack-compose/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kotlin</title>
+      <link>https://azeem.dev/categories/kotlin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/kotlin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UI/UX</title>
+      <link>https://azeem.dev/categories/ui/ux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/ui/ux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SkiaSharp, Harfbuzz, Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Xamarin, C#</title>
+      <link>https://azeem.dev/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xamarin.Android, Xamarin.Android Binding, Xamarin, C#</title>
+      <link>https://azeem.dev/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xamarin.Android, Xamarin, C#</title>
+      <link>https://azeem.dev/categories/xamarin.android-xamarin-c%23/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/xamarin.android-xamarin-c%23/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xamarin.Android</title>
+      <link>https://azeem.dev/categories/xamarin.android/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/xamarin.android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>XamarinForms</title>
+      <link>https://azeem.dev/categories/xamarinforms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/xamarinforms/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jekyll Pixyll</title>
+      <link>https://azeem.dev/categories/jekyll-pixyll/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/categories/jekyll-pixyll/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

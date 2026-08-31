@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Hafiz M. Azeem</title>
+    <link>https://azeem.dev/projects/</link>
+    <description>Recent content in Projects on Hafiz M. Azeem</description>
+    <generator>Hugo 0.125.0</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://azeem.dev/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Smart Media Mobile Apps</title>
+      <link>https://azeem.dev/projects/smart-media/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/smart-media/</guid>
+      <description>Smart Media Platform is an interactive media solution aimed at enhancing media usability.</description>
+    </item>
+    <item>
+      <title>Clipping Station</title>
+      <link>https://azeem.dev/projects/clipping-station/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/clipping-station/</guid>
+      <description>Utilize cutting-edge technology to provide publications for press clippings in the MENA region.</description>
+    </item>
+    <item>
+      <title>Abu Dhabi Chamber of Commerce</title>
+      <link>https://azeem.dev/projects/abu-dhabi-chamber/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/abu-dhabi-chamber/</guid>
+      <description>Mobile Apps that facilitate users to create/update COO and view the Commercial directory.</description>
+    </item>
+    <item>
+      <title>Sharjah24</title>
+      <link>https://azeem.dev/projects/sharjah-24/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/sharjah-24/</guid>
+      <description>An online news portal based in Sharjah, serving as a reliable news reference for the UAE.</description>
+    </item>
+    <item>
+      <title>Sharjah Events</title>
+      <link>https://azeem.dev/projects/sharjah-events/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/sharjah-events/</guid>
+      <description>The official website and mobile apps for events held in Sharjah, UAE, throughout the year.</description>
+    </item>
+    <item>
+      <title>NYC Consumer App</title>
+      <link>https://azeem.dev/projects/nyc-consumer-app/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/nyc-consumer-app/</guid>
+      <description>A mobile experience for retail shoppers, powered by CORE, enabling a connected shopping experience.</description>
+    </item>
+    <item>
+      <title>Core Framework</title>
+      <link>https://azeem.dev/projects/core-framework/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/core-framework/</guid>
+      <description>A platform producing a unified user experience across devices with accelerated provisioning.</description>
+    </item>
+    <item>
+      <title>Radiant Site Manager (RSM)</title>
+      <link>https://azeem.dev/projects/radiant-site-manager/</link>
+      <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/radiant-site-manager/</guid>
+      <description>NCR&amp;rsquo;s site manager application with 60+ real-time reports and reconciliation applets.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Hafiz M. Azeem</title>
+    <link>https://azeem.dev/tags/android/</link>
+    <description>Recent content in Android on Hafiz M. Azeem</description>
+    <generator>Hugo 0.125.0</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 07 Oct 2025 10:00:00 +0500</lastBuildDate>
+    <atom:link href="https://azeem.dev/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Smart Form Validation in Jetpack Compose: A UX-First Approach</title>
+      <link>https://azeem.dev/posts/2025-10-07-jetpack-compose-smart-form-validation/</link>
+      <pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
+      <guid>https://azeem.dev/posts/2025-10-07-jetpack-compose-smart-form-validation/</guid>
+      <description>Form validation is one of those features that seems simple until you start thinking about user experience. Show errors too early, and you frustrate users before they&amp;rsquo;ve even started typing. Show them too late, and users submit invalid forms repeatedly. Today, I&amp;rsquo;ll walk you through building a smart form validation system in Jetpack Compose that strikes the perfect balance.&#xA;The Problem with Traditional Form Validation Most form implementations I&amp;rsquo;ve seen (and built, if I&amp;rsquo;m honest) fall into one of these traps:</description>
+    </item>
+    <item>
+      <title>Smart Media Mobile Apps</title>
+      <link>https://azeem.dev/projects/smart-media/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/smart-media/</guid>
+      <description>Smart Media Platform is an interactive media solution aimed at enhancing media usability.</description>
+    </item>
+    <item>
+      <title>Abu Dhabi Chamber of Commerce</title>
+      <link>https://azeem.dev/projects/abu-dhabi-chamber/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/abu-dhabi-chamber/</guid>
+      <description>Mobile Apps that facilitate users to create/update COO and view the Commercial directory.</description>
+    </item>
+    <item>
+      <title>Sharjah24</title>
+      <link>https://azeem.dev/projects/sharjah-24/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/sharjah-24/</guid>
+      <description>An online news portal based in Sharjah, serving as a reliable news reference for the UAE.</description>
+    </item>
+    <item>
+      <title>Sharjah Events</title>
+      <link>https://azeem.dev/projects/sharjah-events/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/sharjah-events/</guid>
+      <description>The official website and mobile apps for events held in Sharjah, UAE, throughout the year.</description>
+    </item>
+    <item>
+      <title>Core Framework</title>
+      <link>https://azeem.dev/projects/core-framework/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>https://azeem.dev/projects/core-framework/</guid>
+      <description>A platform producing a unified user experience across devices with accelerated provisioning.</description>
+    </item>
+  </channel>
+</rss>
