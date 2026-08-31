@@ -31,7 +31,7 @@ defaultContentLanguage = "en"
 
   [languages.en.author]
     name = "Hafiz M. Azeem"
-    image = "profile.png"
+    image = "profile.jpg"
     headline = "Mobile & LLM Developer"
     bio = "Building mobile apps and open-source AI tools."
     links = [
