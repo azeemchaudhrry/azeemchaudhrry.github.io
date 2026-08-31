@@ -1,0 +1,50 @@
+baseURL = "https://azeem.dev/"
+theme = "blowfish"
+defaultContentLanguage = "en"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  colorScheme = "blowfish"
+  defaultAppearance = "dark"
+  autoSwitchAppearance = false
+
+  [params.homepage]
+    layout = "profile"
+    showRecent = true
+    showRecentItems = 5
+    showMoreLink = true
+    showMoreLinkDest = "/posts/"
+
+  [params.article]
+    showDate = true
+    showReadingTime = true
+    showTableOfContents = true
+
+[languages.en]
+  locale = "en-US"
+  title = "Hafiz M. Azeem"
+
+  [languages.en.author]
+    name = "Hafiz M. Azeem"
+    image = "profile.png"
+    headline = "Mobile & LLM Developer"
+    bio = "Building mobile apps and open-source AI tools."
+    links = [
+      { github = "https://github.com/azeemchaudhrry" },
+      { linkedin = "https://linkedin.com/in/yourprofile" }
+    ]
+
+  [[languages.en.menu.main]]
+    name = "Blog"
+    url = "/posts/"
+    weight = 10
+
+  [[languages.en.menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 20

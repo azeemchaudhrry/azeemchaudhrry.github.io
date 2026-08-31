@@ -50,6 +50,16 @@
     </item>
     
     <item>
+      <title>Smart Media Mobile Apps</title>
+      <link>http://localhost:1313/projects/smart-media/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/smart-media/</guid>
+      <description>Smart Media Platform is an interactive media solution aimed at enhancing media usability.</description>
+      
+    </item>
+    
+    <item>
       <title>Xamarin Android FullScreen Video View</title>
       <link>http://localhost:1313/posts/2019-07-30-xamarin-android-fullscreen-videoview/</link>
       <pubDate>Tue, 30 Jul 2019 00:00:00 +0000</pubDate>
@@ -80,6 +90,16 @@
     </item>
     
     <item>
+      <title>Clipping Station</title>
+      <link>http://localhost:1313/projects/clipping-station/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/clipping-station/</guid>
+      <description>Utilize cutting-edge technology to provide publications for press clippings in the MENA region.</description>
+      
+    </item>
+    
+    <item>
       <title>Xamarin.Forms 4.0.0-pre1</title>
       <link>http://localhost:1313/posts/2018-12-03-xamarin.forms-4.0.0-pre1/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
@@ -90,12 +110,62 @@
     </item>
     
     <item>
+      <title>Abu Dhabi Chamber of Commerce</title>
+      <link>http://localhost:1313/projects/abu-dhabi-chamber/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/abu-dhabi-chamber/</guid>
+      <description>Mobile Apps that facilitate users to create/update COO and view the Commercial directory.</description>
+      
+    </item>
+    
+    <item>
+      <title>Sharjah24</title>
+      <link>http://localhost:1313/projects/sharjah-24/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/sharjah-24/</guid>
+      <description>An online news portal based in Sharjah, serving as a reliable news reference for the UAE.</description>
+      
+    </item>
+    
+    <item>
+      <title>Sharjah Events</title>
+      <link>http://localhost:1313/projects/sharjah-events/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/sharjah-events/</guid>
+      <description>The official website and mobile apps for events held in Sharjah, UAE, throughout the year.</description>
+      
+    </item>
+    
+    <item>
+      <title>NYC Consumer App</title>
+      <link>http://localhost:1313/projects/nyc-consumer-app/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/nyc-consumer-app/</guid>
+      <description>A mobile experience for retail shoppers, powered by CORE, enabling a connected shopping experience.</description>
+      
+    </item>
+    
+    <item>
       <title>Announcing Version 2.0</title>
       <link>http://localhost:1313/posts/2015-07-11-announcing-pixyll-version-2/</link>
       <pubDate>Sat, 11 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/2015-07-11-announcing-pixyll-version-2/</guid>
       <description>Now, Pixyll is lighter weight and more customizable than before.</description>
+      
+    </item>
+    
+    <item>
+      <title>Core Framework</title>
+      <link>http://localhost:1313/projects/core-framework/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/core-framework/</guid>
+      <description>A platform producing a unified user experience across devices with accelerated provisioning.</description>
       
     </item>
     
@@ -136,6 +206,16 @@
       
       <guid>http://localhost:1313/posts/2014-06-08-pixyll-has-pagination/</guid>
       <description>This is an empty post to illustrate the pagination component with Pixyll.</description>
+      
+    </item>
+    
+    <item>
+      <title>Radiant Site Manager (RSM)</title>
+      <link>http://localhost:1313/projects/radiant-site-manager/</link>
+      <pubDate>Wed, 01 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/radiant-site-manager/</guid>
+      <description>NCR&amp;rsquo;s site manager application with 60+ real-time reports and reconciliation applets.</description>
       
     </item>
     

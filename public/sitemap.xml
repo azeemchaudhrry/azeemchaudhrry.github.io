@@ -29,6 +29,14 @@
     <lastmod>2020-05-01T00:00:00+00:00</lastmod>
   </url>
   <url>
+    <loc>http://localhost:1313/projects/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/smart-media/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  <url>
     <loc>http://localhost:1313/posts/2019-07-30-xamarin-android-fullscreen-videoview/</loc>
     <lastmod>2019-07-30T00:00:00+00:00</lastmod>
   </url>
@@ -41,12 +49,36 @@
     <lastmod>2019-01-05T00:00:00+00:00</lastmod>
   </url>
   <url>
+    <loc>http://localhost:1313/projects/clipping-station/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  <url>
     <loc>http://localhost:1313/posts/2018-12-03-xamarin.forms-4.0.0-pre1/</loc>
     <lastmod>2018-12-03T00:00:00+00:00</lastmod>
   </url>
   <url>
+    <loc>http://localhost:1313/projects/abu-dhabi-chamber/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/sharjah-24/</loc>
+    <lastmod>2017-02-01T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/sharjah-events/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/nyc-consumer-app/</loc>
+    <lastmod>2016-01-01T00:00:00+00:00</lastmod>
+  </url>
+  <url>
     <loc>http://localhost:1313/posts/2015-07-11-announcing-pixyll-version-2/</loc>
     <lastmod>2015-07-11T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/core-framework/</loc>
+    <lastmod>2015-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>http://localhost:1313/posts/2014-06-11-welcome-to-pixyll/</loc>
@@ -63,5 +95,9 @@
   <url>
     <loc>http://localhost:1313/posts/2014-06-08-pixyll-has-pagination/</loc>
     <lastmod>2014-06-08T11:21:29+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/radiant-site-manager/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
   </url>
 </urlset>

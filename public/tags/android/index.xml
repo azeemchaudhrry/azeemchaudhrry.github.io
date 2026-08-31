@@ -19,5 +19,55 @@
       
     </item>
     
+    <item>
+      <title>Smart Media Mobile Apps</title>
+      <link>http://localhost:1313/projects/smart-media/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/smart-media/</guid>
+      <description>Smart Media Platform is an interactive media solution aimed at enhancing media usability.</description>
+      
+    </item>
+    
+    <item>
+      <title>Abu Dhabi Chamber of Commerce</title>
+      <link>http://localhost:1313/projects/abu-dhabi-chamber/</link>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/abu-dhabi-chamber/</guid>
+      <description>Mobile Apps that facilitate users to create/update COO and view the Commercial directory.</description>
+      
+    </item>
+    
+    <item>
+      <title>Sharjah24</title>
+      <link>http://localhost:1313/projects/sharjah-24/</link>
+      <pubDate>Wed, 01 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/sharjah-24/</guid>
+      <description>An online news portal based in Sharjah, serving as a reliable news reference for the UAE.</description>
+      
+    </item>
+    
+    <item>
+      <title>Sharjah Events</title>
+      <link>http://localhost:1313/projects/sharjah-events/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/sharjah-events/</guid>
+      <description>The official website and mobile apps for events held in Sharjah, UAE, throughout the year.</description>
+      
+    </item>
+    
+    <item>
+      <title>Core Framework</title>
+      <link>http://localhost:1313/projects/core-framework/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/projects/core-framework/</guid>
+      <description>A platform producing a unified user experience across devices with accelerated provisioning.</description>
+      
+    </item>
+    
   </channel>
 </rss>
