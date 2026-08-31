@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Android on Azeem Chaudhry</title>
+		<link>http://localhost:1313/tags/android/</link>
+		<description>Recent content in Android on Azeem Chaudhry</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 07 Oct 2025 10:00:00 +0500</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Building Smart Form Validation in Jetpack Compose: A UX-First Approach</title>
+				<link>http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/</link>
+				<pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
+				<guid>http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/</guid>
+				<description>&lt;p&gt;Form validation is one of those features that seems simple until you start thinking about user experience. Show errors too early, and you frustrate users before they&amp;rsquo;ve even started typing. Show them too late, and users submit invalid forms repeatedly. Today, I&amp;rsquo;ll walk you through building a smart form validation system in Jetpack Compose that strikes the perfect balance.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem-with-traditional-form-validation&#34;&gt;The Problem with Traditional Form Validation&lt;/h2&gt;&#xA;&lt;p&gt;Most form implementations I&amp;rsquo;ve seen (and built, if I&amp;rsquo;m honest) fall into one of these traps:&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

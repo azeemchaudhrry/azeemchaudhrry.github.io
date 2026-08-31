@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Building Smart Form Validation in Jetpack Compose: A UX-First Approach | Azeem Chaudhry</title>
+
+<meta name="description" content="A personal blog about your topics">
+
+<script>
+  (function() {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = stored || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+
+</head>
+<body>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('.theme-toggle').addEventListener('click', function() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 
+      (localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    if (window.REMARK42) {
+      window.REMARK42.changeTheme(next);
+    }
+  });
+});
+</script>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="/"><strong>Azeem Chaudhry</strong></a>
+  </div>
+
+  <nav class="main-nav">
+    
+      <a href="/about/">About</a>
+    
+    <a href="/index.xml" class="rss-link" title="RSS Feed">RSS</a>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="theme-icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="theme-icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+
+  <main class="layout-wrapper">
+    <section class="content-primary">
+      
+<article class="post-single">
+    
+    <header class="post-header">
+        <div class="post-meta">
+            <span class="mono-date">2025.10.07</span>
+            
+              
+              <span class="category-tag"> // <a href="/categories/android/" style="color:inherit;text-decoration:none;">Android</a></span>
+            
+            <span class="reading-time"> // 9 min read</span>
+        </div>
+
+        <h1 class="post-title">Building Smart Form Validation in Jetpack Compose: A UX-First Approach</h1>
+        
+        
+    </header>
+    
+    
+
+    <div class="post-content">
+        <p>Form validation is one of those features that seems simple until you start thinking about user experience. Show errors too early, and you frustrate users before they&rsquo;ve even started typing. Show them too late, and users submit invalid forms repeatedly. Today, I&rsquo;ll walk you through building a smart form validation system in Jetpack Compose that strikes the perfect balance.</p>
+<h2 id="the-problem-with-traditional-form-validation">The Problem with Traditional Form Validation</h2>
+<p>Most form implementations I&rsquo;ve seen (and built, if I&rsquo;m honest) fall into one of these traps:</p>
+<p><strong>Trap #1: Aggressive Validation</strong></p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Don&#39;t do this!
+</span></span></span><span style="display:flex;"><span>TextField(
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">value</span> = name,
+</span></span><span style="display:flex;"><span>    onValueChange = { 
+</span></span><span style="display:flex;"><span>        name = <span style="color:#ff7b72">it</span>
+</span></span><span style="display:flex;"><span>        error = <span style="color:#ff7b72">if</span> (<span style="color:#ff7b72">it</span>.isEmpty()) <span style="color:#a5d6ff">&#34;Name is required&#34;</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This shows errors immediately when the page loads or as soon as users clear a field. It&rsquo;s technically correct but feels hostile.</p>
+<p><strong>Trap #2: Passive Validation</strong></p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Also not ideal
+</span></span></span><span style="display:flex;"><span>Button(onClick = { 
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> (name.isEmpty()) showError = <span style="color:#ff7b72">true</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This only validates on submit, which means users might fill out an entire form only to discover multiple errors at the end.</p>
+<h2 id="a-better-approach-context-aware-validation">A Better Approach: Context-Aware Validation</h2>
+<p>The solution is to validate <strong>contextually</strong> based on user interaction:</p>
+<ol>
+<li>✅ Don&rsquo;t show errors on initial page load</li>
+<li>✅ Show errors if users enter text then clear it</li>
+<li>✅ Show errors when users attempt to submit</li>
+<li>✅ Clear errors as soon as the field becomes valid</li>
+</ol>
+<p>Let&rsquo;s build this.</p>
+<h2 id="building-the-reusable-component">Building the Reusable Component</h2>
+<h3 id="step-1-enhanced-field-state">Step 1: Enhanced Field State</h3>
+<p>First, we need to track more than just the value and error. We need to know <em>how</em> the user has interacted with the field:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#ff7b72">data</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">FieldState</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">value</span>: String = <span style="color:#a5d6ff">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">error</span>: String? = <span style="color:#ff7b72">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">isTouched</span>: Boolean = <span style="color:#ff7b72">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">hasBeenModified</span>: Boolean = <span style="color:#ff7b72">false</span>
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fun</span> <span style="color:#d2a8ff;font-weight:bold">shouldShowError</span>(forceValidation: Boolean = <span style="color:#ff7b72">false</span>): Boolean {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> (hasBeenModified <span style="color:#ff7b72;font-weight:bold">||</span> forceValidation) <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> error <span style="color:#ff7b72;font-weight:bold">!=</span> <span style="color:#ff7b72">null</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Key Concepts:</strong></p>
+<ul>
+<li><code>isTouched</code>: Has the field been focused at least once?</li>
+<li><code>hasBeenModified</code>: Has the user entered text and then cleared/changed it?</li>
+<li><code>shouldShowError()</code>: Smart logic that decides when to display errors</li>
+</ul>
+<h3 id="step-2-the-validatedtextfield-component">Step 2: The ValidatedTextField Component</h3>
+<p>Now we create a reusable composable that encapsulates this behavior:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">50
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fun</span> <span style="color:#d2a8ff;font-weight:bold">ValidatedTextField</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">value</span>: String,
+</span></span><span style="display:flex;"><span>    onValueChange: (String) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> Unit,
+</span></span><span style="display:flex;"><span>    label: String,
+</span></span><span style="display:flex;"><span>    errorMessage: String? = <span style="color:#ff7b72">null</span>,
+</span></span><span style="display:flex;"><span>    showError: Boolean = <span style="color:#ff7b72">false</span>,
+</span></span><span style="display:flex;"><span>    onFocusChanged: ((Boolean) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> Unit)? = <span style="color:#ff7b72">null</span>,
+</span></span><span style="display:flex;"><span>    modifier: Modifier = Modifier,
+</span></span><span style="display:flex;"><span>    keyboardOptions: KeyboardOptions = <span style="color:#f0883e;font-weight:bold">KeyboardOptions</span>.Default,
+</span></span><span style="display:flex;"><span>    keyboardActions: KeyboardActions = <span style="color:#f0883e;font-weight:bold">KeyboardActions</span>.Default
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">shouldShowError</span> = showError <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> errorMessage <span style="color:#ff7b72;font-weight:bold">!=</span> <span style="color:#ff7b72">null</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    Column(modifier = modifier) {
+</span></span><span style="display:flex;"><span>        OutlinedTextField(
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">value</span> = <span style="color:#ff7b72">value</span>,
+</span></span><span style="display:flex;"><span>            onValueChange = onValueChange,
+</span></span><span style="display:flex;"><span>            modifier = Modifier
+</span></span><span style="display:flex;"><span>                .fillMaxWidth()
+</span></span><span style="display:flex;"><span>                .onFocusChanged { focusState <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>                    onFocusChanged<span style="color:#ff7b72;font-weight:bold">?.</span>invoke(focusState.isFocused)
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>            placeholder = { Text(label, color = <span style="color:#f0883e;font-weight:bold">Color</span>.Gray) },
+</span></span><span style="display:flex;"><span>            isError = shouldShowError,
+</span></span><span style="display:flex;"><span>            colors = <span style="color:#f0883e;font-weight:bold">OutlinedTextFieldDefaults</span>.colors(
+</span></span><span style="display:flex;"><span>                focusedBorderColor = <span style="color:#ff7b72">if</span> (shouldShowError) 
+</span></span><span style="display:flex;"><span>                    <span style="color:#f0883e;font-weight:bold">MaterialTheme</span>.colorScheme.error 
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">else</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#f0883e;font-weight:bold">MaterialTheme</span>.colorScheme.primary,
+</span></span><span style="display:flex;"><span>                unfocusedBorderColor = <span style="color:#ff7b72">if</span> (shouldShowError) 
+</span></span><span style="display:flex;"><span>                    <span style="color:#f0883e;font-weight:bold">MaterialTheme</span>.colorScheme.error 
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">else</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#f0883e;font-weight:bold">Color</span>.Gray
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>            keyboardOptions = keyboardOptions,
+</span></span><span style="display:flex;"><span>            keyboardActions = keyboardActions,
+</span></span><span style="display:flex;"><span>            shape = RoundedCornerShape(<span style="color:#a5d6ff">8</span>.dp)
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> (shouldShowError) {
+</span></span><span style="display:flex;"><span>            Text(
+</span></span><span style="display:flex;"><span>                text = errorMessage<span style="color:#ff7b72;font-weight:bold">!!</span>,
+</span></span><span style="display:flex;"><span>                color = <span style="color:#f0883e;font-weight:bold">MaterialTheme</span>.colorScheme.error,
+</span></span><span style="display:flex;"><span>                fontSize = <span style="color:#a5d6ff">12</span>.sp,
+</span></span><span style="display:flex;"><span>                modifier = <span style="color:#f0883e;font-weight:bold">Modifier</span>.padding(start = <span style="color:#a5d6ff">16</span>.dp, top = <span style="color:#a5d6ff">4</span>.dp)
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="step-3-smart-state-management">Step 3: Smart State Management</h3>
+<p>Here&rsquo;s where the magic happens. When users interact with the field, we update the state intelligently:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>ValidatedTextField(
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">value</span> = firstName.<span style="color:#ff7b72">value</span>,
+</span></span><span style="display:flex;"><span>    onValueChange = { newValue <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">hadValue</span> = firstName.<span style="color:#ff7b72">value</span>.isNotEmpty()
+</span></span><span style="display:flex;"><span>        firstName = FieldState(
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">value</span> = newValue,
+</span></span><span style="display:flex;"><span>            error = validateFirstName(newValue),
+</span></span><span style="display:flex;"><span>            isTouched = <span style="color:#ff7b72">true</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-style:italic">// Mark as modified if user had text and cleared it
+</span></span></span><span style="display:flex;"><span>            hasBeenModified = firstName.hasBeenModified <span style="color:#ff7b72;font-weight:bold">||</span> 
+</span></span><span style="display:flex;"><span>                             (hadValue <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> newValue.isEmpty())
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    label = <span style="color:#a5d6ff">&#34;First Name&#34;</span>,
+</span></span><span style="display:flex;"><span>    errorMessage = firstName.error,
+</span></span><span style="display:flex;"><span>    showError = firstName.shouldShowError(submitAttempted),
+</span></span><span style="display:flex;"><span>    onFocusChanged = { isFocused <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> (isFocused) {
+</span></span><span style="display:flex;"><span>            firstName = firstName.copy(isTouched = <span style="color:#ff7b72">true</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>What&rsquo;s happening here?</strong></p>
+<ol>
+<li>We track if the field previously had a value (<code>hadValue</code>)</li>
+<li>If it did and now it&rsquo;s empty, we set <code>hasBeenModified = true</code></li>
+<li>Only then do we show the error message</li>
+<li>On focus, we mark the field as touched</li>
+</ol>
+<h2 id="complete-form-example">Complete Form Example</h2>
+<p>Here&rsquo;s a complete recipient details form using this pattern:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">  9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 89
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 90
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 91
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 92
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 93
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 95
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 96
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 97
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 98
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 99
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">100
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">101
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">102
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">103
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">104
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">105
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">106
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">107
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">108
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@OptIn</span>(ExperimentalMaterial3Api<span style="color:#ff7b72;font-weight:bold">::</span><span style="color:#ff7b72">class</span>)
+</span></span><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fun</span> <span style="color:#d2a8ff;font-weight:bold">RecipientDetailsScreen</span>(
+</span></span><span style="display:flex;"><span>    onBackClick: () <span style="color:#ff7b72;font-weight:bold">-&gt;</span> Unit = {},
+</span></span><span style="display:flex;"><span>    onContinueClick: (Map&lt;String, String&gt;) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> Unit = {}
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">var</span> <span style="color:#79c0ff">firstName</span> <span style="color:#ff7b72">by</span> remember { mutableStateOf(FieldState()) }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">var</span> <span style="color:#79c0ff">lastName</span> <span style="color:#ff7b72">by</span> remember { mutableStateOf(FieldState()) }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">var</span> <span style="color:#79c0ff">submitAttempted</span> <span style="color:#ff7b72">by</span> remember { mutableStateOf(<span style="color:#ff7b72">false</span>) }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">isFormValid</span> = firstName.error <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#ff7b72">null</span> <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>                     firstName.<span style="color:#ff7b72">value</span>.isNotBlank() <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>                     lastName.error <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#ff7b72">null</span> <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> 
+</span></span><span style="display:flex;"><span>                     lastName.<span style="color:#ff7b72">value</span>.isNotBlank()
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    Scaffold(
+</span></span><span style="display:flex;"><span>        topBar = {
+</span></span><span style="display:flex;"><span>            TopAppBar(
+</span></span><span style="display:flex;"><span>                title = { Text(<span style="color:#a5d6ff">&#34;Enter Recipient Details&#34;</span>) },
+</span></span><span style="display:flex;"><span>                navigationIcon = {
+</span></span><span style="display:flex;"><span>                    IconButton(onClick = onBackClick) {
+</span></span><span style="display:flex;"><span>                        Icon(<span style="color:#f0883e;font-weight:bold">Icons</span>.<span style="color:#f0883e;font-weight:bold">Default</span>.ArrowBack, <span style="color:#a5d6ff">&#34;Back&#34;</span>)
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ) { padding <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>        Column(
+</span></span><span style="display:flex;"><span>            modifier = Modifier
+</span></span><span style="display:flex;"><span>                .fillMaxSize()
+</span></span><span style="display:flex;"><span>                .padding(padding)
+</span></span><span style="display:flex;"><span>                .padding(<span style="color:#a5d6ff">16</span>.dp),
+</span></span><span style="display:flex;"><span>            verticalArrangement = <span style="color:#f0883e;font-weight:bold">Arrangement</span>.spacedBy(<span style="color:#a5d6ff">16</span>.dp)
+</span></span><span style="display:flex;"><span>        ) {
+</span></span><span style="display:flex;"><span>            ValidatedTextField(
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">value</span> = firstName.<span style="color:#ff7b72">value</span>,
+</span></span><span style="display:flex;"><span>                onValueChange = { newValue <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">hadValue</span> = firstName.<span style="color:#ff7b72">value</span>.isNotEmpty()
+</span></span><span style="display:flex;"><span>                    firstName = FieldState(
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">value</span> = newValue,
+</span></span><span style="display:flex;"><span>                        error = <span style="color:#ff7b72">if</span> (newValue.isBlank()) 
+</span></span><span style="display:flex;"><span>                            <span style="color:#a5d6ff">&#34;Please enter first name&#34;</span> 
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span>,
+</span></span><span style="display:flex;"><span>                        isTouched = <span style="color:#ff7b72">true</span>,
+</span></span><span style="display:flex;"><span>                        hasBeenModified = firstName.hasBeenModified <span style="color:#ff7b72;font-weight:bold">||</span> 
+</span></span><span style="display:flex;"><span>                                        (hadValue <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> newValue.isEmpty())
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                label = <span style="color:#a5d6ff">&#34;First Name&#34;</span>,
+</span></span><span style="display:flex;"><span>                errorMessage = firstName.error,
+</span></span><span style="display:flex;"><span>                showError = firstName.shouldShowError(submitAttempted)
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>            ValidatedTextField(
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">value</span> = lastName.<span style="color:#ff7b72">value</span>,
+</span></span><span style="display:flex;"><span>                onValueChange = { newValue <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">hadValue</span> = lastName.<span style="color:#ff7b72">value</span>.isNotEmpty()
+</span></span><span style="display:flex;"><span>                    lastName = FieldState(
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">value</span> = newValue,
+</span></span><span style="display:flex;"><span>                        error = <span style="color:#ff7b72">if</span> (newValue.isBlank()) 
+</span></span><span style="display:flex;"><span>                            <span style="color:#a5d6ff">&#34;Please enter last name&#34;</span> 
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span>,
+</span></span><span style="display:flex;"><span>                        isTouched = <span style="color:#ff7b72">true</span>,
+</span></span><span style="display:flex;"><span>                        hasBeenModified = lastName.hasBeenModified <span style="color:#ff7b72;font-weight:bold">||</span> 
+</span></span><span style="display:flex;"><span>                                        (hadValue <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> newValue.isEmpty())
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                label = <span style="color:#a5d6ff">&#34;Last Name&#34;</span>,
+</span></span><span style="display:flex;"><span>                errorMessage = lastName.error,
+</span></span><span style="display:flex;"><span>                showError = lastName.shouldShowError(submitAttempted)
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>            Spacer(modifier = <span style="color:#f0883e;font-weight:bold">Modifier</span>.weight(<span style="color:#a5d6ff">1f</span>))
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>            Button(
+</span></span><span style="display:flex;"><span>                onClick = {
+</span></span><span style="display:flex;"><span>                    submitAttempted = <span style="color:#ff7b72">true</span>
+</span></span><span style="display:flex;"><span>                    firstName = firstName.copy(
+</span></span><span style="display:flex;"><span>                        hasBeenModified = <span style="color:#ff7b72">true</span>,
+</span></span><span style="display:flex;"><span>                        error = <span style="color:#ff7b72">if</span> (firstName.<span style="color:#ff7b72">value</span>.isBlank()) 
+</span></span><span style="display:flex;"><span>                            <span style="color:#a5d6ff">&#34;Please enter first name&#34;</span> 
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span>
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                    lastName = lastName.copy(
+</span></span><span style="display:flex;"><span>                        hasBeenModified = <span style="color:#ff7b72">true</span>,
+</span></span><span style="display:flex;"><span>                        error = <span style="color:#ff7b72">if</span> (lastName.<span style="color:#ff7b72">value</span>.isBlank()) 
+</span></span><span style="display:flex;"><span>                            <span style="color:#a5d6ff">&#34;Please enter last name&#34;</span> 
+</span></span><span style="display:flex;"><span>                        <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span>
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                  
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff7b72">if</span> (isFormValid) {
+</span></span><span style="display:flex;"><span>                        onContinueClick(
+</span></span><span style="display:flex;"><span>                            mapOf(
+</span></span><span style="display:flex;"><span>                                <span style="color:#a5d6ff">&#34;firstName&#34;</span> to firstName.<span style="color:#ff7b72">value</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#a5d6ff">&#34;lastName&#34;</span> to lastName.<span style="color:#ff7b72">value</span>
+</span></span><span style="display:flex;"><span>                            )
+</span></span><span style="display:flex;"><span>                        )
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                modifier = Modifier
+</span></span><span style="display:flex;"><span>                    .fillMaxWidth()
+</span></span><span style="display:flex;"><span>                    .height(<span style="color:#a5d6ff">56</span>.dp)
+</span></span><span style="display:flex;"><span>            ) {
+</span></span><span style="display:flex;"><span>                Text(<span style="color:#a5d6ff">&#34;Continue&#34;</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="the-user-experience">The User Experience</h2>
+<p>Let&rsquo;s see how this plays out in real usage:</p>
+<table>
+	<thead>
+			<tr>
+					<th>User Action</th>
+					<th>Behavior</th>
+					<th>Why?</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Page loads with empty fields</td>
+					<td>No errors shown</td>
+					<td>User hasn&rsquo;t interacted yet</td>
+			</tr>
+			<tr>
+					<td>User types &ldquo;Jo&rdquo; then deletes it</td>
+					<td>Error appears</td>
+					<td>User modified then cleared</td>
+			</tr>
+			<tr>
+					<td>User focuses field but doesn&rsquo;t type</td>
+					<td>No error</td>
+					<td>No modification occurred</td>
+			</tr>
+			<tr>
+					<td>User clicks Continue with empty fields</td>
+					<td>All errors appear</td>
+					<td>Form submission attempted</td>
+			</tr>
+			<tr>
+					<td>User types &ldquo;John&rdquo;</td>
+					<td>Error clears immediately</td>
+					<td>Field is now valid</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<p>One concern with this approach is the frequency of recomposition. Here are some optimizations:</p>
+<h3 id="1-derivation-instead-of-state">1. Derivation Instead of State</h3>
+<p>For computed values like <code>isFormValid</code>, use derived state:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#ff7b72">val</span> <span style="color:#79c0ff">isFormValid</span> <span style="color:#ff7b72">by</span> remember {
+</span></span><span style="display:flex;"><span>    derivedStateOf {
+</span></span><span style="display:flex;"><span>        firstName.error <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#ff7b72">null</span> <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> firstName.<span style="color:#ff7b72">value</span>.isNotBlank() <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>        lastName.error <span style="color:#ff7b72;font-weight:bold">==</span> <span style="color:#ff7b72">null</span> <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> lastName.<span style="color:#ff7b72">value</span>.isNotBlank()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-stable-keys-for-lists">2. Stable Keys for Lists</h3>
+<p>If you have multiple fields in a list, use stable keys:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>fields.forEach { <span style="color:#ff7b72">field</span> <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>    key(<span style="color:#ff7b72">field</span>.id) {
+</span></span><span style="display:flex;"><span>        ValidatedTextField(<span style="color:#8b949e;font-style:italic">/* ... */</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-remember-validation-functions">3. Remember Validation Functions</h3>
+<p>Cache expensive validation logic:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#ff7b72">val</span> <span style="color:#79c0ff">emailValidator</span> = remember {
+</span></span><span style="display:flex;"><span>    { email: String <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> (!email.matches(Regex(<span style="color:#a5d6ff">&#34;^[A-Za-z0-9+_.-]+@(.+)$&#34;</span>))) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a5d6ff">&#34;Invalid email format&#34;</span>
+</span></span><span style="display:flex;"><span>        } <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="testing-the-component">Testing the Component</h2>
+<p>Here&rsquo;s how you can test this behavior:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">28
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fun</span> <span style="color:#d2a8ff;font-weight:bold">validatedTextField</span>_showsError_whenModifiedAndCleared() {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">var</span> <span style="color:#79c0ff">state</span> <span style="color:#ff7b72">by</span> mutableStateOf(FieldState())
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    composeTestRule.setContent {
+</span></span><span style="display:flex;"><span>        ValidatedTextField(
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">value</span> = state.<span style="color:#ff7b72">value</span>,
+</span></span><span style="display:flex;"><span>            onValueChange = { newValue <span style="color:#ff7b72;font-weight:bold">-&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">hadValue</span> = state.<span style="color:#ff7b72">value</span>.isNotEmpty()
+</span></span><span style="display:flex;"><span>                state = FieldState(
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff7b72">value</span> = newValue,
+</span></span><span style="display:flex;"><span>                    error = <span style="color:#ff7b72">if</span> (newValue.isBlank()) <span style="color:#a5d6ff">&#34;Required&#34;</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span>,
+</span></span><span style="display:flex;"><span>                    hasBeenModified = hadValue <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> newValue.isEmpty()
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            label = <span style="color:#a5d6ff">&#34;Test Field&#34;</span>,
+</span></span><span style="display:flex;"><span>            errorMessage = state.error,
+</span></span><span style="display:flex;"><span>            showError = state.shouldShowError()
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// Type and clear
+</span></span></span><span style="display:flex;"><span>    composeTestRule.onNodeWithText(<span style="color:#a5d6ff">&#34;Test Field&#34;</span>).performTextInput(<span style="color:#a5d6ff">&#34;text&#34;</span>)
+</span></span><span style="display:flex;"><span>    composeTestRule.onNodeWithText(<span style="color:#a5d6ff">&#34;Test Field&#34;</span>).performTextClearance()
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// Error should appear
+</span></span></span><span style="display:flex;"><span>    composeTestRule.onNodeWithText(<span style="color:#a5d6ff">&#34;Required&#34;</span>).assertIsDisplayed()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="real-world-extensions">Real-World Extensions</h2>
+<h3 id="adding-async-validation">Adding Async Validation</h3>
+<p>For backend validation (like checking username availability):</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#ff7b72">data</span> <span style="color:#ff7b72">class</span> <span style="color:#f0883e;font-weight:bold">FieldState</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">value</span>: String = <span style="color:#a5d6ff">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">error</span>: String? = <span style="color:#ff7b72">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">isValidating</span>: Boolean = <span style="color:#ff7b72">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">isTouched</span>: Boolean = <span style="color:#ff7b72">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">val</span> <span style="color:#79c0ff">hasBeenModified</span>: Boolean = <span style="color:#ff7b72">false</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d2a8ff;font-weight:bold">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fun</span> <span style="color:#d2a8ff;font-weight:bold">AsyncValidatedTextField</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">/* ... */</span>,
+</span></span><span style="display:flex;"><span>    onAsyncValidate: <span style="color:#ff7b72">suspend</span> (String) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> String?
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    LaunchedEffect(<span style="color:#ff7b72">value</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">if</span> (<span style="color:#ff7b72">value</span>.isNotEmpty()) {
+</span></span><span style="display:flex;"><span>            delay(<span style="color:#a5d6ff">500</span>) <span style="color:#8b949e;font-style:italic">// Debounce
+</span></span></span><span style="display:flex;"><span>            isValidating = <span style="color:#ff7b72">true</span>
+</span></span><span style="display:flex;"><span>            error = onAsyncValidate(<span style="color:#ff7b72">value</span>)
+</span></span><span style="display:flex;"><span>            isValidating = <span style="color:#ff7b72">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8b949e;font-style:italic">// Show loading indicator when validating
+</span></span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> (isValidating) {
+</span></span><span style="display:flex;"><span>        CircularProgressIndicator(modifier = <span style="color:#f0883e;font-weight:bold">Modifier</span>.size(<span style="color:#a5d6ff">20</span>.dp))
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="pattern-based-validation">Pattern-Based Validation</h3>
+<p>Create reusable validators:</p>
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">28
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#ff7b72">object</span> <span style="color:#f0883e;font-weight:bold">Validators</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fun</span> <span style="color:#d2a8ff;font-weight:bold">required</span>(message: String = <span style="color:#a5d6ff">&#34;This field is required&#34;</span>): (String) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> String? {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> { <span style="color:#ff7b72">if</span> (<span style="color:#ff7b72">it</span>.isBlank()) message <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span> }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fun</span> <span style="color:#d2a8ff;font-weight:bold">email</span>(message: String = <span style="color:#a5d6ff">&#34;Invalid email&#34;</span>): (String) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> String? {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> { 
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> (!<span style="color:#ff7b72">it</span>.matches(Regex(<span style="color:#a5d6ff">&#34;^[A-Za-z0-9+_.-]+@(.+)$&#34;</span>))) 
+</span></span><span style="display:flex;"><span>                message 
+</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">else</span> 
+</span></span><span style="display:flex;"><span>                <span style="color:#ff7b72">null</span> 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fun</span> <span style="color:#d2a8ff;font-weight:bold">minLength</span>(
+</span></span><span style="display:flex;"><span>        length: Int, 
+</span></span><span style="display:flex;"><span>        message: String = <span style="color:#a5d6ff">&#34;Minimum </span><span style="color:#a5d6ff">$length</span><span style="color:#a5d6ff"> characters&#34;</span>
+</span></span><span style="display:flex;"><span>    ): (String) <span style="color:#ff7b72;font-weight:bold">-&gt;</span> String? {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">return</span> { <span style="color:#ff7b72">if</span> (<span style="color:#ff7b72">it</span>.length &lt; length) message <span style="color:#ff7b72">else</span> <span style="color:#ff7b72">null</span> }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">// Usage
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">val</span> <span style="color:#79c0ff">validators</span> = listOf(
+</span></span><span style="display:flex;"><span>    <span style="color:#f0883e;font-weight:bold">Validators</span>.required(),
+</span></span><span style="display:flex;"><span>    <span style="color:#f0883e;font-weight:bold">Validators</span>.email(),
+</span></span><span style="display:flex;"><span>    <span style="color:#f0883e;font-weight:bold">Validators</span>.minLength(<span style="color:#a5d6ff">6</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="conclusion">Conclusion</h2>
+<p>Smart form validation is about respecting your users&rsquo; time and attention. By tracking interaction state and showing errors contextually, we create forms that feel helpful rather than hostile.</p>
+<p>The key principles:</p>
+<ol>
+<li><strong>Track interaction state</strong> - Know when users have engaged with fields</li>
+<li><strong>Validate contextually</strong> - Show errors only when meaningful</li>
+<li><strong>Provide immediate feedback</strong> - Clear errors as soon as fields become valid</li>
+<li><strong>Make it reusable</strong> - Build components that work consistently across your app</li>
+</ol>
+<p>This approach has significantly improved our form completion rates and reduced user frustration. Give it a try in your next Compose project!</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://github.com/azeemchaudhrry/ComposeForms">Full source code on GitHub</a></li>
+<li><a href="https://developer.android.com/jetpack/compose">Jetpack Compose Documentation</a></li>
+<li><a href="https://m3.material.io/">Material Design Form Guidelines</a></li>
+</ul>
+<hr>
+<p><em>Have questions or improvements? Feel free to reach out or open an issue on GitHub!</em></p>
+<p><strong>Tags:</strong> #Android #Kotlin #JetpackCompose #FormValidation #MaterialDesign #AndroidDevelopment #UX #UI</p>
+
+    </div>
+
+    
+
+
+</article>
+
+    </section>
+
+    <aside class="sidebar content-secondary">
+      <div class="sidebar-section">
+  <h3>Categories</h3>
+  <ul>
+    
+      <li>
+        <a href="/categories/android/" style="color:inherit;text-decoration:none;">
+          Android
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/jekyll-pixyll/" style="color:inherit;text-decoration:none;">
+          Jekyll Pixyll
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/jetpack-compose/" style="color:inherit;text-decoration:none;">
+          Jetpack Compose
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/kotlin/" style="color:inherit;text-decoration:none;">
+          Kotlin
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/" style="color:inherit;text-decoration:none;">
+          SkiaSharp, Harfbuzz, Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Xamarin, C#
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/ui/ux/" style="color:inherit;text-decoration:none;">
+          UI/UX
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/xamarin.android/" style="color:inherit;text-decoration:none;">
+          Xamarin.Android
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/xamarin.android-xamarin-c%23/" style="color:inherit;text-decoration:none;">
+          Xamarin.Android, Xamarin, C#
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/" style="color:inherit;text-decoration:none;">
+          Xamarin.Android, Xamarin.Android Binding, Xamarin, C#
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/xamarinforms/" style="color:inherit;text-decoration:none;">
+          XamarinForms
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+<div class="sidebar-section" style="margin-top: 60px;">
+  <h3>Posts List</h3>
+  <ul>
+    
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2025.10.07</code></span>
+        <span class="log-list-action"><a href="/posts/2025-10-07-jetpack-compose-smart-form-validation/" style="color:inherit;text-decoration:none;">Building Smart Form Validation in Jetpack Compose: A UX-First Approach</a></span>
+      </li>
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2020.06.01</code></span>
+        <span class="log-list-action"><a href="/posts/2020-05-01-skia-sharp-arabic-text/" style="color:inherit;text-decoration:none;">Arabic Text in SkiaSharp &amp; Harfbuzz</a></span>
+      </li>
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2020.05.01</code></span>
+        <span class="log-list-action"><a href="/posts/2020-05-01-skia-sharp-circular-menu/" style="color:inherit;text-decoration:none;">Arabic Text in SkiaSharp &amp; Harfbuzz</a></span>
+      </li>
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2019.07.30</code></span>
+        <span class="log-list-action"><a href="/posts/2019-07-30-xamarin-android-fullscreen-videoview/" style="color:inherit;text-decoration:none;">Xamarin Android FullScreen Video View</a></span>
+      </li>
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2019.04.07</code></span>
+        <span class="log-list-action"><a href="/posts/2019-04-07-xamarin.android-sharing/" style="color:inherit;text-decoration:none;">Xamarin Android Native Sharing</a></span>
+      </li>
+    
+  </ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="social-links">
+<a href="https://github.com/username" target="_blank" rel="noopener">GitHub</a>
+<a href="https://linkedin.com/in/username" target="_blank" rel="noopener">LinkedIn</a>
+
+<a href="https://instagram.com/username" target="_blank" rel="noopener">Instagram</a>
+<a href="https://facebook.com/username" target="_blank" rel="noopener">Facebook</a>
+    </div>
+
+    <p>&copy; 2026 Azeem Chaudhry. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

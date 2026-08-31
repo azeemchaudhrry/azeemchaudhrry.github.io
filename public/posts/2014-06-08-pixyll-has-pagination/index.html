@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pixyll has Pagination | Azeem Chaudhry</title>
+
+<meta name="description" content="A personal blog about your topics">
+
+<script>
+  (function() {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = stored || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+
+</head>
+<body>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('.theme-toggle').addEventListener('click', function() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 
+      (localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    if (window.REMARK42) {
+      window.REMARK42.changeTheme(next);
+    }
+  });
+});
+</script>
+
+<header class="site-header">
+  <div class="brand">
+    <a href="/"><strong>Azeem Chaudhry</strong></a>
+  </div>
+
+  <nav class="main-nav">
+    
+      <a href="/about/">About</a>
+    
+    <a href="/index.xml" class="rss-link" title="RSS Feed">RSS</a>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+      <svg class="theme-icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="theme-icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+
+  <main class="layout-wrapper">
+    <section class="content-primary">
+      
+<article class="post-single">
+    
+    <header class="post-header">
+        <div class="post-meta">
+            <span class="mono-date">2014.06.08</span>
+            
+              
+              <span class="category-tag"> // <a href="/categories/106/" style="color:inherit;text-decoration:none;">106</a></span>
+            
+            <span class="reading-time"> // 1 min read</span>
+        </div>
+
+        <h1 class="post-title">Pixyll has Pagination</h1>
+        
+        
+    </header>
+    
+    
+
+    <div class="post-content">
+        <p>This is an empty post to illustrate the pagination component with Pixyll.</p>
+
+    </div>
+
+    
+
+
+</article>
+
+    </section>
+
+    <aside class="sidebar content-secondary">
+      <div class="sidebar-section">
+  <h3>Categories</h3>
+  <ul>
+    
+      <li>
+        <a href="/categories/android/" style="color:inherit;text-decoration:none;">
+          Android
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/jekyll-pixyll/" style="color:inherit;text-decoration:none;">
+          Jekyll Pixyll
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/jetpack-compose/" style="color:inherit;text-decoration:none;">
+          Jetpack Compose
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/kotlin/" style="color:inherit;text-decoration:none;">
+          Kotlin
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/" style="color:inherit;text-decoration:none;">
+          SkiaSharp, Harfbuzz, Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Xamarin, C#
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/ui/ux/" style="color:inherit;text-decoration:none;">
+          UI/UX
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/xamarin.android/" style="color:inherit;text-decoration:none;">
+          Xamarin.Android
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/xamarin.android-xamarin-c%23/" style="color:inherit;text-decoration:none;">
+          Xamarin.Android, Xamarin, C#
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/" style="color:inherit;text-decoration:none;">
+          Xamarin.Android, Xamarin.Android Binding, Xamarin, C#
+        </a>
+      </li>
+    
+      <li>
+        <a href="/categories/xamarinforms/" style="color:inherit;text-decoration:none;">
+          XamarinForms
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+<div class="sidebar-section" style="margin-top: 60px;">
+  <h3>Posts List</h3>
+  <ul>
+    
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2025.10.07</code></span>
+        <span class="log-list-action"><a href="/posts/2025-10-07-jetpack-compose-smart-form-validation/" style="color:inherit;text-decoration:none;">Building Smart Form Validation in Jetpack Compose: A UX-First Approach</a></span>
+      </li>
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2020.06.01</code></span>
+        <span class="log-list-action"><a href="/posts/2020-05-01-skia-sharp-arabic-text/" style="color:inherit;text-decoration:none;">Arabic Text in SkiaSharp &amp; Harfbuzz</a></span>
+      </li>
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2020.05.01</code></span>
+        <span class="log-list-action"><a href="/posts/2020-05-01-skia-sharp-circular-menu/" style="color:inherit;text-decoration:none;">Arabic Text in SkiaSharp &amp; Harfbuzz</a></span>
+      </li>
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2019.07.30</code></span>
+        <span class="log-list-action"><a href="/posts/2019-07-30-xamarin-android-fullscreen-videoview/" style="color:inherit;text-decoration:none;">Xamarin Android FullScreen Video View</a></span>
+      </li>
+    
+      <li style="margin-bottom: 20px;">
+        <span class="log-list-date"><code>2019.04.07</code></span>
+        <span class="log-list-action"><a href="/posts/2019-04-07-xamarin.android-sharing/" style="color:inherit;text-decoration:none;">Xamarin Android Native Sharing</a></span>
+      </li>
+    
+  </ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="social-links">
+<a href="https://github.com/username" target="_blank" rel="noopener">GitHub</a>
+<a href="https://linkedin.com/in/username" target="_blank" rel="noopener">LinkedIn</a>
+
+<a href="https://instagram.com/username" target="_blank" rel="noopener">Instagram</a>
+<a href="https://facebook.com/username" target="_blank" rel="noopener">Facebook</a>
+    </div>
+
+    <p>&copy; 2026 Azeem Chaudhry. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
