@@ -1,103 +1,186 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
   <url>
-    <loc>http://localhost:1313/docs/</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/docs/hello-world/</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/</loc>
+    <loc>https://azeem.dev/docs/</loc>
+  </url><url>
+    <loc>https://azeem.dev/docs/hello-world/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/android/</loc>
     <lastmod>2025-10-07T10:00:00+05:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/</loc>
+  </url><url>
+    <loc>https://azeem.dev/categories/android/</loc>
     <lastmod>2025-10-07T10:00:00+05:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/android-development/</loc>
     <lastmod>2025-10-07T10:00:00+05:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2020-05-01-skia-sharp-arabic-text/</loc>
+  </url><url>
+    <loc>https://azeem.dev/posts/2025-10-07-jetpack-compose-smart-form-validation/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/categories/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/compose/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/form-validation/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/categories/jetpack-compose/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/jetpack-compose/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/kotlin/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/categories/kotlin/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/material-design/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/posts/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/categories/ui/ux/</loc>
+    <lastmod>2025-10-07T10:00:00+05:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/posts/2020-05-01-skia-sharp-arabic-text/</loc>
     <lastmod>2020-06-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2020-05-01-skia-sharp-circular-menu/</loc>
+  </url><url>
+    <loc>https://azeem.dev/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/</loc>
+    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/posts/2020-05-01-skia-sharp-circular-menu/</loc>
     <lastmod>2020-05-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/c%23/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/smart-media/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/ios/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2019-07-30-xamarin-android-fullscreen-videoview/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/java/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/odata/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/smart-media/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/xamarin/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/posts/2019-07-30-xamarin-android-fullscreen-videoview/</loc>
     <lastmod>2019-07-30T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2019-04-07-xamarin.android-sharing/</loc>
+  </url><url>
+    <loc>https://azeem.dev/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/</loc>
+    <lastmod>2019-07-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/posts/2019-04-07-xamarin.android-sharing/</loc>
     <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2019-01-05-android-double-drawer-layout/</loc>
+  </url><url>
+    <loc>https://azeem.dev/categories/xamarin.android-xamarin-c%23/</loc>
+    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/posts/2019-01-05-android-double-drawer-layout/</loc>
     <lastmod>2019-01-05T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/clipping-station/</loc>
+  </url><url>
+    <loc>https://azeem.dev/categories/xamarin.android/</loc>
+    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/automation/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2018-12-03-xamarin.forms-4.0.0-pre1/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/c&#43;&#43;/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/clipping-station/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/mysql/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/ocr/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/qt/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/ubuntu/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/posts/2018-12-03-xamarin.forms-4.0.0-pre1/</loc>
     <lastmod>2018-12-03T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/abu-dhabi-chamber/</loc>
+  </url><url>
+    <loc>https://azeem.dev/categories/xamarinforms/</loc>
+    <lastmod>2018-12-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/abu-dhabi-chamber/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/sharjah-24/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/asp.net/</loc>
+    <lastmod>2018-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/afnetworking/</loc>
     <lastmod>2017-02-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/sharjah-events/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/retrofit/</loc>
+    <lastmod>2017-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/sharjah-24/</loc>
+    <lastmod>2017-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/swift/</loc>
+    <lastmod>2017-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/.net-core/</loc>
     <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/nyc-consumer-app/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/angular/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/sharjah-events/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/xamarin.forms/</loc>
+    <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/nyc-consumer-app/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2015-07-11-announcing-pixyll-version-2/</loc>
+  </url><url>
+    <loc>https://azeem.dev/posts/2015-07-11-announcing-pixyll-version-2/</loc>
     <lastmod>2015-07-11T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/core-framework/</loc>
+  </url><url>
+    <loc>https://azeem.dev/categories/jekyll-pixyll/</loc>
+    <lastmod>2015-07-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/core-framework/</loc>
     <lastmod>2015-01-01T00:00:00+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2014-06-11-welcome-to-pixyll/</loc>
-    <lastmod>2014-06-11T15:31:19+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2014-06-10-see-pixyll-in-action/</loc>
-    <lastmod>2014-06-10T12:31:19+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2014-06-09-so-what-is-jekyll/</loc>
-    <lastmod>2014-06-09T12:32:18+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/2014-06-08-pixyll-has-pagination/</loc>
+  </url><url>
+    <loc>https://azeem.dev/posts/2014-06-08-pixyll-has-pagination/</loc>
     <lastmod>2014-06-08T11:21:29+00:00</lastmod>
-  </url>
-  <url>
-    <loc>http://localhost:1313/projects/radiant-site-manager/</loc>
+  </url><url>
+    <loc>https://azeem.dev/tags/python/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/projects/radiant-site-manager/</loc>
+    <lastmod>2014-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://azeem.dev/tags/sql/</loc>
     <lastmod>2014-01-01T00:00:00+00:00</lastmod>
   </url>
 </urlset>
