@@ -1,87 +1,113 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Categories on Azeem Chaudhry</title>
-		<link>http://localhost:1313/categories/</link>
-		<description>Recent content in Categories on Azeem Chaudhry</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Tue, 07 Oct 2025 10:00:00 +0500</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Android</title>
-				<link>http://localhost:1313/categories/android/</link>
-				<pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
-				<guid>http://localhost:1313/categories/android/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Jetpack Compose</title>
-				<link>http://localhost:1313/categories/jetpack-compose/</link>
-				<pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
-				<guid>http://localhost:1313/categories/jetpack-compose/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Kotlin</title>
-				<link>http://localhost:1313/categories/kotlin/</link>
-				<pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
-				<guid>http://localhost:1313/categories/kotlin/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>UI/UX</title>
-				<link>http://localhost:1313/categories/ui/ux/</link>
-				<pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
-				<guid>http://localhost:1313/categories/ui/ux/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>SkiaSharp, Harfbuzz, Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Xamarin, C#</title>
-				<link>http://localhost:1313/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/</link>
-				<pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Xamarin.Android, Xamarin.Android Binding, Xamarin, C#</title>
-				<link>http://localhost:1313/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/</link>
-				<pubDate>Tue, 30 Jul 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Xamarin.Android, Xamarin, C#</title>
-				<link>http://localhost:1313/categories/xamarin.android-xamarin-c%23/</link>
-				<pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/categories/xamarin.android-xamarin-c%23/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Xamarin.Android</title>
-				<link>http://localhost:1313/categories/xamarin.android/</link>
-				<pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/categories/xamarin.android/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>XamarinForms</title>
-				<link>http://localhost:1313/categories/xamarinforms/</link>
-				<pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/categories/xamarinforms/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Jekyll Pixyll</title>
-				<link>http://localhost:1313/categories/jekyll-pixyll/</link>
-				<pubDate>Sat, 11 Jul 2015 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/categories/jekyll-pixyll/</guid>
-				<description></description>
-			</item>
-	</channel>
+  <channel>
+    <title>Categories on Hafiz M. Azeem</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on Hafiz M. Azeem</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© 2026 </copyright>
+    <lastBuildDate>Tue, 07 Oct 2025 10:00:00 +0500</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Android</title>
+      <link>http://localhost:1313/categories/android/</link>
+      <pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
+      
+      <guid>http://localhost:1313/categories/android/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Jetpack Compose</title>
+      <link>http://localhost:1313/categories/jetpack-compose/</link>
+      <pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
+      
+      <guid>http://localhost:1313/categories/jetpack-compose/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Kotlin</title>
+      <link>http://localhost:1313/categories/kotlin/</link>
+      <pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
+      
+      <guid>http://localhost:1313/categories/kotlin/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>UI/UX</title>
+      <link>http://localhost:1313/categories/ui/ux/</link>
+      <pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
+      
+      <guid>http://localhost:1313/categories/ui/ux/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>SkiaSharp, Harfbuzz, Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Xamarin, C#</title>
+      <link>http://localhost:1313/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/skiasharp-harfbuzz-xamarin.android-xamarin.ios-xamarin.forms-xamarin-c%23/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Xamarin.Android, Xamarin.Android Binding, Xamarin, C#</title>
+      <link>http://localhost:1313/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/</link>
+      <pubDate>Tue, 30 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/xamarin.android-xamarin.android-binding-xamarin-c%23/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Xamarin.Android, Xamarin, C#</title>
+      <link>http://localhost:1313/categories/xamarin.android-xamarin-c%23/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/xamarin.android-xamarin-c%23/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Xamarin.Android</title>
+      <link>http://localhost:1313/categories/xamarin.android/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/xamarin.android/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>XamarinForms</title>
+      <link>http://localhost:1313/categories/xamarinforms/</link>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/xamarinforms/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Jekyll Pixyll</title>
+      <link>http://localhost:1313/categories/jekyll-pixyll/</link>
+      <pubDate>Sat, 11 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/jekyll-pixyll/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
 </rss>

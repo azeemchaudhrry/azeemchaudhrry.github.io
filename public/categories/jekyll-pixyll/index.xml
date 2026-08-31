@@ -1,52 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Jekyll Pixyll on Azeem Chaudhry</title>
-		<link>http://localhost:1313/categories/jekyll-pixyll/</link>
-		<description>Recent content in Jekyll Pixyll on Azeem Chaudhry</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Sat, 11 Jul 2015 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/categories/jekyll-pixyll/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Announcing Version 2.0</title>
-				<link>http://localhost:1313/posts/2015-07-11-announcing-pixyll-version-2/</link>
-				<pubDate>Sat, 11 Jul 2015 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/posts/2015-07-11-announcing-pixyll-version-2/</guid>
-				<description>Now, Pixyll is lighter weight and more customizable than before.</description>
-			</item>
-			<item>
-				<title>Hello, Pixyll</title>
-				<link>http://localhost:1313/posts/2014-06-11-welcome-to-pixyll/</link>
-				<pubDate>Wed, 11 Jun 2014 15:31:19 +0000</pubDate>
-				<guid>http://localhost:1313/posts/2014-06-11-welcome-to-pixyll/</guid>
-				<description>Pixyll is a simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff.</description>
-			</item>
-			<item>
-				<title>Pixyll in Action</title>
-				<link>http://localhost:1313/posts/2014-06-10-see-pixyll-in-action/</link>
-				<pubDate>Tue, 10 Jun 2014 12:31:19 +0000</pubDate>
-				<guid>http://localhost:1313/posts/2014-06-10-see-pixyll-in-action/</guid>
-				<description>See what the different elements looks like. Your markdown has never looked better. I promise.</description>
-			</item>
-			<item>
-				<title>So, What is Jekyll?</title>
-				<link>http://localhost:1313/posts/2014-06-09-so-what-is-jekyll/</link>
-				<pubDate>Mon, 09 Jun 2014 12:32:18 +0000</pubDate>
-				<guid>http://localhost:1313/posts/2014-06-09-so-what-is-jekyll/</guid>
-				<description>Transform your plain text into static websites and blogs. Simple, static, and blog-aware.</description>
-			</item>
-			<item>
-				<title>Pixyll has Pagination</title>
-				<link>http://localhost:1313/posts/2014-06-08-pixyll-has-pagination/</link>
-				<pubDate>Sun, 08 Jun 2014 11:21:29 +0000</pubDate>
-				<guid>http://localhost:1313/posts/2014-06-08-pixyll-has-pagination/</guid>
-				<description>This is an empty post to illustrate the pagination component with Pixyll.</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Jekyll Pixyll on Hafiz M. Azeem</title>
+    <link>http://localhost:1313/categories/jekyll-pixyll/</link>
+    <description>Recent content in Jekyll Pixyll on Hafiz M. Azeem</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© 2026 </copyright>
+    <lastBuildDate>Sat, 11 Jul 2015 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/jekyll-pixyll/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Announcing Version 2.0</title>
+      <link>http://localhost:1313/posts/2015-07-11-announcing-pixyll-version-2/</link>
+      <pubDate>Sat, 11 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2015-07-11-announcing-pixyll-version-2/</guid>
+      <description>Now, Pixyll is lighter weight and more customizable than before.</description>
+      
+    </item>
+    
+    <item>
+      <title>Hello, Pixyll</title>
+      <link>http://localhost:1313/posts/2014-06-11-welcome-to-pixyll/</link>
+      <pubDate>Wed, 11 Jun 2014 15:31:19 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2014-06-11-welcome-to-pixyll/</guid>
+      <description>Pixyll is a simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff.</description>
+      
+    </item>
+    
+    <item>
+      <title>Pixyll in Action</title>
+      <link>http://localhost:1313/posts/2014-06-10-see-pixyll-in-action/</link>
+      <pubDate>Tue, 10 Jun 2014 12:31:19 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2014-06-10-see-pixyll-in-action/</guid>
+      <description>See what the different elements looks like. Your markdown has never looked better. I promise.</description>
+      
+    </item>
+    
+    <item>
+      <title>So, What is Jekyll?</title>
+      <link>http://localhost:1313/posts/2014-06-09-so-what-is-jekyll/</link>
+      <pubDate>Mon, 09 Jun 2014 12:32:18 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2014-06-09-so-what-is-jekyll/</guid>
+      <description>Transform your plain text into static websites and blogs. Simple, static, and blog-aware.</description>
+      
+    </item>
+    
+    <item>
+      <title>Pixyll has Pagination</title>
+      <link>http://localhost:1313/posts/2014-06-08-pixyll-has-pagination/</link>
+      <pubDate>Sun, 08 Jun 2014 11:21:29 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2014-06-08-pixyll-has-pagination/</guid>
+      <description>This is an empty post to illustrate the pagination component with Pixyll.</description>
+      
+    </item>
+    
+  </channel>
 </rss>

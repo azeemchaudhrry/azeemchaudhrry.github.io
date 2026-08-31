@@ -24,7 +24,7 @@ echo "Starting migration to Hugo..."
 # echo "Configuring hugo.toml..."
 # cat <<EOT > hugo.toml
 # baseURL = "https://azeem.dev/"
-# languageCode = "en-us"
+# locale = "en-US"
 # title = "Azeem Chaudhry"
 # theme = "swiss-operator"
 
