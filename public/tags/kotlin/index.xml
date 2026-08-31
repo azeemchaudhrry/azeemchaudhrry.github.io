@@ -2,22 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kotlin on Hafiz M. Azeem</title>
-    <link>http://localhost:1313/tags/kotlin/</link>
+    <link>https://azeem.dev/tags/kotlin/</link>
     <description>Recent content in Kotlin on Hafiz M. Azeem</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    <copyright>© 2026 </copyright>
-    <lastBuildDate>Tue, 07 Oct 2025 10:00:00 +0500</lastBuildDate><atom:link href="http://localhost:1313/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
-    
+    <generator>Hugo 0.125.0</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 07 Oct 2025 10:00:00 +0500</lastBuildDate>
+    <atom:link href="https://azeem.dev/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building Smart Form Validation in Jetpack Compose: A UX-First Approach</title>
-      <link>http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/</link>
+      <link>https://azeem.dev/posts/2025-10-07-jetpack-compose-smart-form-validation/</link>
       <pubDate>Tue, 07 Oct 2025 10:00:00 +0500</pubDate>
-      
-      <guid>http://localhost:1313/posts/2025-10-07-jetpack-compose-smart-form-validation/</guid>
-      <description>&lt;p&gt;Form validation is one of those features that seems simple until you start thinking about user experience. Show errors too early, and you frustrate users before they&amp;rsquo;ve even started typing. Show them too late, and users submit invalid forms repeatedly. Today, I&amp;rsquo;ll walk you through building a smart form validation system in Jetpack Compose that strikes the perfect balance.&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;The Problem with Traditional Form Validation&#xA;    &lt;div id=&#34;the-problem-with-traditional-form-validation&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#the-problem-with-traditional-form-validation&#34; aria-label=&#34;Anchor&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Most form implementations I&amp;rsquo;ve seen (and built, if I&amp;rsquo;m honest) fall into one of these traps:&lt;/p&gt;</description>
-      
+      <guid>https://azeem.dev/posts/2025-10-07-jetpack-compose-smart-form-validation/</guid>
+      <description>Form validation is one of those features that seems simple until you start thinking about user experience. Show errors too early, and you frustrate users before they&amp;rsquo;ve even started typing. Show them too late, and users submit invalid forms repeatedly. Today, I&amp;rsquo;ll walk you through building a smart form validation system in Jetpack Compose that strikes the perfect balance.&#xA;The Problem with Traditional Form Validation Most form implementations I&amp;rsquo;ve seen (and built, if I&amp;rsquo;m honest) fall into one of these traps:</description>
     </item>
-    
   </channel>
 </rss>
