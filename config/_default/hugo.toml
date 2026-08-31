@@ -1,6 +1,6 @@
 baseURL = "https://azeem.dev/"
 locale = "en-US"
-title = "Azeem Chaudhry"
+title = "Hafiz M. Azeem"
 theme = "blowfish"
 
 [markup.goldmark.renderer]
